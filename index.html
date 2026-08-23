@@ -9,6 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/index.css">
 <link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aradhya 💖">
+<meta name="theme-color" content="#080012">
+<link rel="apple-touch-icon" href="assets/images/her1.jpeg">
 </head>
 
 <body>
@@ -45,6 +50,18 @@
             <p class="subtitle">Log kehte hain move on kar lo… par tujhe bhoolna mere bas me hi nahi hai. Main kal bhi tera tha, aaj bhi tera hoon, aur hamesha tera hi rahunga. 💕</p>
 
             <div class="nav-grid">
+                <a href="her.html" class="nav-item" id="navHer">
+                    <span class="nav-icon">✨</span>
+                    <span class="nav-label">About Aradhya</span>
+                </a>
+                <a href="music.html" class="nav-item" id="navMusic">
+                    <span class="nav-icon">📻</span>
+                    <span class="nav-label">Songs Jukebox</span>
+                </a>
+                <a href="promises.html" class="nav-item" id="navPromises">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-label">Promises</span>
+                </a>
                 <a href="journey.html" class="nav-item" id="navJourney">
                     <span class="nav-icon">🌸</span>
                     <span class="nav-label">Our Journey</span>
@@ -87,6 +104,10 @@
                 <button class="music-btn" onclick="toggleMusic(event)" id="musicToggle">
                     <span class="music-icon">🎵</span>
                     <span class="music-text">Play Our Song</span>
+                </button>
+                <button class="music-btn" onclick="installPWAApp()" id="pwaInstallBtn" style="margin-top: 10px; background: linear-gradient(135deg, #7f00ff, #ff4b91);">
+                    <span class="music-icon">📲</span>
+                    <span class="music-text">Install App On Phone</span>
                 </button>
             </div>
 

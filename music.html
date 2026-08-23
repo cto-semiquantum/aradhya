@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Songs of Memories 📻 | For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A nostalgic retro cassette player with our favourite songs.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/music.css">
+</head>
+
+<body>
+
+<!-- PARTICLE HEARTS CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="jukebox-card">
+
+        <h1 class="page-title">Songs of Memories 📻</h1>
+        <p class="page-subtitle">"Har ek gaane me tumhari hi yaad chhupi hai..."</p>
+
+        <!-- RETRO CASSETTE PLAYER -->
+        <div class="cassette-player" id="cassettePlayer">
+            <div class="cassette-top-label">Aradhya Memory Tape • Vol 1</div>
+            <div class="cassette-window">
+                <div class="reel"></div>
+                <div class="tape-bridge"></div>
+                <div class="reel"></div>
+            </div>
+        </div>
+
+        <!-- AUDIO VISUALIZER BARS -->
+        <div class="visualizer">
+            <div class="v-bar"></div>
+            <div class="v-bar"></div>
+            <div class="v-bar"></div>
+            <div class="v-bar"></div>
+            <div class="v-bar"></div>
+            <div class="v-bar"></div>
+        </div>
+
+        <!-- NOW PLAYING TRACK INFO -->
+        <div class="now-playing-title" id="trackTitle">Agar Tum Saath Ho</div>
+        <div class="now-playing-lyrics" id="trackLyric">“Pal bhar theher jao, dil ye sambhal jaye...” 💖</div>
+
+        <!-- PLAYER CONTROLS -->
+        <div class="player-controls">
+            <button class="ctrl-btn" id="prevBtn" title="Previous Track">⏮️</button>
+            <button class="ctrl-btn play-main" id="playPauseBtn" title="Play / Pause">▶️</button>
+            <button class="ctrl-btn" id="nextBtn" title="Next Track">⏭️</button>
+        </div>
+
+        <!-- TRACKLIST -->
+        <div class="tracklist-title">🎵 Memory Playlist (Select a Song)</div>
+        <div class="playlist-container" id="playlistContainer">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+            <a href="her.html" class="glow-btn">About Aradhya 🌸</a>
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- NAVIGATION & PARTICLES -->
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music-player.js"></script>
+
+</body>
+</html>

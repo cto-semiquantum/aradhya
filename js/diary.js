@@ -336,4 +336,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2500);
     }
 
+    // Export newly created phone entries for weekly code sync
+    window.copyWeeklyCode = function () {
+        let local = [];
+        try {
+            local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch (e) {
+            local = [];
+        }
+
+        if (local.length === 0) {
+            showToast("Abhi mobile me koi nayi phone entry nahi hai! 📱");
+            return;
+        }
+
+        const formattedCode = JSON.stringify(local, null, 4);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(formattedCode).then(() => {
+                showToast("Nayi phone entries copy ho gayi! Code me paste kar sakte hain 📋");
+            }).catch(err => {
+                prompt("Code copy kar lijiye:", formattedCode);
+            });
+        } else {
+            prompt("Code copy kar lijiye:", formattedCode);
+        }
+    };
+
 });

@@ -1,21 +1,28 @@
 {
+  "id": "aradhya-valentine-app",
   "name": "Aradhya 💖 Only For You",
   "short_name": "Aradhya 💖",
   "description": "A website dedicated to unyielding, unconditional love for Aradhya.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
   "background_color": "#080012",
-  "theme_color": "#ff4b91",
+  "theme_color": "#080012",
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "assets/images/her1.jpeg",
+      "src": "assets/images/icon-192.png",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/images/her1.jpeg",
+      "src": "assets/images/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

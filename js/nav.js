@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const links = [
         { path: "index.html", label: "🏠 Home" },
+        { path: "her.html", label: "✨ Her" },
+        { path: "music.html", label: "📻 Songs" },
+        { path: "promises.html", label: "📜 Promises" },
         { path: "journey.html", label: "🌸 Journey" },
         { path: "reasons.html", label: "💖 Why I Love You" },
         { path: "timeline.html", label: "📖 Our Story" },

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Aradhya 🌸 | Unforgettable Memories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A quiet tribute to the most beautiful person — Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/her.css">
+</link>
+
+<body>
+
+<!-- PARTICLE HEARTS & STARS CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="her-card">
+        <div class="card-shimmer"></div>
+
+        <!-- HEADER SECTION -->
+        <div class="her-header">
+            <div class="her-photo-container">
+                <div class="her-photo-frame">
+                    <img src="assets/images/her1.jpeg" alt="Aradhya">
+                </div>
+            </div>
+            <h1 class="her-title">Aradhya 🌸</h1>
+            <p class="her-subtitle">"The girl who made every moment feel like poetry..."</p>
+        </div>
+
+        <!-- SMALL DETAILS SECTION -->
+        <h2 class="section-heading">✨ The Things That Made Her Special</h2>
+        
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">✨</div>
+                <h3 class="detail-title">Her Smile</h3>
+                <p class="detail-desc">Jab wo hasti thi, toh lagta tha jaise saari duniya ki roshni ek jagah simat gayi ho. Wo muskaan aaj bhi aakhon me rehti hai.</p>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">💖</div>
+                <h3 class="detail-title">Her Kindness</h3>
+                <p class="detail-desc">Sabki fikar karna, choti choti baaton ka khayal rakhna... unka dil itna saaf aur narm tha ki koi bhi unka ho jaaye.</p>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">🎶</div>
+                <h3 class="detail-title">Her Voice</h3>
+                <p class="detail-desc">Wo jab mera naam leti thi, toh jaise dil me sukoon utar jata tha. Wo mithaas aur wo andaaz hamesha yaad rahega.</p>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">🕊️</div>
+                <h3 class="detail-title">Her Pure Presence</h3>
+                <p class="detail-desc">Unke aas-paas rehne se hi sab kuch theek lagne lagta tha. Unki jagah meri life me koi nahi le sakta.</p>
+            </div>
+        </div>
+
+        <!-- POLAROID MEMORIES GRID -->
+        <h2 class="section-heading">📸 Memory Keepsakes (Tap to Flip)</h2>
+
+        <div class="polaroid-grid">
+            <div class="polaroid-card">
+                <div class="polaroid-inner">
+                    <div class="polaroid-front">
+                        <img src="assets/images/her1.jpeg" alt="Memory 1">
+                        <span class="polaroid-caption">Unforgettable Smile 💕</span>
+                        <span class="polaroid-hint">(Tap to read note)</span>
+                    </div>
+                    <div class="polaroid-back">
+                        <p class="polaroid-back-text">"Baat ho ya na ho... tera sochna hi mere din ko khubsurat bana deta hai." 🌸</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <div class="polaroid-inner">
+                    <div class="polaroid-front">
+                        <img src="assets/images/anime_hero.png" alt="Memory 2">
+                        <span class="polaroid-caption">Late Night Talks 🌙</span>
+                        <span class="polaroid-hint">(Tap to read note)</span>
+                    </div>
+                    <div class="polaroid-back">
+                        <p class="polaroid-back-text">"Wo raat bhar ki baatein aur tumhari haseen aawaz... meri life ka sabse pyaara chapter tha." ✨</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <div class="polaroid-inner">
+                    <div class="polaroid-front">
+                        <img src="assets/images/anime_forever.png" alt="Memory 3">
+                        <span class="polaroid-caption">Pure Devotion 💖</span>
+                        <span class="polaroid-hint">(Tap to read note)</span>
+                    </div>
+                    <div class="polaroid-back">
+                        <p class="polaroid-back-text">"Mera pyaar tumse koi shart ya umeed rakh kar nahi hai... bas tum khush raho, yahi meri dua hai." 🕊️</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STARGAZING MEMORY BOX -->
+        <h2 class="section-heading">🌟 Starry Memories (Tap a star)</h2>
+
+        <div class="stargazing-box">
+            <p style="font-size: 14px; color: var(--text-secondary);">Click any star to unlock a nostalgic moment...</p>
+            <div class="stars-row">
+                <button class="star-btn active" title="Memory 1">✨</button>
+                <button class="star-btn" title="Memory 2">🌟</button>
+                <button class="star-btn" title="Memory 3">⭐</button>
+                <button class="star-btn" title="Memory 4">💫</button>
+                <button class="star-btn" title="Memory 5">✨</button>
+            </div>
+            <div class="star-memory-text" id="starMemoryText">
+                ✨ Wo pehli baar jab tumne muskura kar dekha tha...
+            </div>
+        </div>
+
+        <!-- SILENT WISHES / KHAMESH DUAAYEIN -->
+        <h2 class="section-heading">🤍 Khamosh Duaayein (Silent Wishes)</h2>
+
+        <div class="wishes-card">
+            <p class="wishes-text">
+                "Chahe raste alag ho gaye ho, ya khamoshi beech me aa gayi ho...<br>
+                Mera dil hamesha tumhare liye sirf khushi aur sukoon ki dua karega.<br>
+                Tum jahan bhi raho, hamesha hansti raho aur duniya ki har khushi tumhein mile. ✨"
+            </p>
+            <p class="wishes-sign">— Hamesha Tumhara, Harsh 💖</p>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+            <a href="journey.html" class="glow-btn">Our Journey 🌸</a>
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- BACKGROUND MUSIC SCRIPT & NAV -->
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/her.js"></script>
+
+</body>
+</html>
