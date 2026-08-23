@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Aradhya 🎂 | Special Vault</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A special birthday vault for Aradhya — November 4th.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/birthday.css">
+</head>
+
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="birthday-card">
+
+        <h1 class="page-title">Birthday Vault 🎂</h1>
+        <p class="page-subtitle">"Dedicated to the most beautiful soul on her special day — 4th November..."</p>
+
+        <!-- PASSCODE LOCK SCREEN -->
+        <div class="passcode-screen" id="lockScreen">
+            <h2 style="font-size: 20px; color: var(--pink-light);">🔒 Passcode Required</h2>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-top: 5px;">Enter the passcode to unlock Aradhya's Birthday Gift</p>
+            <input type="password" id="passcode" class="passcode-input" placeholder="••••" maxlength="4">
+            <br>
+            <button class="unlock-btn" id="unlockBtn">Unlock Vault 🎂</button>
+            <div id="lockError" style="font-size: 13px; margin-top: 10px;"></div>
+        </div>
+
+        <!-- UNLOCKED CELEBRATION CONTENT -->
+        <div class="celebration-content" id="celebrationContent">
+
+            <div class="bday-crown-frame">
+                <span class="crown-badge">👑</span>
+                <img src="assets/images/her1.jpeg" alt="Aradhya Birthday Girl">
+            </div>
+
+            <h2 class="bday-banner">🎉 Happy Birthday Aradhya! 🎂✨</h2>
+
+            <!-- COUNTDOWN / TODAY BANNER -->
+            <div class="countdown-box">
+                <p style="font-size: 13px; color: var(--text-secondary);">4th November Countdown / Status:</p>
+                <div class="countdown-timer" id="bdayCountdown">Loading countdown...</div>
+            </div>
+
+            <!-- BIRTHDAY LETTER -->
+            <div class="bday-letter">
+                <h3 style="font-size: 20px; color: #fff; margin-bottom: 12px;">Pyaari Aradhya, 🌸</h3>
+                <p>
+                    Happy Birthday! 🎂✨<br>
+                    Aaj ke din dil se sirf ek hi dua hai ki tum jahan bhi raho, hamesha hansti raho aur duniya ki saari khushiyan tumhein milein.<br><br>
+                    Chahe raste alag ho gaye hon ya kitni bhi khamoshi aa gayi ho, mera dil hamesha tumhare liye respect, care aur pure love se bhara rahega.<br>
+                    May this new year of your life bring endless peace, success, good health, and beautiful moments. Happy Birthday Aradhya! ❤️
+                </p>
+                <p style="text-align: right; font-family: var(--font-accent); font-size: 20px; color: var(--pink-light); margin-top: 15px;">
+                    — Always Yours, Harsh 💖
+                </p>
+            </div>
+
+            <!-- CANDLES BLOWING SECTION -->
+            <div class="candles-box">
+                <p style="font-size: 14px; color: var(--pink-light);">🎂 Tap the candles to blow them out & make a wish!</p>
+                <div class="candles-row">
+                    <span class="candle-item" title="Blow candle">🕯️</span>
+                    <span class="candle-item" title="Blow candle">🕯️</span>
+                    <span class="candle-item" title="Blow candle">🕯️</span>
+                    <span class="candle-item" title="Blow candle">🕯️</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons" style="margin-top: 25px;">
+            <a href="her.html" class="glow-btn">About Aradhya 🌸</a>
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/birthday.js"></script>
+
+</body>
+</html>

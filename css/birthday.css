@@ -1,0 +1,210 @@
+@import url('base.css');
+
+/* ==========================================
+   BIRTHDAY VAULT — STYLES
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.birthday-card {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    background: var(--glass-card);
+    backdrop-filter: blur(40px) saturate(1.4);
+    -webkit-backdrop-filter: blur(40px) saturate(1.4);
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 46px;
+    background: linear-gradient(135deg, #ffffff 30%, var(--pink-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* === PASSCODE LOCK SCREEN === */
+.passcode-screen {
+    background: rgba(10, 3, 25, 0.8);
+    border: 1px solid rgba(255, 75, 145, 0.3);
+    border-radius: var(--radius-md);
+    padding: 35px 25px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.passcode-input {
+    width: 180px;
+    padding: 14px 20px;
+    font-size: 24px;
+    letter-spacing: 8px;
+    text-align: center;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--pink-primary);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    outline: none;
+    margin: 20px 0;
+    transition: var(--transition-smooth);
+}
+
+.passcode-input:focus {
+    box-shadow: 0 0 25px var(--pink-glow);
+    border-color: #fff;
+}
+
+.unlock-btn {
+    padding: 12px 30px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--pink-primary), var(--purple-deep));
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--pink-glow);
+    transition: var(--transition-smooth);
+}
+
+.unlock-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--pink-glow);
+}
+
+/* === UNLOCKED CELEBRATION CONTENT === */
+.celebration-content {
+    display: none;
+    animation: fadeUp 1s ease forwards;
+}
+
+.celebration-content.unlocked {
+    display: block;
+}
+
+.bday-crown-frame {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+}
+
+.bday-crown-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--pink-primary);
+    box-shadow: 0 0 35px var(--pink-glow);
+}
+
+.crown-badge {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.bday-banner {
+    font-family: var(--font-accent);
+    font-size: 32px;
+    color: var(--pink-light);
+    margin-bottom: 15px;
+    animation: glowPulse 2s infinite alternate;
+}
+
+.bday-letter {
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 4px solid var(--pink-primary);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 2.0;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+/* === CANDLES SECTION === */
+.candles-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.candles-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.candle-item {
+    font-size: 36px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.candle-item.blown {
+    filter: grayscale(1) opacity(0.4);
+    transform: scale(0.85);
+}
+
+/* === COUNTDOWN BOX === */
+.countdown-box {
+    background: rgba(255, 75, 145, 0.08);
+    border: 1px dashed rgba(255, 75, 145, 0.4);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.countdown-timer {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 10px;
+}
+
+#confettiCanvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+@media (max-width: 600px) {
+    .birthday-card {
+        padding: 35px 20px;
+    }
+
+    .bday-banner {
+        font-size: 26px;
+    }
+}
