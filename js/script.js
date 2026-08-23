@@ -9,10 +9,6 @@ window.addEventListener("load", function () {
     if (entry) {
         entry.addEventListener("click", function () {
             entry.classList.add("hiding");
-            if (window.toggleGlobalMusic) {
-                window.toggleGlobalMusic();
-            }
-
             setTimeout(() => {
                 entry.style.display = "none";
                 if (mainContent) mainContent.classList.add("visible");

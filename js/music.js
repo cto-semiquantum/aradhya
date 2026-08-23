@@ -1,8 +1,8 @@
 /* ==========================================
    PERSISTENT MUSIC PLAYER SCRIPT
-   - Music is OFF by default. Plays ONLY when manually started by user tap/click!
-   - Seamless continuous audio playback across page transitions when enabled
-   - 100% Genuine Local MP3s (Agar Tum Saath Ho, Channa Mereya, etc.)
+   - Music is 100% OFF by default.
+   - Plays ONLY when manually clicked on the "Play Music 🎵" button!
+   - ZERO screen tap or page click auto-play!
    ========================================== */
 
 (function () {
@@ -53,8 +53,7 @@
     let currentSongIndex = parseInt(localStorage.getItem(STORAGE_KEY_INDEX)) || 0;
     if (currentSongIndex >= SONGS.length) currentSongIndex = 0;
 
-    // DEFAULT TO MUTED (OFF) — Music starts ONLY when manually clicked!
-    let isMutedGlobally = localStorage.getItem(STORAGE_KEY_MUTED) !== "false";
+    let isMutedGlobally = true;
     let audioElement = null;
     let isPlaying = false;
     let timeRestored = false;
@@ -76,7 +75,6 @@
         audioElement.src = SONGS[currentSongIndex].src;
         document.body.appendChild(audioElement);
 
-        // Helper to restore timestamp once metadata is ready
         function applySavedTime() {
             if (!timeRestored && savedTime > 0) {
                 try {
@@ -108,18 +106,15 @@
         // Create Floating Player Widget
         createPlayerWidget();
 
-        // Music is OFF by default. Only play if user specifically turned it ON during session
+        // Music is OFF by default. If user turned it ON during session, continue playback smoothly across pages
         const wasPlayingInSession = sessionStorage.getItem(STORAGE_KEY_PLAYING) === "true";
-
-        if (!isMutedGlobally && wasPlayingInSession) {
+        if (wasPlayingInSession) {
             playAudio();
         } else {
             isMutedGlobally = true;
-            localStorage.setItem(STORAGE_KEY_MUTED, "true");
             updateWidgetUI();
         }
 
-        // Handle page unload to save state
         window.addEventListener("beforeunload", function () {
             if (audioElement && audioElement.currentTime > 0) {
                 sessionStorage.setItem(STORAGE_KEY_TIME, audioElement.currentTime);
@@ -202,7 +197,7 @@
                 </button>
 
                 <button class="music-mute-btn" id="musicMuteBtn" title="Turn Off Music Everywhere">
-                    ${isMutedGlobally ? '🔇 Off' : '🔊 On'}
+                    ${(isMutedGlobally || !isPlaying) ? '🔇 Off' : '🔊 On'}
                 </button>
             </div>
 
@@ -221,7 +216,7 @@
                 </div>
                 <div class="dropdown-footer">
                     <button class="global-mute-action-btn" id="globalMuteActionBtn">
-                        ${isMutedGlobally ? '🔊 Turn Music ON' : '🔇 Turn Music OFF'}
+                        ${(isMutedGlobally || !isPlaying) ? '🔊 Turn Music ON' : '🔇 Turn Music OFF'}
                     </button>
                 </div>
             </div>
