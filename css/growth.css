@@ -1,0 +1,227 @@
+@import url('base.css');
+
+/* ==========================================
+   PERSONAL GROWTH & GOALS — STYLES
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.growth-card {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    background: var(--glass-card);
+    backdrop-filter: blur(40px) saturate(1.4);
+    -webkit-backdrop-filter: blur(40px) saturate(1.4);
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    text-align: center;
+    overflow: hidden;
+}
+
+.growth-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, #7f00ff, #00d2ff);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 46px;
+    background: linear-gradient(135deg, #ffffff 30%, #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+/* === SECTION HEADING === */
+.section-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00d2ff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+/* === SHE ONCE TOLD ME GRID === */
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.quote-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 22px 18px;
+    position: relative;
+}
+
+.quote-words {
+    font-family: var(--font-accent);
+    font-size: 18px;
+    color: var(--pink-light);
+    margin-bottom: 10px;
+}
+
+.quote-status {
+    font-size: 13px;
+    color: #00d2ff;
+    font-weight: 500;
+    background: rgba(0, 210, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    display: inline-block;
+}
+
+/* === GOALS & PROGRESS === */
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.goal-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 20px;
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.goal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.goal-percent {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00d2ff;
+}
+
+.goal-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.goal-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple-deep), #00d2ff);
+    border-radius: 10px;
+}
+
+/* === ACHIEVEMENTS GRID === */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.achievement-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: var(--transition-smooth);
+}
+
+.achievement-card:hover {
+    transform: translateY(-4px);
+    border-color: #00d2ff;
+}
+
+.achievement-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.achievement-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.achievement-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* === FUTURE 2030 STATEMENT === */
+.statement-box {
+    background: linear-gradient(135deg, rgba(127, 0, 255, 0.15), rgba(0, 210, 255, 0.1));
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: var(--radius-md);
+    padding: 30px 25px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.statement-text {
+    font-size: 16px;
+    line-height: 2.0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.statement-highlight {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+    .growth-card {
+        padding: 35px 20px;
+    }
+}
