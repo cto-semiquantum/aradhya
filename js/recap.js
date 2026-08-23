@@ -3,9 +3,28 @@
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const entries = (typeof DIARY_ENTRIES !== 'undefined') ? DIARY_ENTRIES : [];
+    function getMergedEntries() {
+        let local = [];
+        try {
+            local = JSON.parse(localStorage.getItem("valentine_diary_entries")) || [];
+        } catch (e) {
+            local = [];
+        }
+        const defaults = (typeof DIARY_ENTRIES !== 'undefined') ? DIARY_ENTRIES : [];
+        const localIds = new Set(local.map(e => e.id));
+        const combined = [...local, ...defaults.filter(e => !localIds.has(e.id))];
 
-    // 1. Compute Stats
+        let deletedIds = [];
+        try {
+            deletedIds = JSON.parse(localStorage.getItem("valentine_diary_entries_deleted")) || [];
+        } catch(e) {}
+
+        return combined.filter(e => !deletedIds.includes(e.id));
+    }
+
+    const entries = getMergedEntries();
+
+    // 1. Compute Stats Dynamically
     const totalEntriesEl = document.getElementById('statTotalEntries');
     const totalStreakEl = document.getElementById('statStreak');
     const topMoodEl = document.getElementById('statTopMood');
@@ -16,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mood count
     const moodCounts = {};
     entries.forEach(e => {
-        moodCounts[e.mood] = (moodCounts[e.mood] || 0) + 1;
+        if (e.mood) moodCounts[e.mood] = (moodCounts[e.mood] || 0) + 1;
     });
 
     let topMood = 'love';
@@ -49,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const randIdx = Math.floor(Math.random() * entries.length);
         const item = entries[randIdx];
 
-        if (memDate) memDate.textContent = `📅 ${item.title || 'Memory'} • Day ${item.daysSince || 0}`;
+        if (memDate) memDate.textContent = `📅 ${item.title || 'Memory'} • Day ${item.daysSince !== undefined ? item.daysSince : 'Special'}`;
         if (memText) {
             memText.style.opacity = '0';
             setTimeout(() => {
