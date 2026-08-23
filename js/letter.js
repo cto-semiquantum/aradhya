@@ -1,51 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const text = `
-Kabhi kabhi sochta hoon…
+Suno…
 
-Kaise ek simple si mulaqat meri life ka sabse meaningful chapter ban gayi.
+Log bolte hain move on kar lo, aage badh jaao, distraction dhoondo.
+Par main unko kaise samjhaun ki tumse move on karna mere liye impossible hai.
 
-Pehle hum mile…
-Phir baatein shuru hui…
-Phir bina pata chale best friends ban gaye.
+Maine kabhi koshish bhi nahi ki tumhe bhoolne ki… aur honestly, main kar bhi nahi sakta.
+Kyuki mere liye pyaar koi option nahi tha jo change ho jaaye. Pyaar tumse hua tha, aur wo hamesha sirf tumse hi rahega.
 
-Raat bhar calls.
-Random hasi.
-Choti choti baatein jo aaj bhi yaad aati hain.
+Ek waqt tha jab hum raat bhar baatein karte the.
+Wo tumhari hassi, wo tumhari nadaniyan, wo chhoti chhoti baatein…
+Wo mere dimaag se ek second ke liye bhi nahi jaati.
 
-Wo din jab mai dadi ko lane ja raha tha…
-Us din samjha ki tum sirf best friend nahi ho.
+Distance aa gaya, silence aa gaya, 93 din beet gaye…
+Par mere dil me tumhare liye jo pyaar aur deewanapan tha, wo ek percent bhi kam nahi hua.
+Balki har guzarte din ke saath mujhe aur zyaada realize hota hai ki main tumhare bina adhoora hoon.
 
-Phir relationship.
-Phir breakup.
-Phir silence.
+Main pagal hoon tumhare peeche? Haan, hoon.
+Kyuki jab kisi se sachha pyaar hota hai na, toh insaan badalta nahi hai.
 
-Lekin respect kabhi khatam nahi hui.
+Future me kya hoga mujhe nahi pata.
+Par ek baat hamesha yaad rakhna —
+Duniya me koi bhi aaye ya jaaye, Harsh hamesha tumhara hi rahega.
+Mera har ek breath, mera har ek thought, aur mera saara dil sirf tumhara hai.
 
-Ek saal baad…
-Hum phir best friends hain.
-Aur is baar zyada samajhdar.
+Main tumse pyaar karta hoon… aaj bhi, kal bhi, aur aakhri saans tak. ❤️
 
-Main tumse pyaar kyun karta hoon?
-
-Kyuki tum genuine ho.
-Tumhara heart soft hai.
-Tum care karti ho bina show off ke.
-
-Aur agar future me hum saath ho ya na ho —
-Main hamesha tumhare saath rahunga.
-
-As a best friend.
-As your silent support.
-As someone who truly wants you happy.
-
-Tum meri life ka phase nahi ho.
-Tum meri growth ka part ho.
-
-Main hoon.
-Hamesha.
-
-— Harsh ❤️
+— Tumhara Harsh 💖
 `;
 
     const container = document.getElementById("typewriter");

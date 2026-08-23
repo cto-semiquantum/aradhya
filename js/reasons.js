@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const reasons = [
-        "Because your smile fixes my worst days 💕",
-        "Because your voice feels like home 🎶",
-        "Because you support my dreams 💻",
-        "Because you understand me without words 🥺",
-        "Because you are beautiful inside and out 🌸",
-        "Because life feels lighter with you ✨",
-        "Because you care deeply ❤️",
-        "Because you are my peace 🌙",
-        "Because I prayed for someone like you 🙏",
-        "Because I can't imagine my future without you 💍"
+        "Because moving on from you is something my heart will never agree to 💕",
+        "Because even after 93 days of silence, my heart beats only for your name 🎶",
+        "Because your smile is still the only thing that fixes my worst days 🌸",
+        "Because no matter how much distance comes between us, you remain my home 🥺",
+        "Because I am hopelessly, unconditionally, & endlessly in love with you ✨",
+        "Because you are not just a person to me… you are my entire world ❤️",
+        "Because even in my silence, I am constantly talking to you in my thoughts 🌙",
+        "Because I tried to forget, but my soul refuses to love anyone else 🙏",
+        "Because Harsh belongs to you, today, tomorrow, and for eternity 💍"
     ];
 
     let reasonIndex = 0;
