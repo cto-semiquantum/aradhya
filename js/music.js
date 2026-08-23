@@ -1,7 +1,7 @@
 /* ==========================================
    PERSISTENT MUSIC PLAYER SCRIPT
+   - Seamless continuous audio playback across page transitions (never restarts from 0:00)
    - 100% Genuine Local MP3s (Agar Tum Saath Ho, Channa Mereya, etc.)
-   - Cross-page seamless audio continuity
    - Global Mute / Disable Music Button (remembers state across all pages)
    ========================================== */
 
@@ -56,6 +56,7 @@
     let isMutedGlobally = localStorage.getItem(STORAGE_KEY_MUTED) === "true";
     let audioElement = null;
     let isPlaying = false;
+    let timeRestored = false;
 
     document.addEventListener("DOMContentLoaded", function () {
         initMusicPlayer();
@@ -63,6 +64,8 @@
 
     function initMusicPlayer() {
         if (document.getElementById("globalAudio")) return;
+
+        const savedTime = parseFloat(sessionStorage.getItem(STORAGE_KEY_TIME)) || 0;
 
         // Create HTML5 Audio
         audioElement = document.createElement("audio");
@@ -72,17 +75,34 @@
         audioElement.src = SONGS[currentSongIndex].src;
         document.body.appendChild(audioElement);
 
-        // Restore playback time if navigating between pages
-        const savedTime = parseFloat(sessionStorage.getItem(STORAGE_KEY_TIME));
-
-        if (savedTime && !isNaN(savedTime)) {
-            audioElement.currentTime = savedTime;
+        // Helper to restore timestamp once metadata is ready
+        function applySavedTime() {
+            if (!timeRestored && savedTime > 0) {
+                try {
+                    audioElement.currentTime = savedTime;
+                    timeRestored = true;
+                } catch (e) {}
+            }
         }
 
-        // Save progress periodically
+        audioElement.addEventListener("loadedmetadata", applySavedTime);
+        audioElement.addEventListener("canplay", applySavedTime);
+
+        // Save progress continuously
         audioElement.addEventListener("timeupdate", function () {
-            sessionStorage.setItem(STORAGE_KEY_TIME, audioElement.currentTime);
+            if (audioElement.currentTime > 0) {
+                sessionStorage.setItem(STORAGE_KEY_TIME, audioElement.currentTime);
+            }
         });
+
+        // Save time on link clicks
+        document.addEventListener("click", function (e) {
+            const link = e.target.closest("a");
+            if (link && audioElement && audioElement.currentTime > 0) {
+                sessionStorage.setItem(STORAGE_KEY_TIME, audioElement.currentTime);
+                sessionStorage.setItem(STORAGE_KEY_PLAYING, (isPlaying && !isMutedGlobally) ? "true" : "false");
+            }
+        }, { capture: true });
 
         // Create Floating Player Widget
         createPlayerWidget();
@@ -91,7 +111,7 @@
         if (!isMutedGlobally) {
             playAudio();
 
-            // Add global user-gesture listeners to unlock audio on first tap/click anywhere
+            // Unlock audio on first tap/click
             const unlockHandler = function () {
                 if (!isMutedGlobally) playAudio();
                 document.removeEventListener("click", unlockHandler);
@@ -106,7 +126,7 @@
 
         // Handle page unload to save state
         window.addEventListener("beforeunload", function () {
-            if (audioElement) {
+            if (audioElement && audioElement.currentTime > 0) {
                 sessionStorage.setItem(STORAGE_KEY_TIME, audioElement.currentTime);
                 sessionStorage.setItem(STORAGE_KEY_PLAYING, (isPlaying && !isMutedGlobally) ? "true" : "false");
             }
@@ -152,12 +172,13 @@
 
         currentSongIndex = index;
         localStorage.setItem(STORAGE_KEY_INDEX, currentSongIndex);
+        sessionStorage.setItem(STORAGE_KEY_TIME, "0");
+        timeRestored = true;
 
         if (!audioElement) return;
 
         audioElement.src = SONGS[currentSongIndex].src;
         audioElement.currentTime = 0;
-        sessionStorage.setItem(STORAGE_KEY_TIME, "0");
 
         if (!isMutedGlobally) {
             playAudio();
@@ -258,7 +279,7 @@
             item.addEventListener("click", function (e) {
                 e.stopPropagation();
                 const index = parseInt(this.dataset.index);
-                if (isMutedGlobally) isMutedGlobally = false; // Auto unmute when picking a song
+                if (isMutedGlobally) isMutedGlobally = false;
                 localStorage.setItem(STORAGE_KEY_MUTED, "false");
                 switchSong(index);
                 dropdown.classList.remove("show");
