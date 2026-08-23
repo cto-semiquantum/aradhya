@@ -202,6 +202,8 @@ function calculateDays(dateString) {
     return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
 
+let counterInterval = null;
+
 function updateCounter() {
     const met = document.getElementById("metDays");
     const best = document.getElementById("bestDays");
@@ -211,7 +213,25 @@ function updateCounter() {
     if (met) met.textContent = calculateDays("2024-06-24") + " Days 💖";
     if (best) best.textContent = calculateDays("2024-09-17") + " Days 💍";
     if (reconnect) reconnect.textContent = calculateDays("2026-02-01") + " Days ✨";
-    if (silence) silence.textContent = calculateDays("2026-05-22") + " Days 💔";
+
+    const silenceStart = new Date("2026-05-22T22:45:00");
+    function updateSilenceModal() {
+        if (!silence) return;
+        const now = new Date();
+        let diff = now - silenceStart;
+        if (diff < 0) diff = 0;
+
+        const seconds = Math.floor((diff / 1000) % 60);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        silence.innerHTML = `${days}<small style="font-size:15px; opacity:0.7">d</small> ${hours}<small style="font-size:15px; opacity:0.7">h</small> ${minutes}<small style="font-size:15px; opacity:0.7">m</small> ${seconds}<small style="font-size:15px; opacity:0.7">s</small> 💔`;
+    }
+
+    updateSilenceModal();
+    if (counterInterval) clearInterval(counterInterval);
+    counterInterval = setInterval(updateSilenceModal, 1000);
 }
 
 

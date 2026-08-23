@@ -238,23 +238,29 @@ document.addEventListener("DOMContentLoaded", function () {
         return Math.floor((today - start) / (1000 * 60 * 60 * 24));
     }
 
+    const LAST_TALK_DATE = "2026-05-22T22:45:00";
+
     function updateSinceCounter() {
         const el = document.getElementById("sinceDays");
         if (!el) return;
 
-        const days = calculateDays(LAST_TALK_DATE);
+        function tick() {
+            const start = new Date(LAST_TALK_DATE);
+            const now = new Date();
+            let diff = now - start;
 
-        // Animated count up
-        let current = 0;
-        const step = Math.max(1, Math.floor(days / 50));
-        const interval = setInterval(() => {
-            current += step;
-            if (current >= days) {
-                current = days;
-                clearInterval(interval);
-            }
-            el.textContent = current;
-        }, 30);
+            if (diff < 0) diff = 0;
+
+            const seconds = Math.floor((diff / 1000) % 60);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            el.innerHTML = `${days}<small style="font-size:16px; opacity:0.7">d</small> ${hours}<small style="font-size:16px; opacity:0.7">h</small> ${minutes}<small style="font-size:16px; opacity:0.7">m</small> ${seconds}<small style="font-size:16px; opacity:0.7">s</small>`;
+        }
+
+        tick();
+        setInterval(tick, 1000);
     }
 
     function formatDate(date) {

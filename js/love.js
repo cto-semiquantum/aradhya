@@ -45,8 +45,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (reconnectEl) animateCounter(reconnectEl, calculateDays(reconnectDate), " Days ✨");
     }, 900);
 
+    const silenceStart = new Date("2026-05-22T22:45:00");
+    function updateSilenceLive() {
+        if (!silenceEl) return;
+        const now = new Date();
+        let diff = now - silenceStart;
+        if (diff < 0) diff = 0;
+
+        const seconds = Math.floor((diff / 1000) % 60);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        silenceEl.innerHTML = `${days}<small style="font-size:15px; opacity:0.7">d</small> ${hours}<small style="font-size:15px; opacity:0.7">h</small> ${minutes}<small style="font-size:15px; opacity:0.7">m</small> ${seconds}<small style="font-size:15px; opacity:0.7">s</small> 💔`;
+    }
+
     setTimeout(() => {
-        if (silenceEl) animateCounter(silenceEl, calculateDays(silenceDate), " Days 💔");
+        updateSilenceLive();
+        setInterval(updateSilenceLive, 1000);
     }, 1200);
 
 });
