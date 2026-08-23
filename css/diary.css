@@ -1,0 +1,500 @@
+@import url('base.css');
+
+/* ==========================================
+   DIARY PAGE
+   ========================================== */
+
+body {
+    display: block !important;
+}
+
+.diary-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 50px 20px 60px;
+}
+
+/* ==========================================
+   HEADER + COUNTER
+   ========================================== */
+
+.diary-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.since-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+}
+
+.since-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.since-value {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.since-date {
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* ==========================================
+   WRITE SECTION
+   ========================================== */
+
+.write-card {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px) saturate(1.3);
+    -webkit-backdrop-filter: blur(40px) saturate(1.3);
+    padding: 35px 30px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    margin-bottom: 50px;
+    overflow: hidden;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.write-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.write-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.write-date {
+    font-size: 13px;
+    color: var(--pink-light);
+    padding: 4px 14px;
+    background: rgba(255, 75, 145, 0.1);
+    border-radius: var(--radius-pill);
+}
+
+/* ==========================================
+   MOOD SELECTOR
+   ========================================== */
+
+.mood-selector {
+    margin-bottom: 20px;
+}
+
+.mood-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.mood-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mood-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.mood-btn.selected {
+    border-color: var(--pink-primary);
+    background: rgba(255, 75, 145, 0.15);
+    box-shadow: 0 0 20px rgba(255, 75, 145, 0.2);
+    transform: scale(1.15);
+}
+
+/* ==========================================
+   TEXT INPUTS
+   ========================================== */
+
+.diary-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+    resize: vertical;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.diary-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.diary-input:focus {
+    border-color: rgba(255, 75, 145, 0.4);
+    box-shadow: 0 0 20px rgba(255, 75, 145, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.title-input {
+    min-height: 48px;
+    max-height: 48px;
+    resize: none;
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.text-input {
+    min-height: 160px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   WRITE ACTIONS
+   ========================================== */
+
+.write-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.save-btn {
+    padding: 13px 30px;
+    border-radius: var(--radius-pill);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--pink-primary), var(--purple-deep));
+    color: white;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 0 25px var(--pink-glow);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 40px var(--pink-glow);
+}
+
+.save-btn:active {
+    transform: scale(0.97);
+}
+
+.save-btn.saved {
+    background: linear-gradient(135deg, #00c851, #007e33);
+    box-shadow: 0 0 25px rgba(0, 200, 81, 0.3);
+}
+
+.char-count {
+    font-size: 12px;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* ==========================================
+   ENTRIES SECTION
+   ========================================== */
+
+.entries-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.entries-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.entries-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.entry-count {
+    font-size: 12px;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin-right: 5px;
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.filter-btn.active {
+    border-color: var(--pink-primary);
+    background: rgba(255, 75, 145, 0.15);
+    color: var(--pink-light);
+}
+
+/* ==========================================
+   ENTRY CARD
+   ========================================== */
+
+.entry-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 25px;
+    margin-bottom: 16px;
+    transition: var(--transition-smooth);
+    animation: entrySlideIn 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.entry-card:hover {
+    border-color: rgba(255, 75, 145, 0.15);
+    box-shadow: 0 5px 30px rgba(255, 75, 145, 0.08);
+}
+
+@keyframes entrySlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.entry-mood {
+    font-size: 24px;
+}
+
+.entry-date-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.entry-date {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.entry-day-count {
+    font-size: 11px;
+    color: var(--pink-light);
+    opacity: 0.7;
+}
+
+.entry-delete {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    opacity: 0;
+}
+
+.entry-card:hover .entry-delete {
+    opacity: 1;
+}
+
+.entry-delete:hover {
+    background: rgba(255, 50, 50, 0.2);
+    color: #ff6b6b;
+}
+
+.entry-heading {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.entry-body {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+/* ==========================================
+   EMPTY STATE
+   ========================================== */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    display: none;
+}
+
+.empty-state.visible {
+    display: block;
+}
+
+.empty-icon {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.empty-sub {
+    opacity: 0.5;
+    font-size: 13px !important;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   DIARY FOOTER
+   ========================================== */
+
+.diary-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ==========================================
+   TOAST NOTIFICATION
+   ========================================== */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(15, 5, 30, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 75, 145, 0.3);
+    border-radius: var(--radius-pill);
+    padding: 14px 28px;
+    color: var(--text-primary);
+    font-size: 14px;
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 600px) {
+    .diary-wrapper {
+        padding: 30px 14px 50px;
+    }
+
+    .write-card {
+        padding: 25px 18px;
+        border-radius: 22px;
+    }
+
+    .write-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mood-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .entries-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .entry-card {
+        padding: 20px 16px;
+    }
+
+    .since-value {
+        font-size: 34px;
+    }
+}

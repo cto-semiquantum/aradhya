@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Diary 📝 | For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A personal diary — memories, feelings, and daily reflections.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/diary.css">
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="diary-wrapper">
+
+    <!-- HEADER -->
+    <div class="diary-header">
+        <h1 class="page-title">My Diary 📝</h1>
+        <div class="since-counter">
+            <span class="since-label">Days since we last talked</span>
+            <span class="since-value" id="sinceDays">0</span>
+            <span class="since-date">22 May 2026</span>
+        </div>
+    </div>
+
+    <!-- WRITE NEW ENTRY -->
+    <div class="write-section" id="writeSection">
+        <div class="write-card">
+            <div class="card-shimmer"></div>
+
+            <div class="write-header">
+                <h2 class="write-title">✍️ Aaj ka entry</h2>
+                <span class="write-date" id="todayDate"></span>
+            </div>
+
+            <div class="mood-selector">
+                <span class="mood-label">Aaj ka mood:</span>
+                <div class="mood-options" id="moodOptions">
+                    <button class="mood-btn" data-mood="happy" title="Happy">😊</button>
+                    <button class="mood-btn" data-mood="sad" title="Sad">😢</button>
+                    <button class="mood-btn" data-mood="missing" title="Missing">🥺</button>
+                    <button class="mood-btn" data-mood="strong" title="Strong">💪</button>
+                    <button class="mood-btn" data-mood="love" title="Love">❤️</button>
+                    <button class="mood-btn" data-mood="thoughtful" title="Thoughtful">💭</button>
+                    <button class="mood-btn" data-mood="peaceful" title="Peaceful">🌙</button>
+                    <button class="mood-btn" data-mood="angry" title="Angry">😤</button>
+                </div>
+            </div>
+
+            <textarea id="diaryTitle" class="diary-input title-input" placeholder="Ek title do aaj ke din ko…" maxlength="100"></textarea>
+
+            <textarea id="diaryText" class="diary-input text-input" placeholder="Aaj ka din kaisa gya? Kya feel kiya? Kya yaad aaya?&#10;&#10;Yahan likh do sab kuch…"></textarea>
+
+            <div class="write-actions">
+                <button class="save-btn" onclick="saveEntry()" id="saveBtn">
+                    💾 Save Entry
+                </button>
+                <span class="char-count" id="charCount">0 characters</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ENTRIES LIST -->
+    <div class="entries-section">
+        <div class="entries-header">
+            <h2 class="entries-title">📖 Past Entries</h2>
+            <div class="entries-controls">
+                <span class="entry-count" id="entryCount">0 entries</span>
+                <button class="filter-btn active" data-filter="all" onclick="filterEntries('all')">All</button>
+                <button class="filter-btn" data-filter="missing" onclick="filterEntries('missing')">🥺</button>
+                <button class="filter-btn" data-filter="love" onclick="filterEntries('love')">❤️</button>
+                <button class="filter-btn" data-filter="sad" onclick="filterEntries('sad')">😢</button>
+            </div>
+        </div>
+
+        <div class="entries-list" id="entriesList">
+            <!-- Entries will be rendered here by JS -->
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            <span class="empty-icon">📝</span>
+            <p>Koi entry nahi hai abhi…</p>
+            <p class="empty-sub">Pehla entry likh ke shuru karo 💖</p>
+        </div>
+    </div>
+
+    <!-- BACK HOME -->
+    <div class="diary-footer">
+        <a href="index.html" class="back-link" id="goHome">← Back Home</a>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/diary.js"></script>
+
+</body>
+</html>
