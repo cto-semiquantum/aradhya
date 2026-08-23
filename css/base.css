@@ -326,6 +326,29 @@ body {
     color: #fff;
 }
 
+.music-mute-btn {
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--pink-soft);
+    font-size: 12px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.music-mute-btn.is-muted {
+    background: rgba(255, 50, 50, 0.25);
+    border-color: rgba(255, 50, 50, 0.4);
+    color: #ff7f7f;
+}
+
+.music-mute-btn:hover {
+    background: rgba(255, 75, 145, 0.2);
+    color: #fff;
+}
+
 .music-dropdown {
     position: absolute;
     bottom: 55px;
@@ -403,4 +426,30 @@ body {
 .song-artist {
     font-size: 11px;
     color: var(--text-muted);
+}
+
+.dropdown-footer {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+.global-mute-action-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, rgba(255, 50, 50, 0.2), rgba(127, 0, 255, 0.2));
+    border: 1px solid rgba(255, 75, 145, 0.3);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.global-mute-action-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 50, 50, 0.35), rgba(127, 0, 255, 0.35));
+    box-shadow: 0 0 15px rgba(255, 50, 50, 0.3);
 }
