@@ -206,10 +206,12 @@ function updateCounter() {
     const met = document.getElementById("metDays");
     const best = document.getElementById("bestDays");
     const reconnect = document.getElementById("reconnectDays");
+    const silence = document.getElementById("silenceDays");
 
-    if (met) met.textContent = calculateDays("2024-05-03") + " Days 💖";
-    if (best) best.textContent = calculateDays("2024-09-19") + " Days 💍";
+    if (met) met.textContent = calculateDays("2024-06-24") + " Days 💖";
+    if (best) best.textContent = calculateDays("2024-09-17") + " Days 💍";
     if (reconnect) reconnect.textContent = calculateDays("2026-02-01") + " Days ✨";
+    if (silence) silence.textContent = calculateDays("2026-05-22") + " Days 💔";
 }
 
 

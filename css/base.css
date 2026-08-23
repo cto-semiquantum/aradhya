@@ -189,8 +189,22 @@ body {
    RESPONSIVE SHARED
    ========================================== */
 
-@media (max-width: 600px) {
-    .page-wrapper {
-        padding: 30px 16px;
+/* ==========================================
+   HIGHLIGHT MILESTONES (e.g. 22 May 2026)
+   ========================================== */
+
+.highlight-item, .highlight-timeline {
+    border-color: rgba(255, 75, 145, 0.4) !important;
+    background: rgba(255, 75, 145, 0.08) !important;
+    box-shadow: 0 0 35px rgba(255, 75, 145, 0.25) !important;
+    animation: highlightGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes highlightGlow {
+    from {
+        box-shadow: 0 0 25px rgba(255, 75, 145, 0.2);
+    }
+    to {
+        box-shadow: 0 0 45px rgba(255, 75, 145, 0.4), 0 0 70px rgba(127, 0, 255, 0.2);
     }
 }

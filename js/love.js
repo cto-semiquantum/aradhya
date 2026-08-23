@@ -25,22 +25,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const metDate = "2024-06-24";
     const bestFriendDate = "2024-09-17";
     const reconnectDate = "2026-02-01";
+    const silenceDate = "2026-05-22";
 
     const metEl = document.getElementById("metDays");
     const bestEl = document.getElementById("bestDays");
     const reconnectEl = document.getElementById("reconnectDays");
+    const silenceEl = document.getElementById("silenceDays");
 
     // Animate with staggered start
     setTimeout(() => {
-        if (metEl) animateCounter(metEl, calculateDays(metDate), " Days");
+        if (metEl) animateCounter(metEl, calculateDays(metDate), " Days 💖");
     }, 300);
 
     setTimeout(() => {
-        if (bestEl) animateCounter(bestEl, calculateDays(bestFriendDate), " Days");
+        if (bestEl) animateCounter(bestEl, calculateDays(bestFriendDate), " Days 💍");
     }, 600);
 
     setTimeout(() => {
-        if (reconnectEl) animateCounter(reconnectEl, calculateDays(reconnectDate), " Days");
+        if (reconnectEl) animateCounter(reconnectEl, calculateDays(reconnectDate), " Days ✨");
     }, 900);
+
+    setTimeout(() => {
+        if (silenceEl) animateCounter(silenceEl, calculateDays(silenceDate), " Days 💔");
+    }, 1200);
 
 });
