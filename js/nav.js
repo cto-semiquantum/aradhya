@@ -33,12 +33,27 @@ document.addEventListener("DOMContentLoaded", function () {
         { path: "forever.html", label: "✨ Forever" }
     ];
 
-    nav.innerHTML = links.map(link => {
+    let navHTML = links.map(link => {
         const isActive = (currentPath === link.path || (currentPath === "" && link.path === "index.html")) ? "active" : "";
         return `<a href="${link.path}" class="nav-pill ${isActive}">${link.label}</a>`;
     }).join("");
 
+    navHTML += `<button onclick="reopenApp()" class="nav-pill" style="background: linear-gradient(135deg, #ff4b91, #7f00ff); color: #fff; border: none; cursor: pointer;">🔄 Re-open App</button>`;
+
+    nav.innerHTML = navHTML;
     document.body.prepend(nav);
+
+    // Global Re-open / Refresh App function
+    window.reopenApp = function () {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let registration of registrations) {
+                    registration.update();
+                }
+            });
+        }
+        window.location.reload(true);
+    };
 
     // Register PWA Service Worker
     if ('serviceWorker' in navigator) {
