@@ -205,33 +205,35 @@ function calculateDays(dateString) {
 let counterInterval = null;
 
 function updateCounter() {
-    const met = document.getElementById("metDays");
-    const best = document.getElementById("bestDays");
-    const reconnect = document.getElementById("reconnectDays");
-    const silence = document.getElementById("silenceDays");
+    const milestones = [
+        { id: "metDays", date: new Date("2024-06-24T00:00:00"), emoji: "💖" },
+        { id: "bestDays", date: new Date("2024-09-17T00:00:00"), emoji: "💍" },
+        { id: "reconnectDays", date: new Date("2026-02-01T00:00:00"), emoji: "✨" },
+        { id: "silenceDays", date: new Date("2026-05-22T22:45:00"), emoji: "💔" }
+    ];
 
-    if (met) met.textContent = calculateDays("2024-06-24") + " Days 💖";
-    if (best) best.textContent = calculateDays("2024-09-17") + " Days 💍";
-    if (reconnect) reconnect.textContent = calculateDays("2026-02-01") + " Days ✨";
-
-    const silenceStart = new Date("2026-05-22T22:45:00");
-    function updateSilenceModal() {
-        if (!silence) return;
+    function updateModalLiveTimers() {
         const now = new Date();
-        let diff = now - silenceStart;
-        if (diff < 0) diff = 0;
 
-        const seconds = Math.floor((diff / 1000) % 60);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        milestones.forEach(m => {
+            const el = document.getElementById(m.id);
+            if (!el) return;
 
-        silence.innerHTML = `${days}<small style="font-size:15px; opacity:0.7">d</small> ${hours}<small style="font-size:15px; opacity:0.7">h</small> ${minutes}<small style="font-size:15px; opacity:0.7">m</small> ${seconds}<small style="font-size:15px; opacity:0.7">s</small> 💔`;
+            let diff = now - m.date;
+            if (diff < 0) diff = 0;
+
+            const seconds = Math.floor((diff / 1000) % 60);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            el.innerHTML = `${days}<small style="font-size:15px; opacity:0.7">d</small> ${hours}<small style="font-size:15px; opacity:0.7">h</small> ${minutes}<small style="font-size:15px; opacity:0.7">m</small> ${seconds}<small style="font-size:15px; opacity:0.7">s</small> ${m.emoji}`;
+        });
     }
 
-    updateSilenceModal();
+    updateModalLiveTimers();
     if (counterInterval) clearInterval(counterInterval);
-    counterInterval = setInterval(updateSilenceModal, 1000);
+    counterInterval = setInterval(updateModalLiveTimers, 1000);
 }
 
 
