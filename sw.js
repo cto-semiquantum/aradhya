@@ -1,9 +1,10 @@
 /* Service Worker for Aradhya Valentine PWA App */
-const CACHE_NAME = 'aradhya-love-cache-v2';
+const CACHE_NAME = 'aradhya-love-cache-v3';
 const urlsToCache = [
   './',
   './index.html',
   './her.html',
+  './videos.html',
   './music.html',
   './promises.html',
   './journey.html',
@@ -12,6 +13,7 @@ const urlsToCache = [
   './manifest.json',
   './css/base.css',
   './css/her.css',
+  './css/videos.css',
   './css/music.css',
   './css/promises.css',
   './js/nav.js',
@@ -19,7 +21,9 @@ const urlsToCache = [
   './js/music-player.js',
   './js/diary.js',
   './assets/images/icon-192.png',
-  './assets/images/icon-512.png'
+  './assets/images/icon-512.png',
+  './assets/images/her1.jpeg',
+  './assets/images/her2.jpeg'
 ];
 
 self.addEventListener('install', event => {
@@ -41,6 +45,10 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Let native browser engine stream MP4 videos directly for smooth mobile video playback
+  if (event.request.url.endsWith('.mp4')) {
+    return;
+  }
   event.respondWith(
     caches.match(event.request).then(response => response || fetch(event.request))
   );
