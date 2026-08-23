@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const STORAGE_KEY = "valentine_diary_entries";
-    const LAST_TALK_DATE = "2026-05-22";
+    const LAST_TALK_DATE = "2026-05-22T22:45:00";
 
     let selectedMood = null;
     let currentFilter = "all";
@@ -237,8 +237,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const today = new Date();
         return Math.floor((today - start) / (1000 * 60 * 60 * 24));
     }
-
-    const LAST_TALK_DATE = "2026-05-22T22:45:00";
 
     function updateSinceCounter() {
         const el = document.getElementById("sinceDays");
