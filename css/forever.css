@@ -1,0 +1,114 @@
+@import url('base.css');
+
+/* ==========================================
+   FOREVER PAGE
+   ========================================== */
+
+.forever-card {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px) saturate(1.3);
+    -webkit-backdrop-filter: blur(40px) saturate(1.3);
+    padding: 60px 50px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    text-align: center;
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    overflow: hidden;
+    animation: fadeUp 1s ease forwards;
+}
+
+/* === LINE REVEAL ANIMATION === */
+
+.line-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.line-reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === TEXT STYLES === */
+
+.forever-text {
+    font-size: 17px;
+    line-height: 2.2;
+    margin-bottom: 22px;
+    white-space: pre-line;
+    color: var(--text-secondary);
+}
+
+.forever-highlight {
+    font-size: 19px;
+    margin-top: 30px;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--pink-primary), #ff007f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.8;
+}
+
+.forever-sign {
+    margin-top: 40px;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* === ENDING === */
+
+.forever-ending {
+    margin-top: 40px;
+    font-size: 17px;
+    font-style: italic;
+    font-family: var(--font-accent);
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glowPulse 3s infinite alternate;
+    text-align: center;
+}
+
+@keyframes glowPulse {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+/* === FADE OVERLAY === */
+
+#fadeOverlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-dark);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 5s ease;
+    z-index: 9999;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 600px) {
+    .forever-card {
+        padding: 40px 25px;
+        border-radius: 22px;
+    }
+
+    .forever-text {
+        font-size: 15px;
+    }
+
+    .forever-highlight {
+        font-size: 16px;
+    }
+}

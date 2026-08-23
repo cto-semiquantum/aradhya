@@ -1,0 +1,196 @@
+/* ==========================================
+   VALENTINE WEBSITE — SHARED DESIGN TOKENS
+   Imported by all pages for consistency
+   ========================================== */
+
+:root {
+    --pink-primary: #ff4b91;
+    --pink-light: #ff7fa5;
+    --pink-soft: #ff99ac;
+    --pink-glow: rgba(255, 75, 145, 0.4);
+    --purple-deep: #7f00ff;
+    --purple-dark: #2b1055;
+    --bg-dark: #0a0015;
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --font-display: 'Great Vibes', cursive;
+    --font-body: 'Poppins', sans-serif;
+    --font-accent: 'Dancing Script', cursive;
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-pill: 50px;
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --shadow-glow: 0 0 60px rgba(255, 0, 150, 0.15), 0 0 120px rgba(127, 0, 255, 0.08);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    min-height: 100vh;
+    background: var(--bg-dark);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(127, 0, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 75, 145, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(43, 16, 85, 0.3) 0%, transparent 50%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+#heartCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ==========================================
+   SHARED COMPONENTS
+   ========================================== */
+
+.page-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 8vw, 48px);
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.card-shimmer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255, 75, 145, 0.04),
+        transparent,
+        rgba(127, 0, 255, 0.04),
+        transparent
+    );
+    animation: shimmerRotate 18s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmerRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   SHARED BUTTONS
+   ========================================== */
+
+.glow-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: var(--radius-pill);
+    border: none;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--pink-primary), var(--purple-deep));
+    color: white;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 0 25px var(--pink-glow);
+    position: relative;
+    z-index: 1;
+}
+
+.glow-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 0 45px var(--pink-glow);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition-smooth);
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+/* ==========================================
+   SHARED ANIMATIONS
+   ========================================== */
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatGentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ==========================================
+   RESPONSIVE SHARED
+   ========================================== */
+
+@media (max-width: 600px) {
+    .page-wrapper {
+        padding: 30px 16px;
+    }
+}

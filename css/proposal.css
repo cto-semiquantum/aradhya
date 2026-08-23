@@ -1,0 +1,143 @@
+@import url('base.css');
+
+/* ==========================================
+   PROPOSAL PAGE
+   ========================================== */
+
+.proposal-card {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px) saturate(1.3);
+    -webkit-backdrop-filter: blur(40px) saturate(1.3);
+    padding: 55px 45px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    text-align: center;
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    overflow: hidden;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* === TEXT === */
+
+.proposal-text-section {
+    margin-bottom: 10px;
+}
+
+.proposal-text {
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 18px;
+    color: var(--text-secondary);
+    white-space: pre-line;
+}
+
+.proposal-question {
+    font-size: 14px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+.final-question {
+    font-size: clamp(20px, 5vw, 26px);
+    margin: 25px 0 35px;
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+/* === FADE IN ANIMATION === */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInStagger 0.8s ease forwards;
+}
+
+@keyframes fadeInStagger {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === BUTTONS === */
+
+.proposal-buttons {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-yes, .btn-no {
+    padding: 14px 32px;
+    border-radius: var(--radius-pill);
+    border: none;
+    font-size: 16px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, var(--pink-primary), #ff007f);
+    color: white;
+    box-shadow: 0 0 30px var(--pink-glow);
+}
+
+.btn-yes:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px var(--pink-glow);
+}
+
+.btn-no {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: all 0.15s ease;
+}
+
+.btn-no:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* === FINAL MESSAGE === */
+
+.final-message {
+    font-size: 16px;
+    margin-top: 15px;
+    min-height: 30px;
+    color: var(--pink-soft);
+    transition: opacity 0.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* === CONFETTI CANVAS === */
+
+#confettiCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 600px) {
+    .proposal-card {
+        padding: 35px 22px;
+        border-radius: 22px;
+    }
+}

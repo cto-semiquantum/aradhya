@@ -1,0 +1,197 @@
+@import url('base.css');
+
+/* ==========================================
+   TIMELINE PAGE
+   Override body layout for scrollable page
+   ========================================== */
+
+body {
+    display: block !important;
+}
+
+.timeline-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+}
+
+.timeline-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 8vw, 56px);
+    text-align: center;
+    margin-bottom: 70px;
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==========================================
+   TIMELINE STRUCTURE
+   ========================================== */
+
+.timeline {
+    position: relative;
+    width: 100%;
+}
+
+/* Center line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--pink-primary) 10%,
+        var(--pink-primary) 90%,
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+/* === TIMELINE ITEM === */
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 30px 40px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.timeline-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Left side */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+    padding-right: 60px;
+}
+
+/* Right side */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+    padding-left: 60px;
+}
+
+/* === TIMELINE DOT === */
+
+.timeline-dot {
+    position: absolute;
+    top: 40px;
+    width: 14px;
+    height: 14px;
+    background: var(--pink-primary);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 20px var(--pink-glow);
+    transition: all 0.5s ease;
+}
+
+.timeline-item.active .timeline-dot {
+    box-shadow: 0 0 30px var(--pink-glow), 0 0 60px rgba(255, 75, 145, 0.2);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -7px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -7px;
+}
+
+/* === TIMELINE CONTENT CARD === */
+
+.timeline-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 28px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.timeline-content:hover {
+    border-color: rgba(255, 75, 145, 0.2);
+    box-shadow: 0 10px 50px rgba(255, 75, 145, 0.1);
+    transform: translateY(-3px);
+}
+
+.timeline-date {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--pink-primary);
+    margin-bottom: 10px;
+    padding: 4px 12px;
+    background: rgba(255, 75, 145, 0.1);
+    border-radius: var(--radius-pill);
+}
+
+.timeline-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    white-space: pre-line;
+}
+
+/* === TIMELINE FOOTER === */
+
+.timeline-footer {
+    text-align: center;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ==========================================
+   RESPONSIVE — SINGLE COLUMN
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .timeline::before {
+        left: 16px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding: 20px 20px 20px 50px;
+    }
+
+    .timeline-dot {
+        left: 9px !important;
+        right: auto !important;
+    }
+
+    .timeline-content {
+        padding: 22px;
+    }
+}

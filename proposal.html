@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>From My Heart 💍 | For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A heartfelt proposal — will you continue this story with me?">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/proposal.css">
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<!-- Confetti canvas for celebration -->
+<canvas id="confettiCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="proposal-card">
+
+        <div class="card-shimmer"></div>
+
+        <h1 class="page-title">From My Heart 💖</h1>
+
+        <div class="proposal-text-section">
+            <p class="proposal-text fade-in" style="animation-delay: 0.3s">
+                We've been best friends.
+                We've been more.
+                We've had distance.
+                And still… here we are.
+            </p>
+
+            <p class="proposal-text fade-in" style="animation-delay: 0.8s">
+                No matter what label life gives us,
+                one thing has never changed —
+                you matter to me.
+            </p>
+
+            <p class="proposal-question fade-in" style="animation-delay: 1.3s">
+                So today, I just want to ask…
+            </p>
+        </div>
+
+        <h2 class="final-question fade-in" style="animation-delay: 1.8s">
+            Will you continue this story with me? 💍
+        </h2>
+
+        <div class="proposal-buttons fade-in" style="animation-delay: 2.3s">
+            <button class="btn-yes" onclick="finalYes()" id="yesBtn">Yes 💖</button>
+            <button class="btn-no" onclick="finalNo()" id="noBtn">No 🌙</button>
+        </div>
+
+        <p id="finalMessage" class="final-message"></p>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/proposal.js"></script>
+
+</body>
+</html>
