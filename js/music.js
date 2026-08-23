@@ -1,8 +1,8 @@
 /* ==========================================
-   PERSISTENT MUSIC PLAYER SCRIPT (100% RELIABLE PLAYBACK)
-   - Bypasses browser autoplay restrictions via user gesture unlock
-   - Plays seamlessly across all pages
-   - Song selector menu (Agar Tum Saath Ho, Channa Ve, etc.)
+   PERSISTENT MUSIC PLAYER SCRIPT
+   - 100% Genuine Local MP3s (Agar Tum Saath Ho, Channa Mereya, etc.)
+   - Cross-page seamless audio continuity
+   - User gesture auto-unlock on first tap/click
    ========================================== */
 
 (function () {
@@ -10,13 +10,38 @@
     const SONGS = [
         {
             title: "Agar Tum Saath Ho 💔",
-            artist: "Tamasha",
-            src: "assets/music.mp3"
+            artist: "Arijit Singh & Alka Yagnik (Tamasha)",
+            src: "assets/agar_tum_saath_ho.mp3"
         },
         {
             title: "Channa Ve / Ishq Di Baajiyaan 🥺",
-            artist: "Bhoot / Soorma",
+            artist: "B-Praak & Diljit Dosanjh",
             src: "assets/music3.mp3"
+        },
+        {
+            title: "Channa Mereya 🥀",
+            artist: "Arijit Singh (Ae Dil Hai Mushkil)",
+            src: "assets/channa_mereya.mp3"
+        },
+        {
+            title: "Hamari Adhuri Kahani 💔",
+            artist: "Arijit Singh (Title Track)",
+            src: "assets/hamari_adhuri_kahani.mp3"
+        },
+        {
+            title: "Tujhe Kitna Chahne Lage 🥺",
+            artist: "Arijit Singh (Kabir Singh)",
+            src: "assets/tujhe_kitna_chahne_lage.mp3"
+        },
+        {
+            title: "Khairiyat 🥀",
+            artist: "Arijit Singh (Chhichhore)",
+            src: "assets/khairiyat.mp3"
+        },
+        {
+            title: "Bhula Dena 💔",
+            artist: "Mustafa Zahid (Aashiqui 2)",
+            src: "assets/bhula_dena.mp3"
         }
     ];
 
@@ -29,7 +54,6 @@
 
     let audioElement = null;
     let isPlaying = false;
-    let isUnlocked = false;
 
     document.addEventListener("DOMContentLoaded", function () {
         initMusicPlayer();
@@ -38,18 +62,17 @@
     function initMusicPlayer() {
         if (document.getElementById("globalAudio")) return;
 
-        // Create audio element
+        // Create HTML5 Audio
         audioElement = document.createElement("audio");
         audioElement.id = "globalAudio";
         audioElement.loop = true;
         audioElement.preload = "auto";
         audioElement.src = SONGS[currentSongIndex].src;
-
         document.body.appendChild(audioElement);
 
         // Restore playback time if navigating between pages
         const savedTime = parseFloat(sessionStorage.getItem(STORAGE_KEY_TIME));
-        const wasPlaying = sessionStorage.getItem(STORAGE_KEY_PLAYING) !== "false"; // Default to true if not explicitly false
+        const wasPlaying = sessionStorage.getItem(STORAGE_KEY_PLAYING) !== "false";
 
         if (savedTime && !isNaN(savedTime)) {
             audioElement.currentTime = savedTime;
@@ -64,23 +87,21 @@
         createPlayerWidget();
 
         // Attempt initial play
-        attemptPlay();
+        if (wasPlaying) {
+            playAudio();
+        }
 
         // Add global user-gesture listeners to unlock audio on first tap/click anywhere
         const unlockHandler = function () {
-            if (!isUnlocked || !isPlaying) {
-                playAudio();
-            }
+            playAudio();
             document.removeEventListener("click", unlockHandler);
             document.removeEventListener("touchstart", unlockHandler);
-            document.removeEventListener("keydown", unlockHandler);
         };
 
         document.addEventListener("click", unlockHandler, { capture: true });
         document.addEventListener("touchstart", unlockHandler, { capture: true });
-        document.addEventListener("keydown", unlockHandler, { capture: true });
 
-        // Save state on unload
+        // Handle page unload to save state
         window.addEventListener("beforeunload", function () {
             if (audioElement) {
                 sessionStorage.setItem(STORAGE_KEY_TIME, audioElement.currentTime);
@@ -89,31 +110,17 @@
         });
     }
 
-    function attemptPlay() {
-        if (!audioElement) return;
-
-        audioElement.play().then(() => {
-            isPlaying = true;
-            isUnlocked = true;
-            sessionStorage.setItem(STORAGE_KEY_PLAYING, "true");
-            updateWidgetUI();
-        }).catch(err => {
-            console.log("Autoplay waiting for first user click.");
-            isPlaying = false;
-            updateWidgetUI();
-        });
-    }
-
     function playAudio() {
         if (!audioElement) return;
 
         audioElement.play().then(() => {
             isPlaying = true;
-            isUnlocked = true;
             sessionStorage.setItem(STORAGE_KEY_PLAYING, "true");
             updateWidgetUI();
         }).catch(err => {
-            console.log("Play failed:", err);
+            console.log("Autoplay waiting for tap/click.");
+            isPlaying = false;
+            updateWidgetUI();
         });
     }
 
@@ -156,14 +163,14 @@
                     <span class="music-btn-text" id="musicBtnText">Play Music 🎵</span>
                 </button>
 
-                <button class="music-select-btn" id="musicSelectBtn" title="Change Song">
-                    🎶 Songs
+                <button class="music-select-btn" id="musicSelectBtn" title="Select Sad Songs">
+                    🎶 Songs (${SONGS.length})
                 </button>
             </div>
 
             <div class="music-dropdown" id="musicDropdown">
                 <div class="dropdown-header">
-                    <span>💔 Select Song</span>
+                    <span>💔 Sad Songs Playlist</span>
                     <button class="dropdown-close" id="dropdownClose">✕</button>
                 </div>
                 <div class="song-list">
@@ -237,7 +244,6 @@
         }
     }
 
-    // Global helper
     window.toggleGlobalMusic = function () {
         if (isPlaying) pauseAudio(); else playAudio();
     };
