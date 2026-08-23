@@ -29,6 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Search input
+    const searchInput = document.getElementById("diarySearchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", renderEntries);
+    }
+
     // Mood selector
     const moodBtns = document.querySelectorAll(".mood-btn");
     moodBtns.forEach(btn => {
@@ -162,6 +168,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Apply filter
         if (currentFilter !== "all") {
             entries = entries.filter(e => e.mood === currentFilter);
+        }
+
+        // Apply search query
+        const searchInput = document.getElementById("diarySearchInput");
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+        if (query) {
+            entries = entries.filter(e => 
+                (e.title && e.title.toLowerCase().includes(query)) ||
+                (e.text && e.text.toLowerCase().includes(query)) ||
+                (e.date && e.date.toLowerCase().includes(query))
+            );
         }
 
         // Empty state

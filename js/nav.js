@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { path: "proposal.html", label: "💍 Proposal" },
         { path: "love.html", label: "⏳ Counter" },
         { path: "diary.html", label: "📝 Diary" },
+        { path: "secret.html", label: "🔒 Secret" },
+        { path: "capsule.html", label: "🎁 Capsule" },
         { path: "forever.html", label: "✨ Forever" }
     ];
 

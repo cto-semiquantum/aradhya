@@ -249,6 +249,30 @@ body {
     gap: 12px;
 }
 
+.entries-search {
+    flex: 1;
+    min-width: 220px;
+}
+
+.diary-search-box {
+    width: 100%;
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 75, 145, 0.25);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 13px;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.diary-search-box:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--pink-primary);
+    box-shadow: 0 0 20px var(--pink-glow);
+}
+
 .entries-title {
     font-size: 22px;
     font-weight: 600;

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Time Capsule ⏳ | For Our Future</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A digital time capsule for our unshakeable love.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+.capsule-card {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    background: rgba(20, 8, 35, 0.85);
+    backdrop-filter: blur(35px);
+    padding: 45px 35px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border-glow);
+    text-align: center;
+    box-shadow: 0 0 60px rgba(127, 0, 255, 0.2), var(--shadow-card);
+}
+
+.capsule-timer {
+    font-size: clamp(24px, 6vw, 36px);
+    font-weight: 700;
+    color: var(--pink-light);
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 75, 145, 0.1);
+    border: 1px solid rgba(255, 75, 145, 0.3);
+    box-shadow: 0 0 25px rgba(255, 75, 145, 0.2);
+}
+
+.capsule-box {
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+}
+
+.capsule-box h3 {
+    font-size: 16px;
+    color: var(--pink-soft);
+    margin-bottom: 8px;
+}
+
+.capsule-box p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.capsule-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.capsule-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    resize: none;
+    outline: none;
+}
+
+.capsule-textarea:focus {
+    border-color: var(--pink-primary);
+    box-shadow: 0 0 20px var(--pink-glow);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="capsule-card">
+
+        <h1 class="page-title">Love Time Capsule ⏳</h1>
+        <p style="color: var(--text-secondary); font-size: 14px;">A message preserved in time until our next milestone.</p>
+
+        <div class="capsule-timer" id="capsuleCountdown">
+            000d 00h 00m 00s
+        </div>
+
+        <div class="capsule-box">
+            <h3>🔒 Capsule #1: Unlocked on 24 June 2027</h3>
+            <p>"No matter where life takes us, my heart will always belong to you. This capsule holds 93 daily journal entries written with love during our silence era."</p>
+        </div>
+
+        <div class="capsule-box">
+            <h3>💌 Lock A Promise For Tomorrow</h3>
+            <div class="capsule-input-group">
+                <textarea id="capsuleNote" class="capsule-textarea" placeholder="Write a promise or wish for us to unlock in the future..."></textarea>
+                <button class="glow-btn" id="saveCapsuleBtn">Lock In Time Capsule 🔐</button>
+            </div>
+            <p id="capsuleStatus" style="color: var(--pink-light); font-size: 13px; margin-top: 8px; display: none;">Your message is locked in the capsule! 💖</p>
+        </div>
+
+        <div class="action-buttons">
+            <button class="glow-btn" onclick="makeWish()">Make A Wish 🌠</button>
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const targetDate = new Date("2027-06-24T00:00:00");
+    const timerEl = document.getElementById("capsuleCountdown");
+
+    function updateCapsuleTimer() {
+        const now = new Date();
+        let diff = targetDate - now;
+        if (diff < 0) diff = 0;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        timerEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCapsuleTimer();
+    setInterval(updateCapsuleTimer, 1000);
+
+    const btn = document.getElementById("saveCapsuleBtn");
+    const note = document.getElementById("capsuleNote");
+    const status = document.getElementById("capsuleStatus");
+
+    btn.addEventListener("click", function () {
+        if (!note.value.trim()) return;
+        localStorage.setItem("val_capsule_note", note.value.trim());
+        if (window.triggerHeartbeat) window.triggerHeartbeat();
+        status.style.display = "block";
+        note.value = "";
+    });
+});
+</script>
+
+</body>
+</html>
