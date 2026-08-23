@@ -1,8 +1,8 @@
 /* ==========================================
    PERSISTENT MUSIC PLAYER SCRIPT
-   - Seamless continuous audio playback across page transitions (never restarts from 0:00)
+   - Music is OFF by default. Plays ONLY when manually started by user tap/click!
+   - Seamless continuous audio playback across page transitions when enabled
    - 100% Genuine Local MP3s (Agar Tum Saath Ho, Channa Mereya, etc.)
-   - Global Mute / Disable Music Button (remembers state across all pages)
    ========================================== */
 
 (function () {
@@ -53,7 +53,8 @@
     let currentSongIndex = parseInt(localStorage.getItem(STORAGE_KEY_INDEX)) || 0;
     if (currentSongIndex >= SONGS.length) currentSongIndex = 0;
 
-    let isMutedGlobally = localStorage.getItem(STORAGE_KEY_MUTED) === "true";
+    // DEFAULT TO MUTED (OFF) — Music starts ONLY when manually clicked!
+    let isMutedGlobally = localStorage.getItem(STORAGE_KEY_MUTED) !== "false";
     let audioElement = null;
     let isPlaying = false;
     let timeRestored = false;
@@ -71,7 +72,7 @@
         audioElement = document.createElement("audio");
         audioElement.id = "globalAudio";
         audioElement.loop = true;
-        audioElement.preload = "auto";
+        audioElement.preload = "none";
         audioElement.src = SONGS[currentSongIndex].src;
         document.body.appendChild(audioElement);
 
@@ -107,20 +108,14 @@
         // Create Floating Player Widget
         createPlayerWidget();
 
-        // Attempt initial play ONLY if NOT muted globally
-        if (!isMutedGlobally) {
+        // Music is OFF by default. Only play if user specifically turned it ON during session
+        const wasPlayingInSession = sessionStorage.getItem(STORAGE_KEY_PLAYING) === "true";
+
+        if (!isMutedGlobally && wasPlayingInSession) {
             playAudio();
-
-            // Unlock audio on first tap/click
-            const unlockHandler = function () {
-                if (!isMutedGlobally) playAudio();
-                document.removeEventListener("click", unlockHandler);
-                document.removeEventListener("touchstart", unlockHandler);
-            };
-
-            document.addEventListener("click", unlockHandler, { capture: true });
-            document.addEventListener("touchstart", unlockHandler, { capture: true });
         } else {
+            isMutedGlobally = true;
+            localStorage.setItem(STORAGE_KEY_MUTED, "true");
             updateWidgetUI();
         }
 
@@ -134,14 +129,16 @@
     }
 
     function playAudio() {
-        if (!audioElement || isMutedGlobally) return;
+        if (!audioElement) return;
+
+        isMutedGlobally = false;
+        localStorage.setItem(STORAGE_KEY_MUTED, "false");
 
         audioElement.play().then(() => {
             isPlaying = true;
             sessionStorage.setItem(STORAGE_KEY_PLAYING, "true");
             updateWidgetUI();
         }).catch(err => {
-            console.log("Autoplay waiting for tap/click.");
             isPlaying = false;
             updateWidgetUI();
         });
@@ -156,13 +153,14 @@
     }
 
     function toggleGlobalMute() {
-        isMutedGlobally = !isMutedGlobally;
-        localStorage.setItem(STORAGE_KEY_MUTED, isMutedGlobally ? "true" : "false");
-
-        if (isMutedGlobally) {
-            pauseAudio();
-        } else {
+        if (isMutedGlobally || !isPlaying) {
+            isMutedGlobally = false;
+            localStorage.setItem(STORAGE_KEY_MUTED, "false");
             playAudio();
+        } else {
+            isMutedGlobally = true;
+            localStorage.setItem(STORAGE_KEY_MUTED, "true");
+            pauseAudio();
         }
         updateWidgetUI();
     }
@@ -180,11 +178,7 @@
         audioElement.src = SONGS[currentSongIndex].src;
         audioElement.currentTime = 0;
 
-        if (!isMutedGlobally) {
-            playAudio();
-        } else {
-            updateWidgetUI();
-        }
+        playAudio();
     }
 
     function createPlayerWidget() {
@@ -227,7 +221,7 @@
                 </div>
                 <div class="dropdown-footer">
                     <button class="global-mute-action-btn" id="globalMuteActionBtn">
-                        ${isMutedGlobally ? '🔊 Turn Music ON Everywhere' : '🔇 Turn Music OFF Everywhere'}
+                        ${isMutedGlobally ? '🔊 Turn Music ON' : '🔇 Turn Music OFF'}
                     </button>
                 </div>
             </div>
@@ -245,9 +239,7 @@
 
         toggleBtn.addEventListener("click", function (e) {
             e.stopPropagation();
-            if (isMutedGlobally) {
-                toggleGlobalMute(); // Unmute if muted
-            } else if (isPlaying) {
+            if (isPlaying && !isMutedGlobally) {
                 pauseAudio();
             } else {
                 playAudio();
@@ -279,8 +271,6 @@
             item.addEventListener("click", function (e) {
                 e.stopPropagation();
                 const index = parseInt(this.dataset.index);
-                if (isMutedGlobally) isMutedGlobally = false;
-                localStorage.setItem(STORAGE_KEY_MUTED, "false");
                 switchSong(index);
                 dropdown.classList.remove("show");
             });
@@ -304,30 +294,25 @@
         });
 
         if (muteBtn) {
-            muteBtn.textContent = isMutedGlobally ? '🔇 Off' : '🔊 On';
-            muteBtn.classList.toggle("is-muted", isMutedGlobally);
+            muteBtn.textContent = (isMutedGlobally || !isPlaying) ? '🔇 Off' : '🔊 On';
+            muteBtn.classList.toggle("is-muted", isMutedGlobally || !isPlaying);
         }
 
         if (globalMuteActionBtn) {
-            globalMuteActionBtn.textContent = isMutedGlobally ? '🔊 Turn Music ON Everywhere' : '🔇 Turn Music OFF Everywhere';
+            globalMuteActionBtn.textContent = (isMutedGlobally || !isPlaying) ? '🔊 Turn Music ON' : '🔇 Turn Music OFF';
         }
 
-        if (isMutedGlobally) {
-            if (btnText) btnText.textContent = "Music Off 🔇";
+        if (isMutedGlobally || !isPlaying) {
+            if (btnText) btnText.textContent = "Play Music 🎵";
             if (bars) bars.classList.remove("playing");
-        } else if (isPlaying) {
+        } else {
             if (btnText) btnText.textContent = SONGS[currentSongIndex].title.split(" ")[0] + " 🎵";
             if (bars) bars.classList.add("playing");
-        } else {
-            if (btnText) btnText.textContent = "Tap To Play 🎵";
-            if (bars) bars.classList.remove("playing");
         }
     }
 
     window.toggleGlobalMusic = function () {
-        if (isMutedGlobally) {
-            toggleGlobalMute();
-        } else if (isPlaying) {
+        if (isPlaying && !isMutedGlobally) {
             pauseAudio();
         } else {
             playAudio();
