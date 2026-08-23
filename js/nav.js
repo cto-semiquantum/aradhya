@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { path: "index.html", label: "🏠 Home" },
         { path: "her.html", label: "✨ Her" },
         { path: "videos.html", label: "🎥 Videos" },
+        { path: "sky.html", label: "🌌 Sky" },
+        { path: "future.html", label: "✨ Dreams" },
         { path: "music.html", label: "📻 Songs" },
         { path: "promises.html", label: "📜 Promises" },
         { path: "journey.html", label: "🌸 Journey" },

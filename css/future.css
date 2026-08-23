@@ -1,0 +1,99 @@
+@import url('base.css');
+
+/* ==========================================
+   SILENT DREAMS & BUCKET LIST — STYLES
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.future-card {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: var(--glass-card);
+    backdrop-filter: blur(40px) saturate(1.4);
+    -webkit-backdrop-filter: blur(40px) saturate(1.4);
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 44px;
+    background: linear-gradient(135deg, #ffffff 30%, var(--pink-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+.dreams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.dream-box {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 75, 145, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 22px 20px;
+    transition: var(--transition-smooth);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.dream-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 75, 145, 0.4);
+    background: rgba(255, 75, 145, 0.08);
+}
+
+.dream-icon {
+    font-size: 32px;
+}
+
+.dream-content h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.dream-content p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .future-card {
+        padding: 35px 20px;
+    }
+
+    .dreams-grid {
+        grid-template-columns: 1fr;
+    }
+}
