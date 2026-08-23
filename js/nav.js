@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const links = [
         { path: "index.html", label: "🏠 Home" },
+        { path: "chapter.html", label: "🏫 New Chapter" },
         { path: "growth.html", label: "🏆 My Growth" },
         { path: "recap.html", label: "🎬 My 2026" },
         { path: "birthday.html", label: "🎂 Birthday Gift" },
