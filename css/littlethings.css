@@ -1,0 +1,119 @@
+@import url('base.css');
+
+/* ==========================================
+   OUR LITTLE THINGS — STYLES
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.littlethings-card {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    background: var(--glass-card);
+    backdrop-filter: blur(40px) saturate(1.4);
+    -webkit-backdrop-filter: blur(40px) saturate(1.4);
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 46px;
+    background: linear-gradient(135deg, #ffffff 30%, var(--pink-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+/* === LITTLE THINGS GRID === */
+.things-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.thing-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 22px 18px;
+    transition: var(--transition-smooth);
+}
+
+.thing-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 75, 145, 0.4);
+    background: rgba(255, 75, 145, 0.08);
+}
+
+.thing-tag {
+    font-size: 12px;
+    color: var(--pink-light);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.thing-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.thing-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* === NO EXPECTATIONS GIFT BANNER === */
+.no-expectations-box {
+    background: linear-gradient(135deg, rgba(127, 0, 255, 0.15), rgba(255, 75, 145, 0.15));
+    border: 1px solid rgba(255, 75, 145, 0.4);
+    border-radius: var(--radius-md);
+    padding: 35px 30px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.gift-statement {
+    font-family: var(--font-accent);
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.gift-subtext {
+    font-size: 15px;
+    line-height: 2.0;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    .littlethings-card {
+        padding: 35px 20px;
+    }
+}

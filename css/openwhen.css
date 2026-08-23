@@ -1,0 +1,174 @@
+@import url('base.css');
+
+/* ==========================================
+   OPEN WHEN ENVELOPES — STYLES
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 20px 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.openwhen-card {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    background: var(--glass-card);
+    backdrop-filter: blur(40px) saturate(1.4);
+    -webkit-backdrop-filter: blur(40px) saturate(1.4);
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 46px;
+    background: linear-gradient(135deg, #ffffff 30%, var(--pink-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+/* === ENVELOPES GRID === */
+.envelopes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.envelope-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 75, 145, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 25px 20px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.envelope-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--pink-primary);
+    box-shadow: 0 10px 30px var(--pink-glow);
+    background: rgba(255, 75, 145, 0.12);
+}
+
+.envelope-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 8px rgba(255, 75, 145, 0.4));
+}
+
+.envelope-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.envelope-hint {
+    font-size: 12px;
+    color: var(--pink-light);
+    font-style: italic;
+}
+
+/* === ENVELOPE MODAL / MESSAGE DISPLAY === */
+.envelope-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.envelope-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.envelope-modal-card {
+    background: linear-gradient(145deg, #1b0c2e, #0c0418);
+    border: 2px solid var(--pink-primary);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    max-width: 540px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 50px var(--pink-glow);
+    transform: scale(0.85);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.envelope-modal-overlay.active .envelope-modal-card {
+    transform: scale(1);
+}
+
+.modal-env-icon {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.modal-env-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--pink-light);
+    margin-bottom: 15px;
+}
+
+.modal-env-text {
+    font-family: var(--font-accent);
+    font-size: 20px;
+    line-height: 1.8;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.close-modal-btn {
+    padding: 10px 25px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition-smooth);
+}
+
+.close-modal-btn:hover {
+    background: var(--pink-primary);
+    border-color: var(--pink-primary);
+}
+
+@media (max-width: 600px) {
+    .openwhen-card {
+        padding: 35px 20px;
+    }
+}
