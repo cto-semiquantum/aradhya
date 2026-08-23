@@ -9,6 +9,9 @@ window.addEventListener("load", function () {
     if (entry) {
         entry.addEventListener("click", function () {
             entry.classList.add("hiding");
+            if (window.toggleGlobalMusic) {
+                window.toggleGlobalMusic();
+            }
 
             setTimeout(() => {
                 entry.style.display = "none";
@@ -111,25 +114,8 @@ window.addEventListener("load", function () {
 let isPlaying = false;
 
 window.toggleMusic = function (event) {
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("musicToggle");
-    if (!music) return;
-
-    if (!isPlaying) {
-        music.currentTime = 40;
-        music.play().catch(() => {});
-        isPlaying = true;
-        if (btn) {
-            btn.classList.add("playing");
-            btn.querySelector(".music-text").textContent = "Pause Music";
-        }
-    } else {
-        music.pause();
-        isPlaying = false;
-        if (btn) {
-            btn.classList.remove("playing");
-            btn.querySelector(".music-text").textContent = "Play Our Song";
-        }
+    if (window.toggleGlobalMusic) {
+        window.toggleGlobalMusic();
     }
 };
 
