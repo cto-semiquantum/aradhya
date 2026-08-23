@@ -121,8 +121,20 @@ document.addEventListener("DOMContentLoaded", function () {
     window.deleteEntry = function (id) {
         if (!confirm("Pakka delete karna hai ye entry?")) return;
 
-        const entries = getEntries().filter(e => e.id !== id);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+        let deletedIds = [];
+        try {
+            deletedIds = JSON.parse(localStorage.getItem(STORAGE_KEY + "_deleted")) || [];
+        } catch(e) {}
+        if (!deletedIds.includes(id)) {
+            deletedIds.push(id);
+            localStorage.setItem(STORAGE_KEY + "_deleted", JSON.stringify(deletedIds));
+        }
+
+        try {
+            const local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            const updatedLocal = local.filter(e => e.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedLocal));
+        } catch(e) {}
 
         showToast("Entry delete ho gaya");
         renderEntries();
@@ -194,11 +206,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
 
     function getEntries() {
+        let local = [];
         try {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-        } catch {
-            return [];
+            local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch (e) {
+            local = [];
         }
+
+        const defaults = (typeof DIARY_ENTRIES !== "undefined") ? DIARY_ENTRIES : [];
+
+        // Combine local + defaults avoiding duplicate IDs
+        const localIds = new Set(local.map(e => e.id));
+        const combined = [...local, ...defaults.filter(e => !localIds.has(e.id))];
+
+        // Filter out deleted IDs
+        let deletedIds = [];
+        try {
+            deletedIds = JSON.parse(localStorage.getItem(STORAGE_KEY + "_deleted")) || [];
+        } catch(e) {}
+
+        const finalEntries = combined.filter(e => !deletedIds.includes(e.id));
+
+        // Sort descending by date
+        finalEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+        return finalEntries;
     }
 
     function calculateDays(dateString) {
