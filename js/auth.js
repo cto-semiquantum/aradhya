@@ -1,11 +1,29 @@
 /* ==========================================
    UNIVERSAL PASSCODE LOCK SCRIPT (0411)
-   Intercepts & protects every single HTML page
+   Always prompts for passcode on every fresh app launch
    ========================================== */
 
 (function () {
     const AUTH_KEY = 'aradhya_app_auth_0411';
     const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+    // If opening index.html directly from home screen or browser launch, force fresh passcode prompt
+    if (currentPath === "index.html" || currentPath === "") {
+        const isInternalNav = sessionStorage.getItem('app_internal_nav') === 'true';
+        if (!isInternalNav) {
+            sessionStorage.removeItem(AUTH_KEY);
+        }
+        // Reset internal nav flag after checking
+        sessionStorage.removeItem('app_internal_nav');
+    }
+
+    // Set internal nav flag on all link clicks so internal navigation stays smooth
+    document.addEventListener("click", (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href")) {
+            sessionStorage.setItem('app_internal_nav', 'true');
+        }
+    });
 
     const isAuthenticated = sessionStorage.getItem(AUTH_KEY) === 'true';
 
@@ -35,6 +53,7 @@
                 const val = passInput ? passInput.value.trim() : "";
                 if (val === "0411" || val === "411") {
                     sessionStorage.setItem(AUTH_KEY, "true");
+                    sessionStorage.setItem('app_internal_nav', 'true');
                     if (lockScreen) lockScreen.style.display = "none";
                     if (mainContent) mainContent.style.display = "block";
 

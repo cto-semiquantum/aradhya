@@ -61,8 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.reload(true);
     };
 
-    // Register PWA Service Worker
+    // Register & Auto-Update PWA Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').catch(err => {});
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+            reg.update();
+        }).catch(err => {});
     }
 });

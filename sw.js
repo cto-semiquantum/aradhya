@@ -1,5 +1,5 @@
 /* Service Worker for Aradhya Valentine PWA App */
-const CACHE_NAME = 'aradhya-love-cache-v12';
+const CACHE_NAME = 'aradhya-love-cache-v13';
 const urlsToCache = [
   './',
   './index.html',
@@ -66,12 +66,20 @@ self.addEventListener('activate', event => {
   return self.clients.claim();
 });
 
+// Network-First Strategy for Instant Automatic Updates in PWA App
 self.addEventListener('fetch', event => {
-  // Let native browser engine stream MP4 videos directly for smooth mobile video playback
   if (event.request.url.endsWith('.mp4')) {
     return;
   }
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    fetch(event.request)
+      .then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
+          const cacheCopy = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, cacheCopy));
+        }
+        return networkResponse;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
