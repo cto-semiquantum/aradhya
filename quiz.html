@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Quiz 🎮 | How Well Do You Know Us?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An interactive romantic quiz about our story.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+.quiz-card {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    background: rgba(20, 8, 35, 0.88);
+    backdrop-filter: blur(40px);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 75, 145, 0.35);
+    text-align: center;
+    box-shadow: 0 0 60px rgba(255, 75, 145, 0.25), var(--shadow-card);
+}
+
+.quiz-progress {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.quiz-progress-fill {
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(90deg, var(--pink-primary), var(--purple-deep));
+    transition: width 0.4s ease;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 25px;
+    min-height: 54px;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.option-btn:hover {
+    background: rgba(255, 75, 145, 0.2);
+    border-color: var(--pink-primary);
+    transform: translateX(5px);
+}
+
+.option-btn.correct {
+    background: rgba(0, 200, 81, 0.25) !important;
+    border-color: #00c851 !important;
+    color: #fff;
+}
+
+.option-btn.wrong {
+    background: rgba(255, 50, 50, 0.25) !important;
+    border-color: #ff3547 !important;
+}
+
+.result-box {
+    display: none;
+    animation: fadeIn 0.8s ease;
+}
+
+.trophy-icon {
+    font-size: 72px;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite alternate;
+}
+
+.score-title {
+    font-family: var(--font-display);
+    font-size: 42px;
+    color: var(--pink-light);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="quiz-card" id="quizCard">
+
+        <h1 class="page-title">Love Quiz 🎮</h1>
+        <p style="color: var(--text-secondary); font-size: 14px;">How well do you know our story?</p>
+
+        <div class="quiz-progress">
+            <div class="quiz-progress-fill" id="progressFill"></div>
+        </div>
+
+        <div id="questionContainer">
+            <h2 class="question-text" id="questionText">Loading Question…</h2>
+            <div class="options-grid" id="optionsGrid"></div>
+        </div>
+
+        <div class="result-box" id="resultBox">
+            <div class="trophy-icon">👑</div>
+            <h2 class="score-title">Perfect Score! 💖</h2>
+            <p style="color: var(--text-secondary); font-size: 15px; margin: 15px 0;">
+                Tumne saare answers sahi diye! You are officially Harsh's One and Only Forever. 💍
+            </p>
+            <div class="action-buttons">
+                <button class="glow-btn" onclick="makeWish()">Make A Wish 🌠</button>
+                <a href="secret.html" class="glow-btn">Open Secret Envelope 🔒</a>
+                <a href="index.html" class="back-link">← Back Home</a>
+            </div>
+        </div>
+
+        <div class="action-buttons" id="quizFooter">
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script>
+const QUESTIONS = [
+    {
+        q: "1. Humari pehli mulaqat / baat kis date ko hui thi?",
+        options: ["24 June 2024 💖", "15 August 2024", "1 January 2025", "22 May 2026"],
+        answer: 0
+    },
+    {
+        q: "2. Harsh ke dil me Aradhya ki kya jagah hai?",
+        options: ["Pura Sukoon & Aakhri Pyaar ❤️", "Bas Ek Normal Friend", "Temporary Timepass", "Pata Nahi"],
+        answer: 0
+    },
+    {
+        q: "3. 22 May 2026 ke baad se Harsh ne kya kiya?",
+        options: ["Daily Diary Likh Kar Ussi Ki Yaadon Me Raha 📝", "Move On Kar Liya", "Sab Bhool Gaya", "Baat Karna Chhod Diya"],
+        answer: 0
+    },
+    {
+        q: "4. Humara Best Friends milestone date kya hai?",
+        options: ["17 September 2024 💍", "10 October 2024", "5 November 2024", "20 December 2024"],
+        answer: 0
+    },
+    {
+        q: "5. Is poori website ko banane ka real motive kya hai?",
+        options: ["Harsh Ka Unconditional Unshakeable Love Express Karna 💖", "Coding Project", "Timepass", "Random Website"],
+        answer: 0
+    }
+];
+
+let currentQ = 0;
+let score = 0;
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadQuestion();
+});
+
+function loadQuestion() {
+    const qEl = document.getElementById("questionText");
+    const grid = document.getElementById("optionsGrid");
+    const fill = document.getElementById("progressFill");
+
+    if (currentQ >= QUESTIONS.length) {
+        showResults();
+        return;
+    }
+
+    fill.style.width = `${((currentQ + 1) / QUESTIONS.length) * 100}%`;
+    const qData = QUESTIONS[currentQ];
+    qEl.textContent = qData.q;
+
+    grid.innerHTML = qData.options.map((opt, i) => `
+        <button class="option-btn" onclick="selectOption(${i})">${opt}</button>
+    `).join("");
+}
+
+function selectOption(index) {
+    const qData = QUESTIONS[currentQ];
+    const btns = document.querySelectorAll(".option-btn");
+
+    if (window.triggerHeartbeat) window.triggerHeartbeat();
+
+    btns.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === qData.answer) btn.classList.add("correct");
+        else if (i === index) btn.classList.add("wrong");
+    });
+
+    if (index === qData.answer) score++;
+
+    setTimeout(() => {
+        currentQ++;
+        loadQuestion();
+    }, 1200);
+}
+
+function showResults() {
+    document.getElementById("questionContainer").style.display = "none";
+    document.getElementById("quizFooter").style.display = "none";
+    document.getElementById("resultBox").style.display = "block";
+    if (window.makeWish) window.makeWish();
+}
+</script>
+
+</body>
+</html>

@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { path: "diary.html", label: "📝 Diary" },
         { path: "secret.html", label: "🔒 Secret" },
         { path: "capsule.html", label: "🎁 Capsule" },
+        { path: "quiz.html", label: "🎮 Quiz" },
+        { path: "scratch.html", label: "🎴 Cards" },
         { path: "forever.html", label: "✨ Forever" }
     ];
 
@@ -31,4 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }).join("");
 
     document.body.prepend(nav);
+
+    // Register PWA Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(err => {});
+    }
 });

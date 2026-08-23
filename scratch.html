@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Memory Cards 🎴 | Tap To Reveal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interactive memory reveal cards.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+.scratch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+    margin: 25px 0;
+}
+
+.scratch-card {
+    position: relative;
+    height: 170px;
+    border-radius: var(--radius-md);
+    background: rgba(20, 8, 35, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border-glow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.scratch-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: var(--pink-primary);
+}
+
+.scratch-cover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--purple-deep), var(--pink-primary));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    padding: 12px;
+}
+
+.scratch-card.revealed .scratch-cover {
+    opacity: 0;
+    transform: scale(0.9) rotateY(90deg);
+    pointer-events: none;
+}
+
+.scratch-content {
+    font-family: var(--font-accent);
+    font-size: 15px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.scratch-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <h1 class="page-title">Memory Cards 🎴</h1>
+    <p style="color: var(--text-secondary); font-size: 14px; text-align: center;">Tap any card to reveal a hidden memory!</p>
+
+    <div class="scratch-grid">
+
+        <div class="scratch-card" onclick="revealCard(this)">
+            <div class="scratch-cover">
+                <span class="scratch-icon">🎁</span>
+                <span style="font-weight: 600; font-size: 13px;">Tap To Open</span>
+            </div>
+            <div class="scratch-content">
+                <strong>🌸 Pehli Mulaqat</strong><br>
+                24 June 2024: Jab pehli baar baat hui thi, tabhi pata chal gaya tha tum special ho.
+            </div>
+        </div>
+
+        <div class="scratch-card" onclick="revealCard(this)">
+            <div class="scratch-cover">
+                <span class="scratch-icon">💍</span>
+                <span style="font-weight: 600; font-size: 13px;">Tap To Open</span>
+            </div>
+            <div class="scratch-content">
+                <strong>💍 Best Friends</strong><br>
+                17 Sept 2024: Dosti se shuru hua ye rishta meri poori duniya ban gaya.
+            </div>
+        </div>
+
+        <div class="scratch-card" onclick="revealCard(this)">
+            <div class="scratch-cover">
+                <span class="scratch-icon">💖</span>
+                <span style="font-weight: 600; font-size: 13px;">Tap To Open</span>
+            </div>
+            <div class="scratch-content">
+                <strong>💖 The Connection</strong><br>
+                Tumhari ek smile mere saare din ka gham door kar deti hai.
+            </div>
+        </div>
+
+        <div class="scratch-card" onclick="revealCard(this)">
+            <div class="scratch-cover">
+                <span class="scratch-icon">💔</span>
+                <span style="font-weight: 600; font-size: 13px;">Tap To Open</span>
+            </div>
+            <div class="scratch-content">
+                <strong>💔 Silence Era</strong><br>
+                22 May 2026: Baatein band hui par meri mohabbat ek second bhi kam nahi hui.
+            </div>
+        </div>
+
+        <div class="scratch-card" onclick="revealCard(this)">
+            <div class="scratch-cover">
+                <span class="scratch-icon">📝</span>
+                <span style="font-weight: 600; font-size: 13px;">Tap To Open</span>
+            </div>
+            <div class="scratch-content">
+                <strong>📝 93 Journal Entries</strong><br>
+                Har roz tumhari yaad me diary likha... taaki mera sukoon safe rahe.
+            </div>
+        </div>
+
+        <div class="scratch-card" onclick="revealCard(this)">
+            <div class="scratch-cover">
+                <span class="scratch-icon">✨</span>
+                <span style="font-weight: 600; font-size: 13px;">Tap To Open</span>
+            </div>
+            <div class="scratch-content">
+                <strong>✨ Forever Yours</strong><br>
+                Main kal bhi tumhara tha, aaj bhi hoon, aur hamesha rahunga!
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-buttons">
+        <button class="glow-btn" onclick="makeWish()">Make A Wish 🌠</button>
+        <a href="index.html" class="back-link">← Back Home</a>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script>
+function revealCard(card) {
+    if (window.triggerHeartbeat) window.triggerHeartbeat();
+    card.classList.add("revealed");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Aradhya 💖 Only For You",
+  "short_name": "Aradhya 💖",
+  "description": "A website dedicated to unyielding, unconditional love for Aradhya.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080012",
+  "theme_color": "#ff4b91",
+  "icons": [
+    {
+      "src": "assets/images/her1.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/images/her1.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
