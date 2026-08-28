@@ -41,9 +41,14 @@
                 <strong>🔔 Phone Notifications</strong>
                 Naya update aate hi lockscreen pe notification pane ke liye enable karein:
             </div>
-            <button class="notify-btn" id="enableNotifyBtn" onclick="enablePushNotifications()">
-                <span>🔔</span> Enable Push Notifications
-            </button>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="notify-btn" id="enableNotifyBtn" onclick="enablePushNotifications()">
+                    <span>🔔</span> Enable Notifications
+                </button>
+                <button class="reaction-pill" onclick="testPushNotification()" style="padding: 8px 14px; font-size: 13px; border-color: rgba(255,75,145,0.4);">
+                    <span>🧪</span> Test Alert
+                </button>
+            </div>
         </div>
 
         <div style="margin-top: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">

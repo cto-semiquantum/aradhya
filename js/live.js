@@ -207,6 +207,52 @@
                     });
                     if (newAdded) {
                         saveStoredPosts(cachedPosts);
+    // Mobile & Desktop Compatible System Notification Helper
+    function triggerSystemNotification(title, body, url) {
+        if (!('Notification' in window) || Notification.permission !== 'granted') return;
+
+        const options = {
+            body: body || 'Harsh ne ek naya update bheja hai... 💕',
+            icon: './assets/images/icon-192.png',
+            badge: './assets/images/icon-192.png',
+            vibrate: [200, 100, 200, 100, 300],
+            data: { url: url || './live.html' },
+            tag: 'harsh-live-' + Date.now(),
+            renotify: true
+        };
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then(reg => {
+                return reg.showNotification(title || 'Harsh Live Update 💌', options);
+            }).catch(() => {
+                try { new Notification(title || 'Harsh Live Update 💌', options); } catch(e) {}
+            });
+        } else {
+            try { new Notification(title || 'Harsh Live Update 💌', options); } catch(e) {}
+        }
+    }
+
+    // Realtime SSE / WebSocket Listener for Instant Delivery
+    function initRealtimeStream() {
+        try {
+            // First fetch latest messages from ntfy topic cache
+            fetch(NTFY_BASE + '/json?poll=1&since=24h')
+                .then(res => res.text())
+                .then(text => {
+                    const lines = text.trim().split('\n');
+                    let newAdded = false;
+                    lines.forEach(line => {
+                        if (!line) return;
+                        try {
+                            const data = JSON.parse(line);
+                            if (data.event === 'message' && data.message) {
+                                ingestRemoteMessage(data);
+                                newAdded = true;
+                            }
+                        } catch (err) {}
+                    });
+                    if (newAdded) {
+                        saveStoredPosts(cachedPosts);
                         renderFeed();
                     }
                 })
@@ -225,13 +271,8 @@
                             showToast(`🔔 New Live Update: ${newPost.title || 'Harsh ka message'}`);
                             if (window.triggerHeartbeat) window.triggerHeartbeat();
 
-                            // In-browser notification if allowed
-                            if (Notification.permission === 'granted' && document.hidden) {
-                                new Notification(newPost.title || 'Harsh Live Update 💌', {
-                                    body: newPost.message,
-                                    icon: './assets/images/icon-192.png'
-                                });
-                            }
+                            // Fire system notification for mobile / desktop
+                            triggerSystemNotification(newPost.title || 'Harsh Live Update 💌', newPost.message, './live.html');
                         }
                     }
                 } catch (e) {
@@ -303,23 +344,26 @@
                     btn.classList.add('enabled');
                     btn.innerHTML = '✓ Notifications Active 🔔';
                 }
-                showToast('🎉 Notifications enabled! You will get instant alerts.');
+                showToast('🎉 Notifications enabled! Testing alert on your phone...');
 
-                // Trigger sample notification test
-                if (navigator.serviceWorker && navigator.serviceWorker.ready) {
-                    const reg = await navigator.serviceWorker.ready;
-                    reg.showNotification('Harsh Updates Active 💖', {
-                        body: 'Aapko ab Harsh ke sabhi updates turant phone pe milenge!',
-                        icon: './assets/images/icon-192.png',
-                        badge: './assets/images/icon-192.png'
-                    });
-                }
+                // Trigger instant test notification on mobile phone / desktop
+                triggerSystemNotification('Harsh Updates Active 💖', 'Aapko ab Harsh ke sabhi updates turant phone pe milenge! ✨', './live.html');
             } else {
                 showToast('⚠️ Notification permission denied. Please allow in browser settings.');
             }
         } catch (err) {
             console.error('Notification error', err);
             showToast('Could not enable notifications: ' + err.message);
+        }
+    };
+
+    // Test Notification button
+    window.testPushNotification = function () {
+        if (Notification.permission !== 'granted') {
+            window.enablePushNotifications();
+        } else {
+            triggerSystemNotification('🔔 Test Notification 💖', 'Notifications perfectly working! Naya update aane par aisi notification aayegi.', './live.html');
+            showToast('Test notification pushed to your screen! 🔔');
         }
     };
 
