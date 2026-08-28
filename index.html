@@ -64,11 +64,47 @@
             <h1 class="hero-title">Only For You 💖</h1>
             <p class="subtitle">Log kehte hain move on kar lo… par tujhe bhoolna mere bas me hi nahi hai. Main kal bhi tera tha, aaj bhi tera hoon, aur hamesha tera hi rahunga. 💕</p>
 
+            <!-- LIVE MOOD RING WIDGET -->
+            <div class="mood-ring-container">
+                <div class="mood-pill-card" onclick="openMoodSelector('harsh')" title="Tap to update Harsh's vibe">
+                    <span style="font-size: 22px;">🎧</span>
+                    <div class="mood-tag-meta">
+                        <div class="mood-person-name">Harsh's Vibe</div>
+                        <div class="mood-vibe-value" id="harshVibeText">Loading…</div>
+                    </div>
+                    <span style="font-size: 10px; color: rgba(255,255,255,0.4);" id="harshVibeTime">⚡</span>
+                </div>
+
+                <div class="mood-pill-card" onclick="openMoodSelector('aradhya')" title="Tap to update Aradhya's vibe">
+                    <span style="font-size: 22px;">🌸</span>
+                    <div class="mood-tag-meta">
+                        <div class="mood-person-name">Aradhya's Vibe</div>
+                        <div class="mood-vibe-value" id="aradhyaVibeText">Loading…</div>
+                    </div>
+                    <span style="font-size: 10px; color: rgba(255,255,255,0.4);" id="aradhyaVibeTime">⚡</span>
+                </div>
+            </div>
+
+            <!-- DIGITAL TOUCH HEART -->
+            <div style="margin-bottom: 25px;">
+                <button onclick="sendHeartbeatTouch()" class="glow-btn" style="padding: 10px 24px; font-size: 14px; background: linear-gradient(135deg, #ff4b91, #7f00ff); border-radius: 50px; display: inline-flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 18px; animation: livePulse 1.2s infinite alternate;">💓</span> Send Digital Touch (Feel My Heart)
+                </button>
+            </div>
+
             <div class="nav-grid">
                 <a href="live.html" class="nav-item" id="navLive" style="border-color: #ff4b91; box-shadow: 0 0 30px rgba(255,75,145,0.45); background: linear-gradient(135deg, rgba(255,75,145,0.15), rgba(127,0,255,0.15)); position: relative;">
                     <span style="position: absolute; top: -8px; right: 8px; background: #00ff88; color: #080012; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 10px; box-shadow: 0 0 8px #00ff88;">LIVE ⚡</span>
                     <span class="nav-icon">📡</span>
                     <span class="nav-label">Live Updates</span>
+                </a>
+                <a href="cookie.html" class="nav-item" id="navCookie" style="border-color: rgba(255,180,100,0.6); box-shadow: 0 0 25px rgba(255,180,100,0.3);">
+                    <span class="nav-icon">🥠</span>
+                    <span class="nav-label">Daily Cookie</span>
+                </a>
+                <a href="voicenotes.html" class="nav-item" id="navVoiceNotes" style="border-color: rgba(0,210,255,0.6); box-shadow: 0 0 25px rgba(0,210,255,0.3);">
+                    <span class="nav-icon">🎙️</span>
+                    <span class="nav-label">Voice Notes</span>
                 </a>
                 <a href="openwhen.html" class="nav-item" id="navOpenWhen" style="border-color: rgba(255,75,145,0.6); box-shadow: 0 0 25px rgba(255,75,145,0.3);">
                     <span class="nav-icon">💌</span>
@@ -308,6 +344,20 @@ Hamesha.
     </div>
 </div>
 
+<!-- MOOD SELECTOR MODAL -->
+<div class="modal-overlay" id="moodSelectorModal">
+    <div class="modal-card" style="max-width: 440px; text-align: center;">
+        <button class="modal-close" onclick="closeMoodModal()">✕</button>
+        <h2 id="moodModalTitle" style="font-size: 20px; color: #fff; margin-bottom: 8px;">Update Current Vibe ✨</h2>
+        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+            Choose what you're doing or feeling right now. Syncs in real time with push alert!
+        </p>
+        <div id="moodModalOptions" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Rendered by js/mood-sync.js -->
+        </div>
+    </div>
+</div>
+
 </div> <!-- END mainAppContainer -->
 
 <script src="js/nav.js"></script>
@@ -315,6 +365,8 @@ Hamesha.
 <script src="js/heartbeat.js"></script>
 <script src="js/stars.js"></script>
 <script src="js/music.js"></script>
+<script src="js/touch-heart.js"></script>
+<script src="js/mood-sync.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

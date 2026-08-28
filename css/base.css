@@ -501,3 +501,111 @@ body {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+
+/* ==========================================
+   TOUCH MY HEART DIGITAL TOUCH OVERLAY
+   ========================================== */
+
+#digitalTouchOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    background: radial-gradient(circle, rgba(255, 75, 145, 0.45) 0%, rgba(8, 0, 18, 0.95) 75%);
+    backdrop-filter: blur(15px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+#digitalTouchOverlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.huge-pulse-heart {
+    font-size: 110px;
+    animation: digitalHeartThump 0.7s infinite alternate ease-in-out;
+    filter: drop-shadow(0 0 40px #ff4b91);
+}
+
+@keyframes digitalHeartThump {
+    0% { transform: scale(0.9); }
+    100% { transform: scale(1.35); filter: drop-shadow(0 0 70px #ff4b91); }
+}
+
+.pulse-sender-text {
+    font-size: 20px;
+    color: #fff;
+    font-family: var(--font-accent);
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+/* MOOD RING WIDGET */
+.mood-ring-container {
+    width: 100%;
+    margin-bottom: 22px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mood-pill-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    min-width: 170px;
+    justify-content: space-between;
+}
+
+.mood-pill-card:hover {
+    background: rgba(255, 75, 145, 0.2);
+    border-color: var(--pink-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 75, 145, 0.35);
+}
+
+.mood-tag-meta {
+    text-align: left;
+}
+
+.mood-person-name {
+    font-size: 11px;
+    color: #ff99ac;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.mood-vibe-value {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.mood-choice-pill {
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.mood-choice-pill:hover {
+    background: linear-gradient(135deg, #ff4b91, #7f00ff);
+    transform: scale(1.05);
+}
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Daily Love Cookie 🥠 | For Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A fresh love fortune and sweet affirmation for Aradhya every single morning.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/cookie.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="cookie-card">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🥠 DAILY SECRET FORTUNE
+        </span>
+        <h1 class="page-title" style="font-size: 32px; margin-top: 10px; margin-bottom: 6px;">Daily Love Cookie 💕</h1>
+        <p style="color: var(--text-secondary); font-size: 14px;">
+            Har subah 12:00 AM par ek naya secret message aapke liye unlock hota hai. Tap to crack the cookie!
+        </p>
+
+        <div class="cookie-visual-box" onclick="crackCookie()">
+            <div class="cookie-emoji-main" id="cookieEmoji">🥠</div>
+            <p class="cookie-hint" id="cookieHint">Tap to crack open today's message ✨</p>
+        </div>
+
+        <div class="scroll-message-box" id="scrollBox">
+            <div class="scroll-message-text" id="cookieMessage"></div>
+        </div>
+
+        <div class="countdown-box" id="countdownBox" style="display: none;">
+            <span>⏳ Next cookie unlocks in:</span>
+            <strong id="countdownTimer" style="color: #ffd180;">--:--:--</strong>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/cookie.js"></script>
+
+</body>
+</html>

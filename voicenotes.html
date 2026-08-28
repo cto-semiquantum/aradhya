@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voice Notes Vault 🎙️ | For Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Harsh's personal audio letters and voice notes recorded with love.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/voicenotes.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="voicenotes-card">
+        <span class="badge-pill" style="border-color: #00d2ff; color: #00d2ff; background: rgba(0,210,255,0.15);">
+            🎙️ AUDIO LETTERS VAULT
+        </span>
+        <h1 class="page-title" style="font-size: 32px; margin-top: 10px; margin-bottom: 6px;">Voice Notes 🎧</h1>
+        <p style="color: var(--text-secondary); font-size: 14px;">
+            Kuch baatein jo sirf text me nahi, balki dil ki awaz me kehni thi… Play any note below.
+        </p>
+
+        <!-- CASSETTE PLAYER BOX -->
+        <div class="cassette-player-box">
+            <div class="tape-reels">
+                <div class="tape-spool">
+                    <div class="tape-spool-center"></div>
+                </div>
+                <div style="color: #ff4b91; font-weight: 700; font-size: 13px; letter-spacing: 2px;">STEREO LOVE</div>
+                <div class="tape-spool">
+                    <div class="tape-spool-center"></div>
+                </div>
+            </div>
+
+            <!-- Waveform Animation -->
+            <div class="waveform-box">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+        </div>
+
+        <audio id="voicePlayerAudio" preload="auto"></audio>
+
+        <!-- NOTES LIST -->
+        <div class="notes-list" id="notesList">
+            <!-- Rendered by JS -->
+        </div>
+
+        <!-- TRANSCRIPT BOX -->
+        <div class="transcript-box" id="noteTranscript" style="display: none;"></div>
+
+        <div style="margin-top: 25px;">
+            <a href="index.html" class="back-link">← Back Home</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/voicenotes.js"></script>
+
+</body>
+</html>

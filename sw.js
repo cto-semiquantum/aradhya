@@ -1,10 +1,12 @@
 /* Service Worker for Aradhya Valentine PWA App */
-const CACHE_NAME = 'aradhya-love-cache-v17';
+const CACHE_NAME = 'aradhya-love-cache-v18';
 const urlsToCache = [
   './',
   './index.html',
   './live.html',
   './herdiary.html',
+  './cookie.html',
+  './voicenotes.html',
   './openwhen.html',
   './littlethings.html',
   './chapter.html',
@@ -24,6 +26,8 @@ const urlsToCache = [
   './css/base.css',
   './css/live.css',
   './css/herdiary.css',
+  './css/cookie.css',
+  './css/voicenotes.css',
   './css/openwhen.css',
   './css/littlethings.css',
   './css/chapter.css',
@@ -40,6 +44,10 @@ const urlsToCache = [
   './js/nav.js',
   './js/live.js',
   './js/herdiary.js',
+  './js/cookie.js',
+  './js/voicenotes.js',
+  './js/touch-heart.js',
+  './js/mood-sync.js',
   './js/openwhen.js',
   './js/chapter.js',
   './js/recap.js',
