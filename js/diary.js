@@ -141,8 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Cloud Sync initialization & realtime streaming
-    function initCloudSync() {
-        // Fetch past cloud entries
+    function fetchDiaryHistory() {
         fetch(CLOUD_URL + "/json?poll=1&since=all")
             .then(res => res.text())
             .then(text => {
@@ -174,6 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(err => console.log("Cloud diary notice", err));
+    }
+
+    function initCloudSync() {
+        fetchDiaryHistory();
+        setInterval(fetchDiaryHistory, 4000);
 
         // Realtime SSE listener
         try {

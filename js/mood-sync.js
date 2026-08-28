@@ -134,9 +134,8 @@
         if (window.triggerHeartbeat) window.triggerHeartbeat();
     };
 
-    // Realtime Stream
-    function initMoodStream() {
-        fetch(NTFY_URL + "/json?poll=1&since=24h")
+    function fetchMoodHistory() {
+        fetch(NTFY_URL + "/json?poll=1&since=all")
             .then(res => res.text())
             .then(text => {
                 const lines = text.trim().split("\n");
@@ -159,6 +158,12 @@
                 renderMoodWidget();
             })
             .catch(err => console.log("Mood sync notice", err));
+    }
+
+    // Realtime Stream
+    function initMoodStream() {
+        fetchMoodHistory();
+        setInterval(fetchMoodHistory, 4000);
 
         try {
             const es = new EventSource(NTFY_URL + "/sse");

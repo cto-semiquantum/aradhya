@@ -9,35 +9,9 @@
     const STORAGE_KEY = 'harsh_live_posts_v1';
     const ADMIN_AUTH_KEY = 'harsh_admin_live_auth';
 
-    // Default Seed Posts if fresh start
-    const DEFAULT_POSTS = [
-        {
-            id: 'post-1',
-            title: 'Hamesha Tumhare Saath ❤️',
-            message: 'Ye special live channel maine banaya hai taaki main jab bhi kuch feel karun ya mere sath kuch ho, main turant yahan post kar sakun aur tumhare phone pe direct notification aaye! 💕',
-            mood: '💖 Special Update',
-            time: '2026-08-28T09:00:00.000Z',
-            sender: 'Harsh',
-            avatar: 'assets/images/her1.jpeg',
-            likes: 12,
-            hugs: 8
-        },
-        {
-            id: 'post-2',
-            title: 'Bas Tumhari Yaad Aa Rahi Thi 🥺',
-            message: 'Chahe kitne bhi din beet jayein, ek din bhi aisa nahi jata jab tumhara khayal dil me na aaye. Take care of yourself always! ✨',
-            mood: '🥺 Missing You',
-            time: '2026-08-27T21:30:00.000Z',
-            sender: 'Harsh',
-            avatar: 'assets/images/her1.jpeg',
-            likes: 24,
-            hugs: 15
-        }
-    ];
-
     let cachedPosts = [];
 
-    // Initialize Local Storage
+    // Local Storage Helpers
     function getStoredPosts() {
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
@@ -50,7 +24,7 @@
         } catch (e) {
             console.error(e);
         }
-        return [...DEFAULT_POSTS];
+        return [];
     }
 
     function saveStoredPosts(posts) {
@@ -91,8 +65,8 @@
             feedContainer.innerHTML = `
                 <div class="empty-feed">
                     <div class="empty-feed-icon">📡</div>
-                    <h3>No updates yet</h3>
-                    <p>Whenever Harsh posts something, it will appear here in real time!</p>
+                    <h3>Waiting for updates…</h3>
+                    <p>Harsh jab bhi kuch post karega, yahan turant real-time me dikhega!</p>
                 </div>
             `;
             return;
@@ -175,7 +149,6 @@
 
     function linkifyAndEscape(text) {
         const escaped = escapeHtml(text);
-        // Turn urls into clickable links
         return escaped.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color: #00d2ff; text-decoration: underline;">$1</a>');
     }
 
@@ -193,7 +166,7 @@
         }
     };
 
-    // Toast Notification in-app
+    // In-App Toast
     function showToast(msg) {
         let toast = document.getElementById('liveToast');
         if (!toast) {
@@ -209,28 +182,7 @@
         }, 3200);
     }
 
-    // Realtime SSE / WebSocket Listener for Instant Delivery
-    function initRealtimeStream() {
-        try {
-            // First fetch latest messages from ntfy topic cache
-            fetch(NTFY_BASE + '/json?poll=1&since=24h')
-                .then(res => res.text())
-                .then(text => {
-                    const lines = text.trim().split('\n');
-                    let newAdded = false;
-                    lines.forEach(line => {
-                        if (!line) return;
-                        try {
-                            const data = JSON.parse(line);
-                            if (data.event === 'message' && data.message) {
-                                ingestRemoteMessage(data);
-                                newAdded = true;
-                            }
-                        } catch (err) {}
-                    });
-                    if (newAdded) {
-                        saveStoredPosts(cachedPosts);
-    // Mobile & Desktop Compatible System Notification Helper
+    // Mobile & Desktop System Notification Helper
     function triggerSystemNotification(title, body, url) {
         if (!('Notification' in window) || Notification.permission !== 'granted') return;
 
@@ -255,71 +207,15 @@
         }
     }
 
-    // Realtime SSE / WebSocket Listener for Instant Delivery
-    function initRealtimeStream() {
-        try {
-            // First fetch latest messages from ntfy topic cache
-            fetch(NTFY_BASE + '/json?poll=1&since=24h')
-                .then(res => res.text())
-                .then(text => {
-                    const lines = text.trim().split('\n');
-                    let newAdded = false;
-                    lines.forEach(line => {
-                        if (!line) return;
-                        try {
-                            const data = JSON.parse(line);
-                            if (data.event === 'message' && data.message) {
-                                ingestRemoteMessage(data);
-                                newAdded = true;
-                            }
-                        } catch (err) {}
-                    });
-                    if (newAdded) {
-                        saveStoredPosts(cachedPosts);
-                        renderFeed();
-                    }
-                })
-                .catch(err => console.log('NTFY poll notice:', err));
-
-            // Start SSE live event listener
-            const eventSource = new EventSource(NTFY_BASE + '/sse');
-            eventSource.onmessage = function (event) {
-                try {
-                    const data = JSON.parse(event.data);
-                    if (data.event === 'message') {
-                        const newPost = ingestRemoteMessage(data);
-                        if (newPost) {
-                            saveStoredPosts(cachedPosts);
-                            renderFeed();
-                            showToast(`🔔 New Live Update: ${newPost.title || 'Harsh ka message'}`);
-                            if (window.triggerHeartbeat) window.triggerHeartbeat();
-
-                            // Fire system notification for mobile / desktop
-                            triggerSystemNotification(newPost.title || 'Harsh Live Update 💌', newPost.message, './live.html');
-                        }
-                    }
-                } catch (e) {
-                    console.error('SSE parse error', e);
-                }
-            };
-
-            eventSource.onerror = function () {
-                // Reconnection is automatically managed by EventSource
-            };
-        } catch (e) {
-            console.error('Live stream init error', e);
-        }
-    }
-
+    // Parse remote message from NTFY
     function ingestRemoteMessage(data) {
-        const id = 'ntfy-' + data.id;
+        const id = 'ntfy-' + (data.id || Date.now());
         const exists = cachedPosts.find(p => p.id === id);
         if (exists) return null;
 
-        // Parse custom payload if structured
         let parsedTitle = data.title || 'Live Update ❤️';
         let parsedMessage = data.message || '';
-        let parsedMood = '💭 Update';
+        let parsedMood = '💖 Dil Ki Baat';
         let parsedImage = '';
 
         if (data.tags && data.tags.length > 0) {
@@ -339,7 +235,7 @@
             title: parsedTitle,
             message: parsedMessage,
             mood: parsedMood,
-            time: new Date(data.time * 1000).toISOString(),
+            time: new Date((data.time ? data.time * 1000 : Date.now())).toISOString(),
             sender: 'Harsh',
             avatar: 'assets/images/her1.jpeg',
             image: parsedImage,
@@ -349,6 +245,66 @@
 
         cachedPosts.unshift(newPost);
         return newPost;
+    }
+
+    // Poll NTFY cache
+    function fetchTopicHistory() {
+        fetch(NTFY_BASE + '/json?poll=1&since=all')
+            .then(res => res.text())
+            .then(text => {
+                const lines = text.trim().split('\n');
+                let newAdded = false;
+                lines.forEach(line => {
+                    if (!line) return;
+                    try {
+                        const data = JSON.parse(line);
+                        if (data.event === 'message' && data.message) {
+                            const post = ingestRemoteMessage(data);
+                            if (post) newAdded = true;
+                        }
+                    } catch (err) {}
+                });
+                if (newAdded) {
+                    saveStoredPosts(cachedPosts);
+                    renderFeed();
+                }
+            })
+            .catch(err => console.log('NTFY poll error:', err));
+    }
+
+    // Realtime Stream Init
+    function initRealtimeStream() {
+        // Initial fetch
+        fetchTopicHistory();
+
+        // Fallback polling every 4 seconds to guarantee sync across phones
+        setInterval(fetchTopicHistory, 4000);
+
+        // SSE Realtime stream
+        try {
+            const eventSource = new EventSource(NTFY_BASE + '/sse');
+            eventSource.onmessage = function (event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.event === 'message' && data.message) {
+                        const newPost = ingestRemoteMessage(data);
+                        if (newPost) {
+                            saveStoredPosts(cachedPosts);
+                            renderFeed();
+                            showToast(`🔔 New Live Update: ${newPost.title || 'Harsh ka message'}`);
+                            if (window.triggerHeartbeat) window.triggerHeartbeat();
+                            triggerSystemNotification(newPost.title || 'Harsh Live Update 💌', newPost.message, './live.html');
+                        }
+                    }
+                } catch (e) {
+                    console.error('SSE parse error', e);
+                }
+            };
+
+            eventSource.onerror = function () {};
+        } catch (e) {
+            console.error('Live stream init error', e);
+        }
     }
 
     // Push Notification Permission Handler
@@ -368,8 +324,6 @@
                     btn.innerHTML = '✓ Notifications Active 🔔';
                 }
                 showToast('🎉 Notifications enabled! Testing alert on your phone...');
-
-                // Trigger instant test notification on mobile phone / desktop
                 triggerSystemNotification('Harsh Updates Active 💖', 'Aapko ab Harsh ke sabhi updates turant phone pe milenge! ✨', './live.html');
             } else {
                 showToast('⚠️ Notification permission denied. Please allow in browser settings.');
@@ -380,7 +334,7 @@
         }
     };
 
-    // Test Notification button
+    // Test Alert
     window.testPushNotification = function () {
         if (Notification.permission !== 'granted') {
             window.enablePushNotifications();
@@ -390,7 +344,6 @@
         }
     };
 
-    // Check existing notification state on page load
     function checkNotificationStatus() {
         const btn = document.getElementById('enableNotifyBtn');
         if (!btn) return;
@@ -400,7 +353,7 @@
         }
     }
 
-    // Admin Modal Logic
+    // Admin Broadcast Form
     window.openAdminBroadcastModal = function () {
         const isAuthenticated = sessionStorage.getItem(ADMIN_AUTH_KEY) === 'true';
         if (isAuthenticated) {
@@ -441,7 +394,7 @@
 
         const title = titleInput ? titleInput.value.trim() : '';
         const message = messageInput ? messageInput.value.trim() : '';
-        const mood = moodSelect ? moodSelect.value : '💭 Update';
+        const mood = moodSelect ? moodSelect.value : '💖 Dil Ki Baat';
         const image = imageInput ? imageInput.value.trim() : '';
 
         if (!message) {
@@ -475,12 +428,12 @@
             hugs: 1
         };
 
-        // 1. Post to NTFY Topic (Triggers Web Push & SSE to all active devices)
+        // 1. Post to NTFY Topic (Sends to all devices subscribed & cached)
         try {
             const headers = {
                 'Title': postData.title,
                 'Priority': 'urgent',
-                'Tags': tagMap[mood] || 'heart',
+                'Tags': tagMap[mood] || 'heart,sparkles',
                 'Click': window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'live.html'
             };
             if (image) {
@@ -507,7 +460,7 @@
         if (imageInput) imageInput.value = '';
         if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Send Push Notification 🚀';
+            submitBtn.innerHTML = 'Send Push Notification to All Devices 🚀';
         }
 
         window.closeAdminModal();
@@ -521,7 +474,6 @@
         checkNotificationStatus();
         initRealtimeStream();
 
-        // Close modal on click outside
         const modal = document.getElementById('adminBroadcastModal');
         if (modal) {
             modal.addEventListener('click', (e) => {

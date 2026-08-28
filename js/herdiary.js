@@ -186,8 +186,7 @@
     };
 
     // Cloud Sync & Realtime Stream
-    function initCloudSync() {
-        // Fetch past cloud entries
+    function fetchHerEntries() {
         fetch(CLOUD_URL + "/json?poll=1&since=all")
             .then(res => res.text())
             .then(text => {
@@ -217,6 +216,11 @@
                 }
             })
             .catch(err => console.log("Her diary sync notice", err));
+    }
+
+    function initCloudSync() {
+        fetchHerEntries();
+        setInterval(fetchHerEntries, 4000);
 
         // Realtime SSE listener
         try {
