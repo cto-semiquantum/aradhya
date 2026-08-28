@@ -137,6 +137,9 @@
                             <button class="reaction-pill" onclick="window.addReaction('${item.id}', 'hugs', this)">
                                 🫂 <span class="react-count">${item.hugs || 0}</span>
                             </button>
+                            <button class="reaction-pill" onclick="window.deleteLivePost('${item.id}')" title="Delete Update" style="color: rgba(255,100,100,0.7); font-size: 11px; padding: 4px 8px;">
+                                🗑️
+                            </button>
                         </div>
                         <span style="font-size: 11px; color: rgba(255,255,255,0.4);">Live Broadcast ⚡</span>
                     </div>
@@ -144,6 +147,26 @@
             `;
         }).join('');
     }
+
+    // Admin Delete Post
+    window.deleteLivePost = function (postId) {
+        const isAdmin = sessionStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+        if (!isAdmin) {
+            const code = prompt("Enter Admin Passcode to Delete Update (0411):");
+            if (code !== "0411" && code !== "411") {
+                alert("❌ Incorrect passcode!");
+                return;
+            }
+            sessionStorage.setItem(ADMIN_AUTH_KEY, 'true');
+        }
+
+        if (confirm("Kya aap sach me ye live update delete karna chahte hain?")) {
+            cachedPosts = cachedPosts.filter(p => p.id !== postId);
+            saveStoredPosts(cachedPosts);
+            renderFeed();
+            showToast("Update delete ho gaya 🗑️");
+        }
+    };
 
     function escapeHtml(str) {
         if (!str) return '';
