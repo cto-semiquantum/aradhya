@@ -12,6 +12,7 @@ window.addEventListener("load", function () {
             setTimeout(() => {
                 entry.style.display = "none";
                 if (mainContent) mainContent.classList.add("visible");
+                checkWhatsNewModal();
             }, 1000);
         });
     }
@@ -219,15 +220,12 @@ function updateCounter() {
 }
 
 
-/* ==========================================
-   CLOSE MODALS (OVERLAY CLICK + ESC)
-   ========================================== */
-
 window.addEventListener("click", function (e) {
-    const modals = ["letterModal", "surpriseModal", "counterModal"];
+    const modals = ["letterModal", "surpriseModal", "counterModal", "whatsNewModal"];
     modals.forEach(id => {
         const modal = document.getElementById(id);
         if (modal && e.target === modal) {
+            if (id === "whatsNewModal") localStorage.setItem('aradhya_whats_new_seen_v1', 'true');
             modal.classList.remove("active");
         }
     });
@@ -235,10 +233,45 @@ window.addEventListener("click", function (e) {
 
 document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-        const modals = ["letterModal", "surpriseModal", "counterModal"];
+        const modals = ["letterModal", "surpriseModal", "counterModal", "whatsNewModal"];
         modals.forEach(id => {
             const modal = document.getElementById(id);
-            if (modal) modal.classList.remove("active");
+            if (modal) {
+                if (id === "whatsNewModal") localStorage.setItem('aradhya_whats_new_seen_v1', 'true');
+                modal.classList.remove("active");
+            }
         });
     }
 });
+
+/* ==========================================
+   ONE-TIME WHAT'S NEW FEATURE MODAL
+   ========================================== */
+
+function checkWhatsNewModal() {
+    const hasSeen = localStorage.getItem('aradhya_whats_new_seen_v1');
+    if (!hasSeen) {
+        setTimeout(() => {
+            const modal = document.getElementById('whatsNewModal');
+            if (modal) {
+                modal.classList.add('active');
+                if (window.triggerHeartbeat) window.triggerHeartbeat();
+            }
+        }, 1200);
+    }
+}
+
+window.closeWhatsNewModal = function () {
+    localStorage.setItem('aradhya_whats_new_seen_v1', 'true');
+    const modal = document.getElementById('whatsNewModal');
+    if (modal) modal.classList.remove('active');
+};
+
+// Check when page loads or becomes visible
+window.addEventListener("DOMContentLoaded", () => {
+    const mainContent = document.getElementById("mainContent");
+    if (mainContent && (mainContent.classList.contains("visible") || mainContent.style.display !== "none")) {
+        checkWhatsNewModal();
+    }
+});
+

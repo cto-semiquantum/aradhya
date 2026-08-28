@@ -11,19 +11,7 @@
     let selectedMood = "🌸 Happy";
     let cachedEntries = [];
 
-    const DEFAULT_ENTRIES = [
-        {
-            id: "her-seed-1",
-            title: "Meri Apni Diary 🌸",
-            text: "Harsh, ye jagah mere liye kitni special hai! Yahan main jab bhi jo chahun likh sakti hoon aur jaise hi save karungi, tumhe turant notification mil jayega 💕",
-            mood: "🌸 Happy",
-            date: "2026-08-28T09:15:00.000Z",
-            author: "Aradhya",
-            avatar: "assets/images/her1.jpeg",
-            likes: 18,
-            hugs: 12
-        }
-    ];
+    const DEFAULT_ENTRIES = [];
 
     // Local Storage Helpers
     function getStoredEntries() {
@@ -31,12 +19,12 @@
             const raw = localStorage.getItem(STORAGE_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) {
+                if (Array.isArray(parsed)) {
                     return parsed;
                 }
             }
         } catch(e) {}
-        return [...DEFAULT_ENTRIES];
+        return [];
     }
 
     function saveStoredEntries(entries) {
