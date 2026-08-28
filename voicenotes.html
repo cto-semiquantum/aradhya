@@ -55,6 +55,12 @@
             </div>
         </div>
 
+        <div style="margin: 20px 0; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <button onclick="openRecorderModal()" class="glow-btn" style="padding: 10px 24px; font-size: 14px; background: linear-gradient(135deg, #00d2ff, #7f00ff); border-radius: 50px;">
+                🎙️ Record Voice Note (Harsh)
+            </button>
+        </div>
+
         <audio id="voicePlayerAudio" preload="auto"></audio>
 
         <!-- NOTES LIST -->
@@ -70,6 +76,54 @@
         </div>
     </div>
 
+</div>
+
+<!-- HARSH RECORDER MODAL -->
+<div class="admin-modal-overlay" id="recorderModal">
+    <div class="admin-modal-box">
+        <button class="modal-close-btn" onclick="closeRecorderModal()">✕</button>
+        <h2 style="font-size: 22px; color: #fff; margin-bottom: 6px;">🎙️ Record Audio Letter</h2>
+        <p style="font-size: 13px; color: #00d2ff; margin-bottom: 20px;">
+            Apne phone ke mic se directly record karein aur Aradhya ke liye publish karein!
+        </p>
+
+        <div class="recorder-box">
+            <button id="recordMicBtn" class="record-btn-main" onclick="toggleRecordAudio()">
+                ● Record
+            </button>
+            <div class="timer-display" id="recordTimer">00:00</div>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.6);">
+                Tap "● Record" to start speaking, then "■ Stop" when finished.
+            </p>
+
+            <div class="audio-preview-box" id="recordPreviewBox" style="display: none;">
+                <p style="font-size: 12px; color: #00ff88; margin-bottom: 6px;">✓ Recording Ready (Preview):</p>
+                <audio id="previewAudioEl" controls></audio>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 12px 0; font-size: 12px; color: rgba(255,255,255,0.4);">
+            — YA AUDIO FILE UPLOAD KAREIN —
+        </div>
+
+        <input type="file" accept="audio/*" onchange="handleAudioFileUpload(event)" class="form-input" style="font-size: 12px; padding: 8px;">
+
+        <form onsubmit="saveAndPublishVoiceNote(event)" style="margin-top: 15px;">
+            <div class="form-group">
+                <label class="form-label">Voice Note Title</label>
+                <input type="text" id="voiceNoteTitle" class="form-input" placeholder="e.g. Late Night for Aradhya 🌙" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Transcript / Dil Ki Baat (Optional)</label>
+                <textarea id="voiceNoteTranscript" class="form-textarea" placeholder="Jo bola hai uski 2-3 lines yahan likh sakte hain taaki wo padh bhi sake..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-broadcast-btn" id="saveVoiceBtn" style="background: linear-gradient(135deg, #00d2ff, #7f00ff);">
+                Send Voice Note to Aradhya 🚀
+            </button>
+        </form>
+    </div>
 </div>
 
 <script src="js/particles.js"></script>
