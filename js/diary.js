@@ -49,11 +49,17 @@ document.addEventListener("DOMContentLoaded", function () {
     renderEntries();
 
 
+    const CLOUD_TOPIC = "harsh_diary_cloud_sync_411";
+    const CLOUD_URL = "https://ntfy.sh/" + CLOUD_TOPIC;
+
+    // Load cloud entries on start
+    initCloudSync();
+
     // ==========================================
-    //  SAVE ENTRY
+    //  SAVE ENTRY WITH REALTIME CLOUD SYNC & PUSH
     // ==========================================
 
-    window.saveEntry = function () {
+    window.saveEntry = async function () {
         const titleEl = document.getElementById("diaryTitle");
         const textEl = document.getElementById("diaryText");
         const saveBtn = document.getElementById("saveBtn");
@@ -66,19 +72,49 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        if (saveBtn) {
+            saveBtn.disabled = true;
+            saveBtn.textContent = "Syncing & Pushing... 🚀";
+        }
+
+        const days = calculateDays(LAST_TALK_DATE);
         const entry = {
             id: Date.now(),
             date: new Date().toISOString(),
             title: title || "Untitled",
             text: text,
             mood: selectedMood || "thoughtful",
-            daysSince: calculateDays(LAST_TALK_DATE)
+            daysSince: days
         };
 
-        // Save to localStorage
+        // 1. Save to localStorage
         const entries = getEntries();
         entries.unshift(entry); // newest first
         localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+
+        // 2. Broadcast to Cloud & Push Notification to All Devices
+        try {
+            const moodMap = {
+                love: "❤️", missing: "🥺", sad: "😢", happy: "😊", strong: "💪", thoughtful: "💭", peaceful: "🌙", angry: "😤"
+            };
+            const emoji = moodMap[entry.mood] || "📖";
+            const notificationTitle = `📖 Harsh Diary: ${entry.title}`;
+            const notificationBody = `${emoji} Day ${days} without you: ${text.slice(0, 100)}...`;
+
+            await fetch(CLOUD_URL, {
+                method: "POST",
+                body: JSON.stringify(entry),
+                headers: {
+                    "Title": notificationTitle,
+                    "Priority": "high",
+                    "Tags": "book,heart",
+                    "Click": window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'diary.html',
+                    "X-Diary-Payload": "true"
+                }
+            });
+        } catch (err) {
+            console.error("Cloud diary push error", err);
+        }
 
         // Clear form
         if (titleEl) titleEl.value = "";
@@ -91,17 +127,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Button feedback
         if (saveBtn) {
+            saveBtn.disabled = false;
             saveBtn.classList.add("saved");
-            saveBtn.textContent = "✅ Saved!";
+            saveBtn.textContent = "✅ Saved & Synced Online!";
             setTimeout(() => {
                 saveBtn.classList.remove("saved");
                 saveBtn.textContent = "💾 Save Entry";
-            }, 2000);
+            }, 2500);
         }
 
-        showToast("Entry save ho gaya 💖");
+        showToast("📖 Entry synced live across all phones! 💖");
         renderEntries();
     };
+
+    // Cloud Sync initialization & realtime streaming
+    function initCloudSync() {
+        // Fetch past cloud entries
+        fetch(CLOUD_URL + "/json?poll=1&since=all")
+            .then(res => res.text())
+            .then(text => {
+                const lines = text.trim().split("\n");
+                let hasNew = false;
+                const local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+                const localIds = new Set(local.map(e => String(e.id)));
+
+                lines.forEach(line => {
+                    if (!line) return;
+                    try {
+                        const data = JSON.parse(line);
+                        if (data.event === "message" && data.message) {
+                            let parsed = null;
+                            try { parsed = JSON.parse(data.message); } catch(e) {}
+                            if (parsed && parsed.id && !localIds.has(String(parsed.id))) {
+                                local.unshift(parsed);
+                                localIds.add(String(parsed.id));
+                                hasNew = true;
+                            }
+                        }
+                    } catch(e) {}
+                });
+
+                if (hasNew) {
+                    local.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(local));
+                    renderEntries();
+                }
+            })
+            .catch(err => console.log("Cloud diary notice", err));
+
+        // Realtime SSE listener
+        try {
+            const es = new EventSource(CLOUD_URL + "/sse");
+            es.onmessage = function (event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.event === "message" && data.message) {
+                        let parsed = null;
+                        try { parsed = JSON.parse(data.message); } catch(e) {}
+                        if (parsed && parsed.id) {
+                            const local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+                            if (!local.some(e => String(e.id) === String(parsed.id))) {
+                                local.unshift(parsed);
+                                local.sort((a, b) => new Date(b.date) - new Date(a.date));
+                                localStorage.setItem(STORAGE_KEY, JSON.stringify(local));
+                                renderEntries();
+                                showToast(`📖 Harsh ne nayi diary entry add ki: ${parsed.title || ''}`);
+                                if (window.triggerHeartbeat) window.triggerHeartbeat();
+                            }
+                        }
+                    }
+                } catch(e) {}
+            };
+        } catch(e) {}
+    }
 
 
     // ==========================================

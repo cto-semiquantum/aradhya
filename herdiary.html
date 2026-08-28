@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aradhya's Diary 🌸 | Only Her Words</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aradhya's personal diary — her thoughts, feelings, and messages synced live with Harsh.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/herdiary.css">
+<link rel="stylesheet" href="css/live.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="her-diary-wrapper">
+
+    <!-- HEADER -->
+    <div class="her-diary-header">
+        <div class="her-badge">
+            <span>🌸</span> ARADHYA'S PERSONAL JOURNAL
+        </div>
+        <h1 class="page-title" style="font-size: 32px; margin-bottom: 8px;">Aradhya's Diary 🌸</h1>
+        <p class="her-diary-sub">
+            Aradhya, yahan tum apne dil ki baat, yaadein ya jo bhi feel kar rahi ho likh sakti ho. Jaise hi save karogi, Harsh ke phone par turant notification pahunch jayega! 💕
+        </p>
+
+        <div style="margin-top: 15px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <a href="diary.html" class="reaction-pill" style="padding: 6px 16px; border-color: rgba(255,75,145,0.4); text-decoration: none;">
+                📖 Read Harsh's Diary
+            </a>
+            <a href="index.html" class="back-link" style="margin-top: 0;">← Back Home</a>
+        </div>
+    </div>
+
+    <!-- WRITE SECTION -->
+    <div class="her-write-card">
+        <div class="her-write-header">
+            <h2 class="her-write-title">✍️ Write in Diary</h2>
+            <span class="her-write-date" id="herTodayDate"></span>
+        </div>
+
+        <div class="her-mood-box">
+            <button class="her-mood-btn selected" data-mood="🌸 Happy">🌸 Happy</button>
+            <button class="her-mood-btn" data-mood="🥺 Missing Harsh">🥺 Missing Harsh</button>
+            <button class="her-mood-btn" data-mood="💭 Secret Thoughts">💭 Secret</button>
+            <button class="her-mood-btn" data-mood="💌 For Harsh Only">💌 For Harsh</button>
+            <button class="her-mood-btn" data-mood="🌙 Night Thoughts">🌙 Night</button>
+            <button class="her-mood-btn" data-mood="✨ Special Memory">✨ Special</button>
+        </div>
+
+        <input type="text" id="herTitle" class="her-input" placeholder="Give today's entry a title (e.g. Aaj ka din, Yaadein...)">
+        <textarea id="herText" class="her-input her-textarea" placeholder="Aradhya, aaj kaisa laga? Dil me jo bhi ho yahan likh do..."></textarea>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <button class="her-save-btn" id="herSaveBtn" onclick="saveHerEntry()">
+                Save & Send to Harsh 💖
+            </button>
+            <span style="font-size: 12px; color: rgba(255,255,255,0.5);">Realtime Cloud Synced ☁️</span>
+        </div>
+    </div>
+
+    <!-- ENTRIES LIST -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h2 style="font-size: 20px; color: #fff; font-weight: 600;">🌸 Aradhya's Pages</h2>
+        <span id="herEntryCount" style="font-size: 13px; color: #ff99c8;"></span>
+    </div>
+
+    <div class="her-entries-list" id="herEntriesList">
+        <!-- Rendered by JS -->
+    </div>
+
+    <div id="herEmptyState" class="empty-feed" style="display: none;">
+        <div class="empty-feed-icon">🌸</div>
+        <h3>No entries yet</h3>
+        <p>Aradhya jab pehli entry likhegi, wo yahan show hogi!</p>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/herdiary.js"></script>
+
+</body>
+</html>
