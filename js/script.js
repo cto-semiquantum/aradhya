@@ -249,7 +249,7 @@ document.addEventListener("keydown", function (e) {
    ========================================== */
 
 function checkWhatsNewModal() {
-    const hasSeen = localStorage.getItem('aradhya_whats_new_seen_v1');
+    const hasSeen = localStorage.getItem('aradhya_whats_new_seen_v2');
     if (!hasSeen) {
         setTimeout(() => {
             const modal = document.getElementById('whatsNewModal');
@@ -262,7 +262,7 @@ function checkWhatsNewModal() {
 }
 
 window.closeWhatsNewModal = function () {
-    localStorage.setItem('aradhya_whats_new_seen_v1', 'true');
+    localStorage.setItem('aradhya_whats_new_seen_v2', 'true');
     const modal = document.getElementById('whatsNewModal');
     if (modal) modal.classList.remove('active');
 };
