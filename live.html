@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Live Updates 📡 | For Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Instant real-time status and live updates from Harsh with push notifications.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/live.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <!-- HEADER / HERO STATUS CARD -->
+    <div class="live-header-card">
+        <div class="live-badge-row">
+            <div class="live-indicator">
+                <span class="pulse-dot-live"></span>
+                LIVE BROADCAST
+            </div>
+            <span style="font-size: 12px; color: rgba(255,255,255,0.6);">Realtime Push Channel</span>
+        </div>
+
+        <h1 class="page-title" style="font-size: 32px; margin-bottom: 8px;">Dil Ka Radio 📡</h1>
+        <p class="live-sub">
+            Mere sath jo bhi hota hai ya mere dil me jo bhi baat hoti hai, yahan turant aayegi. Push notifications on rakhein taaki koi update miss na ho! 💕
+        </p>
+
+        <!-- Push Notification Permission Box -->
+        <div class="notify-banner">
+            <div class="notify-banner-text">
+                <strong>🔔 Phone Notifications</strong>
+                Naya update aate hi lockscreen pe notification pane ke liye enable karein:
+            </div>
+            <button class="notify-btn" id="enableNotifyBtn" onclick="enablePushNotifications()">
+                <span>🔔</span> Enable Push Notifications
+            </button>
+        </div>
+
+        <div style="margin-top: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <a href="index.html" class="back-link" style="margin-top: 0;">← Back Home</a>
+            <button class="reaction-pill" onclick="openAdminBroadcastModal()" style="font-size: 13px; padding: 6px 16px; border-color: rgba(255,75,145,0.5);">
+                ✍️ Post Update (Harsh)
+            </button>
+        </div>
+    </div>
+
+    <!-- LIVE TIMELINE FEED -->
+    <section class="live-timeline" id="liveTimeline" aria-label="Live Broadcast Feed">
+        <!-- Rendered dynamically by live.js -->
+    </section>
+
+</div>
+
+<!-- FLOATING POST BUTTON -->
+<button class="floating-post-btn" onclick="openAdminBroadcastModal()" title="Post Live Update">
+    <span>✍️</span> Post Update
+</button>
+
+<!-- ADMIN BROADCAST MODAL -->
+<div class="admin-modal-overlay" id="adminBroadcastModal">
+    <div class="admin-modal-box">
+        <button class="modal-close-btn" onclick="closeAdminModal()">✕</button>
+        <h2 style="font-size: 22px; color: #fff; margin-bottom: 6px;">📢 Send Live Broadcast</h2>
+        <p style="font-size: 13px; color: #ff99ac; margin-bottom: 20px;">
+            Yahan se post karte hi sabhi subscribed phones par instant push notification jayega! 🚀
+        </p>
+
+        <form id="broadcastForm" onsubmit="sendLiveBroadcast(event)">
+            <div class="form-group">
+                <label class="form-label" for="postTitle">Update Title / Topic</label>
+                <input type="text" id="postTitle" class="form-input" placeholder="e.g. Aradhya suno na... ya Aaj ye hua!" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="postMood">Mood / Tag</label>
+                <select id="postMood" class="form-select">
+                    <option value="💖 Dil Ki Baat">💖 Dil Ki Baat</option>
+                    <option value="🥺 Missing You">🥺 Missing You</option>
+                    <option value="🌟 Big News">🌟 Big News</option>
+                    <option value="☕ Random Thought">☕ Random Thought</option>
+                    <option value="🚨 Urgent Update">🚨 Urgent Update</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="postMessage">Message / Story</label>
+                <textarea id="postMessage" class="form-textarea" placeholder="Apna message yahan likhein... jo bhi dil me ho." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="postImage">Photo URL (Optional)</label>
+                <input type="url" id="postImage" class="form-input" placeholder="https://... (optional image link)">
+            </div>
+
+            <button type="submit" class="submit-broadcast-btn" id="submitBroadcastBtn">
+                Send Push Notification to All Devices 🚀
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/heartbeat.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/live.js"></script>
+
+</body>
+</html>

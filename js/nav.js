@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const links = [
         { path: "index.html", label: "🏠 Home" },
+        { path: "live.html", label: "📡 Live Updates" },
         { path: "openwhen.html", label: "💌 Open When" },
         { path: "littlethings.html", label: "🎞️ Little Things" },
         { path: "chapter.html", label: "🏫 New Chapter" },
