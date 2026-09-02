@@ -1,5 +1,5 @@
 /* Service Worker for Aradhya Valentine PWA App */
-const CACHE_NAME = 'aradhya-love-cache-v33';
+const CACHE_NAME = 'aradhya-love-cache-v34';
 const urlsToCache = [
   './',
   './index.html',
@@ -56,6 +56,7 @@ const urlsToCache = [
   './css/safespace.css',
   './css/bauni.css',
   './css/cafe.css',
+  './css/romantic-fx.css',
   './js/unsaid.js',
   './js/me.js',
   './js/holdhands.js',
@@ -64,6 +65,7 @@ const urlsToCache = [
   './js/safespace.js',
   './js/bauni.js',
   './js/cafe.js',
+  './js/romantic-fx.js',
   './js/auth.js',
   './js/nav.js',
   './js/realtime-client.js',
