@@ -1,22 +1,71 @@
 /* ==========================================
-   ENTRY SCREEN
+   ENTRY SCREEN & ROMANTIC CHIME / BURST
    ========================================== */
+
+function playMagicHarp() {
+    try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioCtx();
+        const freqs = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C E G C E harp chords
+        freqs.forEach((f, idx) => {
+            const now = ctx.currentTime + (idx * 0.08);
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, now);
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.8);
+        });
+    } catch(e) {}
+}
 
 window.addEventListener("load", function () {
     const entry = document.getElementById("entryScreen");
     const mainContent = document.getElementById("mainContent");
 
     if (entry) {
-        entry.addEventListener("click", function () {
+        entry.addEventListener("click", function (e) {
+            playMagicHarp();
+            // Spawn burst hearts at center
+            for (let i = 0; i < 16; i++) {
+                setTimeout(() => {
+                    const x = (window.innerWidth / 2) + (Math.random() * 160 - 80);
+                    const y = (window.innerHeight / 2) + (Math.random() * 120 - 60);
+                    spawnTapHeart(x, y);
+                }, i * 30);
+            }
+
             entry.classList.add("hiding");
             setTimeout(() => {
                 entry.style.display = "none";
                 if (mainContent) mainContent.classList.add("visible");
                 checkWhatsNewModal();
-            }, 1000);
+            }, 900);
         });
     }
+
+    // Global romantic touch: tap anywhere to bloom hearts!
+    document.addEventListener("click", function (e) {
+        // Skip clicks on inputs or buttons to avoid clutter
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        spawnTapHeart(e.clientX, e.clientY);
+    });
 });
+
+const romanticIcons = ['💖', '🌸', '✨', '💕', '🎀', '🤍', '🕊️'];
+function spawnTapHeart(x, y) {
+    const el = document.createElement('div');
+    el.className = 'tap-heart-particle';
+    el.textContent = romanticIcons[Math.floor(Math.random() * romanticIcons.length)];
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+}
 
 
 /* ==========================================
