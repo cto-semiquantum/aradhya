@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>For You ❤️ | A Love Story</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A beautiful valentine themed interactive love experience — built with heart by Harsh.">
+<meta name="description" content="A beautiful interactive love experience and sanctuary — built with heart by Harsh for Aradhya.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/index.css">
@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aradhya 💖">
-<meta name="theme-color" content="#080012">
+<meta name="theme-color" content="#080210">
 <link rel="apple-touch-icon" href="assets/images/her1.jpeg">
 <script src="js/auth.js"></script>
 </head>
@@ -20,19 +20,20 @@
 <body>
 
 <!-- GLOBAL PASSCODE LOCK SCREEN (0411) -->
-<div id="globalLockScreen" style="position: fixed; inset: 0; background: #080012; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
-    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,75,145,0.3); border-radius: 24px; padding: 40px 30px; max-width: 440px; width: 100%; box-shadow: 0 0 40px rgba(255,75,145,0.25);">
+<div id="globalLockScreen" style="position: fixed; inset: 0; background: #080210; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
+    <div style="background: rgba(22, 10, 36, 0.9); border: 1px solid rgba(255,127,165,0.35); border-radius: 28px; padding: 40px 25px; max-width: 440px; width: 100%; box-shadow: 0 0 50px rgba(255,75,145,0.25); backdrop-filter: blur(30px);">
         <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>
-        <h2 style="font-size: 26px; color: #fff; font-family: 'Poppins', sans-serif; margin-bottom: 8px;">Only For Harsh & Aradhya 💖</h2>
-        <p style="font-size: 14px; color: #ff7fa5; font-style: italic; margin-bottom: 25px;">"Some memories aren't meant to be opened by everyone. ❤️"</p>
-        <input type="password" id="globalPasscode" placeholder="••••" maxlength="4" style="width: 180px; padding: 14px 20px; font-size: 24px; letter-spacing: 8px; text-align: center; border-radius: 50px; border: 2px solid #ff4b91; background: rgba(255,255,255,0.08); color: #fff; outline: none; margin-bottom: 20px;">
+        <h2 style="font-size: 24px; color: #fff; font-weight: 700; margin-bottom: 8px;">Only For Harsh & Aradhya 💖</h2>
+        <p style="font-size: 13px; color: #ff99ac; font-style: italic; margin-bottom: 25px;">"Some memories aren't meant to be opened by everyone. ❤️"</p>
+        <input type="password" id="globalPasscode" placeholder="••••" maxlength="4" style="width: 170px; padding: 12px 18px; font-size: 24px; letter-spacing: 8px; text-align: center; border-radius: 50px; border: 2px solid #ff4b91; background: rgba(255,255,255,0.08); color: #fff; outline: none; margin-bottom: 20px;">
         <br>
-        <button id="globalUnlockBtn" style="padding: 12px 30px; border-radius: 50px; background: linear-gradient(135deg, #ff4b91, #7f00ff); color: #fff; border: none; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 0 20px rgba(255,75,145,0.5);">Unlock Vault 🔑</button>
+        <button id="globalUnlockBtn" style="padding: 12px 30px; border-radius: 50px; background: linear-gradient(135deg, #ff4b91, #7f00ff); color: #fff; border: none; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 0 20px rgba(255,75,145,0.5);">Unlock Vault 🔑</button>
         <div id="globalLockError" style="font-size: 13px; margin-top: 15px;"></div>
     </div>
 </div>
 
 <div id="mainAppContainer">
+
 <!-- PARTICLE HEARTS CANVAS -->
 <canvas id="heartCanvas"></canvas>
 
@@ -49,365 +50,519 @@
     </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN APP CONTENT -->
 <div class="main-content" id="mainContent">
 
-    <div class="hero">
-        <div class="glass-card">
+    <!-- HERO LUXURY BANNER -->
+    <div class="hero-banner">
 
-            <div class="card-glow"></div>
-
-            <div class="real-photo-frame">
-                <img src="assets/images/her1.jpeg" alt="Aradhya">
-            </div>
-
-            <h1 class="hero-title">Only For You 💖</h1>
-            <p class="subtitle">Log kehte hain move on kar lo… par tujhe bhoolna mere bas me hi nahi hai. Main kal bhi tera tha, aaj bhi tera hoon, aur hamesha tera hi rahunga. 💕</p>
-
-            <!-- LIVE MOOD RING WIDGET -->
-            <div class="mood-ring-container">
-                <div class="mood-pill-card" onclick="openMoodSelector('harsh')" title="Tap to update Harsh's vibe">
-                    <span style="font-size: 22px;">🎧</span>
-                    <div class="mood-tag-meta">
-                        <div class="mood-person-name">Harsh's Vibe</div>
-                        <div class="mood-vibe-value" id="harshVibeText">Loading…</div>
-                    </div>
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.4);" id="harshVibeTime">⚡</span>
-                </div>
-
-                <div class="mood-pill-card" onclick="openMoodSelector('aradhya')" title="Tap to update Aradhya's vibe">
-                    <span style="font-size: 22px;">🌸</span>
-                    <div class="mood-tag-meta">
-                        <div class="mood-person-name">Aradhya's Vibe</div>
-                        <div class="mood-vibe-value" id="aradhyaVibeText">Loading…</div>
-                    </div>
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.4);" id="aradhyaVibeTime">⚡</span>
-                </div>
-            </div>
-
-            <!-- DIGITAL TOUCH HEART -->
-            <div style="margin-bottom: 25px;">
-                <button onclick="sendHeartbeatTouch()" class="glow-btn" style="padding: 10px 24px; font-size: 14px; background: linear-gradient(135deg, #ff4b91, #7f00ff); border-radius: 50px; display: inline-flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 18px; animation: livePulse 1.2s infinite alternate;">💓</span> Send Digital Touch (Feel My Heart)
-                </button>
-            </div>
-
-            <div class="nav-grid">
-                <a href="cafe.html" class="nav-item" id="navCafe" style="border-color: #ffb464; box-shadow: 0 0 28px rgba(255,180,100,0.4); background: linear-gradient(135deg, rgba(255,180,100,0.2), rgba(255,75,145,0.15)); position: relative;">
-                    <span style="position: absolute; top: -8px; right: 8px; background: #ffb464; color: #080012; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 10px; box-shadow: 0 0 8px #ffb464;">COZY ☕</span>
-                    <span class="nav-icon">☕</span>
-                    <span class="nav-label">Cafe Aru</span>
-                </a>
-                <a href="bauni.html" class="nav-item" id="navBauni" style="border-color: #ff4b91; box-shadow: 0 0 30px rgba(255,75,145,0.5); background: linear-gradient(135deg, rgba(255,75,145,0.25), rgba(127,0,255,0.2)); position: relative;">
-                    <span style="position: absolute; top: -8px; right: 8px; background: #ff4b91; color: #fff; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 10px; box-shadow: 0 0 8px #ff4b91;">AI 🎀</span>
-                    <span class="nav-icon">🎀</span>
-                    <span class="nav-label">Baunii AI</span>
-                </a>
-                <a href="holdhands.html" class="nav-item" id="navHoldHands" style="border-color: #ff4b91; box-shadow: 0 0 30px rgba(255,75,145,0.45); background: linear-gradient(135deg, rgba(255,75,145,0.2), rgba(255,209,102,0.15)); position: relative;">
-                    <span style="position: absolute; top: -8px; right: 8px; background: #ff4b91; color: #fff; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 10px; box-shadow: 0 0 8px #ff4b91;">TOUCH 🤝</span>
-                    <span class="nav-icon">🤝</span>
-                    <span class="nav-label">Hold My Hand</span>
-                </a>
-                <a href="unsaid.html" class="nav-item" id="navUnsaid" style="border-color: #ffd166; box-shadow: 0 0 30px rgba(255,209,102,0.4); background: linear-gradient(135deg, rgba(255,209,102,0.15), rgba(255,75,145,0.15)); position: relative;">
-                    <span style="position: absolute; top: -8px; right: 8px; background: #ffd166; color: #080012; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 10px; box-shadow: 0 0 8px #ffd166;">NEW 🕊️</span>
-                    <span class="nav-icon">🕊️</span>
-                    <span class="nav-label">Unsaid Words</span>
-                </a>
-                <a href="mixtape.html" class="nav-item" id="navMixtape" style="border-color: #ffb464; box-shadow: 0 0 25px rgba(255,180,100,0.35); background: linear-gradient(135deg, rgba(255,180,100,0.15), rgba(127,0,255,0.15));">
-                    <span class="nav-icon">📼</span>
-                    <span class="nav-label">Retro Mixtape</span>
-                </a>
-                <a href="bottle.html" class="nav-item" id="navBottle" style="border-color: #00d2ff; box-shadow: 0 0 25px rgba(0,210,255,0.35); background: linear-gradient(135deg, rgba(0,210,255,0.15), rgba(43,10,69,0.2));">
-                    <span class="nav-icon">🍾</span>
-                    <span class="nav-label">Sea Bottle</span>
-                </a>
-                <a href="safespace.html" class="nav-item" id="navSafeSpace" style="border-color: #d4a5ff; box-shadow: 0 0 25px rgba(212,165,255,0.35); background: linear-gradient(135deg, rgba(212,165,255,0.15), rgba(255,75,145,0.15));">
-                    <span class="nav-icon">🕯️</span>
-                    <span class="nav-label">Safe Space</span>
-                </a>
-                <a href="live.html" class="nav-item" id="navLive" style="border-color: #ff4b91; box-shadow: 0 0 30px rgba(255,75,145,0.45); background: linear-gradient(135deg, rgba(255,75,145,0.15), rgba(127,0,255,0.15)); position: relative;">
-                    <span style="position: absolute; top: -8px; right: 8px; background: #00ff88; color: #080012; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 10px; box-shadow: 0 0 8px #00ff88;">LIVE ⚡</span>
-                    <span class="nav-icon">📡</span>
-                    <span class="nav-label">Live Updates</span>
-                </a>
-                <a href="cookie.html" class="nav-item" id="navCookie" style="border-color: rgba(255,180,100,0.6); box-shadow: 0 0 25px rgba(255,180,100,0.3);">
-                    <span class="nav-icon">🥠</span>
-                    <span class="nav-label">Daily Cookie</span>
-                </a>
-                <a href="voicenotes.html" class="nav-item" id="navVoiceNotes" style="border-color: rgba(0,210,255,0.6); box-shadow: 0 0 25px rgba(0,210,255,0.3);">
-                    <span class="nav-icon">🎙️</span>
-                    <span class="nav-label">Voice Notes</span>
-                </a>
-                <a href="openwhen.html" class="nav-item" id="navOpenWhen" style="border-color: rgba(255,75,145,0.6); box-shadow: 0 0 25px rgba(255,75,145,0.3);">
-                    <span class="nav-icon">💌</span>
-                    <span class="nav-label">Open When...</span>
-                </a>
-                <a href="littlethings.html" class="nav-item" id="navLittleThings" style="border-color: rgba(127,0,255,0.6); box-shadow: 0 0 25px rgba(127,0,255,0.3);">
-                    <span class="nav-icon">🎞️</span>
-                    <span class="nav-label">Little Things</span>
-                </a>
-                <a href="chapter.html" class="nav-item" id="navChapter" style="border-color: rgba(255,127,165,0.6); box-shadow: 0 0 25px rgba(255,127,165,0.3);">
-                    <span class="nav-icon">🏫</span>
-                    <span class="nav-label">New Chapter</span>
-                </a>
-                <a href="growth.html" class="nav-item" id="navGrowth" style="border-color: rgba(0,210,255,0.6); box-shadow: 0 0 25px rgba(0,210,255,0.3);">
-                    <span class="nav-icon">🏆</span>
-                    <span class="nav-label">My Growth</span>
-                </a>
-                <a href="recap.html" class="nav-item" id="navRecap" style="border-color: rgba(127,0,255,0.6); box-shadow: 0 0 25px rgba(127,0,255,0.3);">
-                    <span class="nav-icon">🎬</span>
-                    <span class="nav-label">My 2026</span>
-                </a>
-                <a href="birthday.html" class="nav-item" id="navBirthday" style="border-color: rgba(255,75,145,0.6); box-shadow: 0 0 20px rgba(255,75,145,0.25);">
-                    <span class="nav-icon">🎂</span>
-                    <span class="nav-label">Birthday Gift</span>
-                </a>
-                <a href="sky.html" class="nav-item" id="navSky">
-                    <span class="nav-icon">🌌</span>
-                    <span class="nav-label">Constellation Sky</span>
-                </a>
-                <a href="future.html" class="nav-item" id="navFuture">
-                    <span class="nav-icon">✨</span>
-                    <span class="nav-label">Silent Dreams</span>
-                </a>
-                <a href="her.html" class="nav-item" id="navHer">
-                    <span class="nav-icon">🌸</span>
-                    <span class="nav-label">About Aradhya</span>
-                </a>
-                <a href="me.html" class="nav-item" id="navMe" style="border-color: rgba(0,210,255,0.6); box-shadow: 0 0 20px rgba(0,210,255,0.3);">
-                    <span class="nav-icon">👦</span>
-                    <span class="nav-label">About Harsh</span>
-                </a>
-                <a href="videos.html" class="nav-item" id="navVideos">
-                    <span class="nav-icon">🎥</span>
-                    <span class="nav-label">Video Vault</span>
-                </a>
-                <a href="music.html" class="nav-item" id="navMusic">
-                    <span class="nav-icon">📻</span>
-                    <span class="nav-label">Songs Jukebox</span>
-                </a>
-                <a href="promises.html" class="nav-item" id="navPromises">
-                    <span class="nav-icon">📜</span>
-                    <span class="nav-label">Promises</span>
-                </a>
-                <a href="journey.html" class="nav-item" id="navJourney">
-                    <span class="nav-icon">🌸</span>
-                    <span class="nav-label">Our Journey</span>
-                </a>
-                <a href="reasons.html" class="nav-item" id="navReasons">
-                    <span class="nav-icon">💖</span>
-                    <span class="nav-label">Why I Love You</span>
-                </a>
-                <a href="timeline.html" class="nav-item" id="navTimeline">
-                    <span class="nav-icon">📖</span>
-                    <span class="nav-label">Our Story</span>
-                </a>
-                <button class="nav-item" onclick="openLetter()" id="navLetter">
-                    <span class="nav-icon">💌</span>
-                    <span class="nav-label">Open Letter</span>
-                </button>
-                <button class="nav-item" onclick="openSurprise()" id="navSurprise">
-                    <span class="nav-icon">🎁</span>
-                    <span class="nav-label">Surprise</span>
-                </button>
-                <button class="nav-item" onclick="toggleCounter()" id="navCounter">
-                    <span class="nav-icon">⏳</span>
-                    <span class="nav-label">Love Counter</span>
-                </button>
-                <a href="diary.html" class="nav-item" id="navDiary">
-                    <span class="nav-icon">📝</span>
-                    <span class="nav-label">Harsh's Diary</span>
-                </a>
-                <a href="herdiary.html" class="nav-item" id="navHerDiary" style="border-color: rgba(255,105,180,0.6); box-shadow: 0 0 25px rgba(255,105,180,0.3);">
-                    <span class="nav-icon">🌸</span>
-                    <span class="nav-label">Aradhya's Diary</span>
-                </a>
-                <a href="secret.html" class="nav-item" id="navSecret">
-                    <span class="nav-icon">🔒</span>
-                    <span class="nav-label">Secret Letter</span>
-                </a>
-                <a href="capsule.html" class="nav-item" id="navCapsule">
-                    <span class="nav-icon">🎁</span>
-                    <span class="nav-label">Time Capsule</span>
-                </a>
-            </div>
-
-            <div class="music-section">
-                <button class="music-btn" onclick="toggleMusic(event)" id="musicToggle">
-                    <span class="music-icon">🎵</span>
-                    <span class="music-text">Play Our Song</span>
-                </button>
-                <button class="music-btn" onclick="installPWAApp()" id="pwaInstallBtn" style="margin-top: 10px; background: linear-gradient(135deg, #7f00ff, #ff4b91);">
-                    <span class="music-icon">📲</span>
-                    <span class="music-text">Install App On Phone</span>
-                </button>
-            </div>
-
-            <p class="footer-credit">Built with ❤️ by Harsh</p>
-
-        </div>
-    </div>
-
-</div>
-
-<audio id="bgMusic" loop>
-    <source src="assets/music3.mp3" type="audio/mpeg">
-</audio>
-
-<!-- LETTER MODAL -->
-<div class="modal-overlay" id="letterModal">
-    <div class="modal-card letter-card">
-        <button class="modal-close" onclick="closeLetter()">✕</button>
-
-        <h2 class="modal-title">My Letter To You 💖</h2>
-
-        <div class="letter-text">
-Kabhi kabhi sochta hoon…
-kaise ek simple si mulaqat meri life ka sabse meaningful chapter ban gayi.
-
-Pehle hum mile…
-Phir baatein shuru hui…
-Phir bina pata chale best friends ban gaye.
-
-Raat bhar calls.
-Random hasi.
-Choti choti baatein jo aaj bhi yaad aati hain.
-
-Tum meri life ka phase nahi ho.
-Tum meri growth ka part ho.
-
-Main hoon.
-Hamesha.
-
-— Harsh ❤️
-        </div>
-    </div>
-</div>
-
-
-<!-- SURPRISE MODAL -->
-<div class="modal-overlay" id="surpriseModal">
-    <div class="modal-card surprise-card">
-        <div class="surprise-emoji">🎁</div>
-        <h2 class="modal-title">Ready For Something Special? ✨</h2>
-        <p class="surprise-sub">There's a page made just for you…</p>
-        <div class="surprise-btns">
-            <button class="btn-yes" onclick="goProposal()" id="surpriseYes">Let's Go! 🚀</button>
-            <button class="btn-no" onclick="tease()" id="surpriseNo">Maybe Later 😅</button>
-        </div>
-        <p id="teaseMsg" class="tease-msg"></p>
-    </div>
-</div>
-
-<!-- LOVE COUNTER MODAL -->
-<div class="modal-overlay" id="counterModal">
-    <div class="modal-card counter-card-modal">
-
-        <button class="modal-close" onclick="toggleCounter()">✕</button>
-
-        <h2 class="modal-title">Our Love Counter ⏳</h2>
-
-        <div class="counter-grid">
-            <div class="counter-item">
-                <div class="counter-emoji">🌸</div>
-                <h3>Since We First Met</h3>
-                <p class="counter-value" id="metDays">0</p>
-            </div>
-
-            <div class="counter-item">
-                <div class="counter-emoji">💬</div>
-                <h3>Since Best Friends</h3>
-                <p class="counter-value" id="bestDays">0</p>
-            </div>
-
-            <div class="counter-item">
-                <div class="counter-emoji">✨</div>
-                <h3>Since Reconnected</h3>
-                <p class="counter-value" id="reconnectDays">0</p>
-            </div>
-
-            <div class="counter-item highlight-item">
-                <div class="counter-emoji">💔</div>
-                <h3>Phir Se Baat Band Hui (Silence Era)</h3>
-                <p class="counter-value" id="silenceDays">0</p>
-            </div>
+        <div class="hero-locket">
+            <div class="locket-halo"></div>
+            <img src="assets/images/her1.jpeg" alt="Aradhya" class="locket-img">
         </div>
 
-        <p class="counter-footer">And the story continues… 💖</p>
-
-    </div>
-</div>
-
-<!-- ONE-TIME WHAT'S NEW FEATURE MODAL -->
-<div class="modal-overlay" id="whatsNewModal">
-    <div class="modal-card" style="max-width: 520px; text-align: center; border: 1px solid rgba(255, 105, 180, 0.5); box-shadow: 0 0 50px rgba(255, 75, 145, 0.4); padding: 30px 22px; max-height: 88vh; overflow-y: auto;">
-        <button class="modal-close" onclick="closeWhatsNewModal()">✕</button>
-
-        <div style="font-size: 38px; margin-bottom: 6px;">✨🎁</div>
-        <span style="display: inline-block; padding: 4px 14px; border-radius: 50px; background: rgba(255, 75, 145, 0.18); border: 1px solid #ff4b91; font-size: 11px; letter-spacing: 1px; color: #ff99c8; margin-bottom: 10px;">
-            NEW SPECIAL SURPRISES • JUST FOR YOU
-        </span>
-
-        <h2 style="font-size: 21px; color: #fff; font-family: var(--font-body); font-weight: 700; margin-bottom: 6px;">
-            Aradhya, Dekho Naye Features Aaye Hain! 💖
-        </h2>
-
-        <p style="font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.5; margin-bottom: 18px;">
-            Aapke liye app me bohot saare exciting real-time features add kiye gaye hain:
+        <div class="hero-greeting" id="heroGreeting">Evening Whispers, Aru 🌸</div>
+        <h1 class="hero-title">Only For You, Aradhya 💖</h1>
+        <p class="hero-subtitle">
+            "Log kehte hain move on kar lo… par tujhe bhoolna mere bas me nahi hai. Main kal bhi tera tha, aaj bhi tera hoon, aur aakhri saans tak tera hi rahunga."
         </p>
 
-        <div style="display: flex; flex-direction: column; gap: 10px; text-align: left; margin-bottom: 20px;">
+        <div class="devotion-badge-row">
+            <span class="devotion-dot"></span>
+            <span>104 Days of Silence & Devotion • 04.11 Forever</span>
+        </div>
+
+        <!-- INTERACTIVE QUICK WIDGETS ROW -->
+        <div class="quick-widgets-row">
+            <div class="widget-card" onclick="openMoodSelector('harsh')" title="Tap to update Harsh's vibe">
+                <span class="widget-icon">🎧</span>
+                <div class="widget-meta">
+                    <div class="widget-label">Harsh's Current Vibe</div>
+                    <div class="widget-value" id="harshVibeText">Loading…</div>
+                </div>
+                <span style="font-size: 10px; color: rgba(255,255,255,0.4);" id="harshVibeTime">⚡</span>
+            </div>
+
+            <div class="widget-card" onclick="openMoodSelector('aradhya')" title="Tap to update Aradhya's vibe">
+                <span class="widget-icon">🌸</span>
+                <div class="widget-meta">
+                    <div class="widget-label">Aradhya's Vibe</div>
+                    <div class="widget-value" id="aradhyaVibeText">Loading…</div>
+                </div>
+                <span style="font-size: 10px; color: rgba(255,255,255,0.4);" id="aradhyaVibeTime">⚡</span>
+            </div>
+        </div>
+
+        <!-- DIGITAL TOUCH BUTTON -->
+        <div class="touch-bar">
+            <button onclick="sendHeartbeatTouch()" class="touch-btn">
+                <span style="font-size: 18px; animation: livePulse 1.2s infinite alternate;">💓</span>
+                <span>Send Digital Touch (Feel My Heart)</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- CATEGORY FILTER TABS -->
+    <div class="category-tabs-wrap">
+        <button class="cat-tab-btn active" onclick="filterCategory('all', this)">✨ All Experiences</button>
+        <button class="cat-tab-btn" onclick="filterCategory('featured', this)">🌟 Romance & AI</button>
+        <button class="cat-tab-btn" onclick="filterCategory('diary', this)">📖 Diaries & Story</button>
+        <button class="cat-tab-btn" onclick="filterCategory('letters', this)">💌 Letters & Vows</button>
+        <button class="cat-tab-btn" onclick="filterCategory('fun', this)">🌌 Stars & Surprises</button>
+    </div>
+
+    <!-- ==========================================
+         SECTION 1: FEATURED & AI (ROMANCE HUB)
+         ========================================== -->
+    <div class="hub-section" id="section-featured" data-category="featured">
+        <div class="hub-section-header">
+            <h2 class="hub-title"><span>🌟</span> Interactive Romance & AI</h2>
+            <span class="hub-sub">Special creations for Aru</span>
+        </div>
+
+        <div class="cards-grid">
+            <a href="cafe.html" class="app-card" style="border-color: rgba(255,180,100,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">☕</div>
+                    <span class="card-tag new">COZY ☕</span>
+                </div>
+                <div>
+                    <div class="card-title">Cafe Aru</div>
+                    <div class="card-desc">Table #0411 permanently reserved. Hot chocolate, samose & garm paani!</div>
+                </div>
+            </a>
+
+            <a href="bauni.html" class="app-card" style="border-color: rgba(255,75,145,0.5);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎀</div>
+                    <span class="card-tag hot">AI 🎀</span>
+                </div>
+                <div>
+                    <div class="card-title">Baunii AI</div>
+                    <div class="card-desc">Talk to Aru's cute feisty persona — "Muh tod dungi tera agar faltu bola!"</div>
+                </div>
+            </a>
+
+            <a href="holdhands.html" class="app-card" style="border-color: rgba(255,75,145,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🤝</div>
+                    <span class="card-tag hot">TOUCH 🤝</span>
+                </div>
+                <div>
+                    <div class="card-title">Hold My Hand</div>
+                    <div class="card-desc">Biometric thumb touch with realistic 70 BPM heartbeat vibration & hugs.</div>
+                </div>
+            </a>
+
+            <a href="unsaid.html" class="app-card" style="border-color: rgba(255,209,102,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🕊️</div>
+                    <span class="card-tag new">NEW 🕊️</span>
+                </div>
+                <div>
+                    <div class="card-title">Unsaid Words</div>
+                    <div class="card-desc">Wax-sealed unsent letters, 22 May apology, and interactive sky lanterns.</div>
+                </div>
+            </a>
+
+            <a href="mixtape.html" class="app-card" style="border-color: rgba(255,180,100,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">📼</div>
+                    <span class="card-tag soft">RETRO</span>
+                </div>
+                <div>
+                    <div class="card-title">Retro Mixtape</div>
+                    <div class="card-desc">90s spinning cassette deck with synchronized romantic lyrics carousel.</div>
+                </div>
+            </a>
+
+            <a href="bottle.html" class="app-card" style="border-color: rgba(0,210,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🍾</div>
+                    <span class="card-tag soft">OCEAN</span>
+                </div>
+                <div>
+                    <div class="card-title">Message in a Bottle</div>
+                    <div class="card-desc">Parchment scrolls floating across twilight ocean waves. Cast your secret!</div>
+                </div>
+            </a>
+
+            <a href="safespace.html" class="app-card" style="border-color: rgba(212,165,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🕯️</div>
+                    <span class="card-tag soft">SANCTUARY</span>
+                </div>
+                <div>
+                    <div class="card-title">Safe Space</div>
+                    <div class="card-desc">Zero-pressure whispers, soft sticky notes, and 1-click silent emotions.</div>
+                </div>
+            </a>
+
+            <a href="me.html" class="app-card" style="border-color: rgba(0,210,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">👦</div>
+                    <span class="card-tag soft">DEVOTION</span>
+                </div>
+                <div>
+                    <div class="card-title">About Harsh</div>
+                    <div class="card-desc">Harsh's 104-day transformation, daily routine timeline, and sacred promise.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 2: DIARIES & JOURNEY
+         ========================================== -->
+    <div class="hub-section" id="section-diary" data-category="diary">
+        <div class="hub-section-header">
+            <h2 class="hub-title"><span>📖</span> Diaries & Journey Hub</h2>
+            <span class="hub-sub">The unfiltered record of 104 days</span>
+        </div>
+
+        <div class="cards-grid">
+            <a href="diary.html" class="app-card" style="border-color: rgba(255,75,145,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">📝</div>
+                    <span class="card-tag hot">104 ENTRIES</span>
+                </div>
+                <div>
+                    <div class="card-title">Harsh's Diary</div>
+                    <div class="card-desc">Every single day since 22 May written honestly without hiding a single tear.</div>
+                </div>
+            </a>
+
+            <a href="herdiary.html" class="app-card" style="border-color: rgba(255,127,165,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🌸</div>
+                    <span class="card-tag soft">PRIVATE</span>
+                </div>
+                <div>
+                    <div class="card-title">Aradhya's Diary</div>
+                    <div class="card-desc">A safe private canvas where Aru can write her thoughts anytime.</div>
+                </div>
+            </a>
+
+            <a href="timeline.html" class="app-card" style="border-color: rgba(0,210,255,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">📖</div>
+                    <span class="card-tag soft">MILESTONES</span>
+                </div>
+                <div>
+                    <div class="card-title">Our Story Timeline</div>
+                    <div class="card-desc">From our first text to the silence, and the first message on 27 August.</div>
+                </div>
+            </a>
+
+            <a href="live.html" class="app-card" style="border-color: rgba(0,255,136,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">📡</div>
+                    <span class="card-tag live">LIVE ⚡</span>
+                </div>
+                <div>
+                    <div class="card-title">Live Updates</div>
+                    <div class="card-desc">Real-time status stream and instant push notifications.</div>
+                </div>
+            </a>
+
+            <a href="recap.html" class="app-card" style="border-color: rgba(127,0,255,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎬</div>
+                    <span class="card-tag soft">CINEMATIC</span>
+                </div>
+                <div>
+                    <div class="card-title">My 2026 Recap</div>
+                    <div class="card-desc">A cinematic overview of love, endurance, and 104 days of silence.</div>
+                </div>
+            </a>
+
+            <a href="growth.html" class="app-card" style="border-color: rgba(255,209,102,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🏆</div>
+                    <span class="card-tag soft">EVOLUTION</span>
+                </div>
+                <div>
+                    <div class="card-title">My Growth</div>
+                    <div class="card-desc">Milestones of technical skills, patience, and character building.</div>
+                </div>
+            </a>
+
+            <a href="chapter.html" class="app-card" style="border-color: rgba(255,127,165,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🏫</div>
+                    <span class="card-tag soft">COLLEGE</span>
+                </div>
+                <div>
+                    <div class="card-title">New Chapter</div>
+                    <div class="card-desc">College days, stepping into the future, and holding dreams close.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 3: LOVE LETTERS & SACRED REASONS
+         ========================================== -->
+    <div class="hub-section" id="section-letters" data-category="letters">
+        <div class="hub-section-header">
+            <h2 class="hub-title"><span>💌</span> Love Letters & Sacred Reasons</h2>
+            <span class="hub-sub">Words from the deepest corner of my soul</span>
+        </div>
+
+        <div class="cards-grid">
+            <a href="letter.html" class="app-card" style="border-color: rgba(255,75,145,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">💌</div>
+                    <span class="card-tag hot">SACRED</span>
+                </div>
+                <div>
+                    <div class="card-title">The Sacred Letter</div>
+                    <div class="card-desc">The golden parchment letter poured out straight from Harsh's heart.</div>
+                </div>
+            </a>
+
+            <a href="reasons.html" class="app-card" style="border-color: rgba(255,127,165,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">💖</div>
+                    <span class="card-tag soft">104 REASONS</span>
+                </div>
+                <div>
+                    <div class="card-title">Why I Love You</div>
+                    <div class="card-desc">104 unique and genuine reasons why you are my one and only.</div>
+                </div>
+            </a>
+
+            <a href="promises.html" class="app-card" style="border-color: rgba(255,209,102,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">📜</div>
+                    <span class="card-tag soft">ETERNAL</span>
+                </div>
+                <div>
+                    <div class="card-title">7 Sacred Promises</div>
+                    <div class="card-desc">Unconditional promises of loyalty, protection, and boundless respect.</div>
+                </div>
+            </a>
+
+            <a href="proposal.html" class="app-card" style="border-color: rgba(255,75,145,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">💍</div>
+                    <span class="card-tag soft">FOREVER</span>
+                </div>
+                <div>
+                    <div class="card-title">The Proposal</div>
+                    <div class="card-desc">An interactive proposal woven with heartfelt questions and joy.</div>
+                </div>
+            </a>
+
+            <a href="littlethings.html" class="app-card" style="border-color: rgba(127,0,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎞️</div>
+                    <span class="card-tag soft">MEMORY</span>
+                </div>
+                <div>
+                    <div class="card-title">Little Things</div>
+                    <div class="card-desc">The cute, quirky habits and gestures of Aru that melt my heart.</div>
+                </div>
+            </a>
+
+            <a href="openwhen.html" class="app-card" style="border-color: rgba(0,210,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">💌</div>
+                    <span class="card-tag soft">LETTERS</span>
+                </div>
+                <div>
+                    <div class="card-title">Open When...</div>
+                    <div class="card-desc">Open when you're sad, angry, missing us, or just can't sleep.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SECTION 4: STARLIGHT & SURPRISES
+         ========================================== -->
+    <div class="hub-section" id="section-fun" data-category="fun">
+        <div class="hub-section-header">
+            <h2 class="hub-title"><span>🌌</span> Starlight & Playful Surprises</h2>
+            <span class="hub-sub">Fun, secrets and celestial moments</span>
+        </div>
+
+        <div class="cards-grid">
+            <a href="cookie.html" class="app-card" style="border-color: rgba(255,180,100,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🥠</div>
+                    <span class="card-tag soft">DAILY</span>
+                </div>
+                <div>
+                    <div class="card-title">Daily Cookie</div>
+                    <div class="card-desc">Crack open a sweet fortune cookie every morning at 12:00 AM.</div>
+                </div>
+            </a>
+
+            <a href="voicenotes.html" class="app-card" style="border-color: rgba(0,210,255,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎙️</div>
+                    <span class="card-tag soft">AUDIO</span>
+                </div>
+                <div>
+                    <div class="card-title">Voice Notes</div>
+                    <div class="card-desc">Listen to recorded audio whispers from Harsh.</div>
+                </div>
+            </a>
+
+            <a href="sky.html" class="app-card" style="border-color: rgba(127,0,255,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🌌</div>
+                    <span class="card-tag soft">CELESTIAL</span>
+                </div>
+                <div>
+                    <div class="card-title">Constellation Sky</div>
+                    <div class="card-desc">Connect the stars in the twilight sky to reveal hidden memories.</div>
+                </div>
+            </a>
+
+            <a href="birthday.html" class="app-card" style="border-color: rgba(255,75,145,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎂</div>
+                    <span class="card-tag soft">CELEBRATE</span>
+                </div>
+                <div>
+                    <div class="card-title">Birthday Gift</div>
+                    <div class="card-desc">Virtual celebration cake, candles, and musical confetti wishes.</div>
+                </div>
+            </a>
+
+            <a href="capsule.html" class="app-card" style="border-color: rgba(255,209,102,0.4);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎁</div>
+                    <span class="card-tag soft">LOCKED</span>
+                </div>
+                <div>
+                    <div class="card-title">Time Capsule</div>
+                    <div class="card-desc">A vault preserving our memories to be unsealed in the future.</div>
+                </div>
+            </a>
+
+            <a href="quiz.html" class="app-card" style="border-color: rgba(0,255,136,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎮</div>
+                    <span class="card-tag soft">GAME</span>
+                </div>
+                <div>
+                    <div class="card-title">Aru & Harsh Quiz</div>
+                    <div class="card-desc">How well do you remember our inside jokes, dates, and habits?</div>
+                </div>
+            </a>
+
+            <a href="scratch.html" class="app-card" style="border-color: rgba(255,127,165,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎴</div>
+                    <span class="card-tag soft">CARDS</span>
+                </div>
+                <div>
+                    <div class="card-title">Scratch Cards</div>
+                    <div class="card-desc">Scratch the silver foil to unlock secret hugs, treats, and love coupons.</div>
+                </div>
+            </a>
+
+            <a href="music.html" class="app-card" style="border-color: rgba(255,180,100,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">📻</div>
+                    <span class="card-tag soft">SONGS</span>
+                </div>
+                <div>
+                    <div class="card-title">Romantic Playlist</div>
+                    <div class="card-desc">The songs that carry the aroma of our moments together.</div>
+                </div>
+            </a>
+
+            <a href="videos.html" class="app-card" style="border-color: rgba(0,210,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎥</div>
+                    <span class="card-tag soft">CLIPS</span>
+                </div>
+                <div>
+                    <div class="card-title">Videos Gallery</div>
+                    <div class="card-desc">Sweet video moments and nostalgic captured smile clips.</div>
+                </div>
+            </a>
+
+            <a href="secret.html" class="app-card" style="border-color: rgba(212,165,255,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">🔒</div>
+                    <span class="card-tag soft">VAULT</span>
+                </div>
+                <div>
+                    <div class="card-title">Secret Vault</div>
+                    <div class="card-desc">The sacred passcode chamber protecting our purest memories.</div>
+                </div>
+            </a>
+
+            <a href="love.html" class="app-card" style="border-color: rgba(255,75,145,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">⏳</div>
+                    <span class="card-tag soft">COUNTER</span>
+                </div>
+                <div>
+                    <div class="card-title">Love Counter</div>
+                    <div class="card-desc">Live ticking clock measuring every single second of my devotion.</div>
+                </div>
+            </a>
+
+            <a href="forever.html" class="app-card" style="border-color: rgba(255,209,102,0.35);">
+                <div class="card-top">
+                    <div class="card-icon-box">✨</div>
+                    <span class="card-tag soft">FOREVER</span>
+                </div>
+                <div>
+                    <div class="card-title">Forever With You</div>
+                    <div class="card-desc">The eternal destination of this journey — always and forever.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div> <!-- END mainContent -->
+
+<!-- WHAT'S NEW MODAL -->
+<div class="modal-overlay" id="whatsNewModal">
+    <div class="modal-card" style="max-width: 480px; text-align: center;">
+        <button class="modal-close" onclick="closeWhatsNewModal()">✕</button>
+        <div style="font-size: 36px; margin-bottom: 8px;">✨</div>
+        <h2 style="font-size: 22px; color: #fff; margin-bottom: 6px;">Naye Romantic Features Live! 💖</h2>
+        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+            Aapki app me naye interactive romantic sections add ho chuke hain:
+        </p>
+
+        <div style="text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
+            <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,180,100,0.3);">
+                <div style="font-size: 22px;">☕</div>
+                <div>
+                    <strong style="color: #ffd166; font-size: 13.5px; display: block;">Cafe Aru (Table #0411)</strong>
+                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Virtual cozy cafe jisme Aru ke liye table permanently reserved hai!</span>
+                </div>
+            </div>
+
             <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,75,145,0.3);">
-                <div style="font-size: 22px;">💓</div>
+                <div style="font-size: 22px;">🎀</div>
                 <div>
-                    <strong style="color: #ff99ac; font-size: 13.5px; display: block;">Touch My Heart (Digital Tap)</strong>
-                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Screen par heart tap karte hi dusre ke phone me real heartbeat vibration & glowing pulse jayega!</span>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,105,180,0.3);">
-                <div style="font-size: 22px;">🌸</div>
-                <div>
-                    <strong style="color: #ff99c8; font-size: 13.5px; display: block;">Aradhya's Dedicated Diary</strong>
-                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Aapka apna personal page jahan aap dil ki baat likh sakti hain — likhte hi Harsh ko notification chala jayega!</span>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,200,100,0.3);">
-                <div style="font-size: 22px;">🥠</div>
-                <div>
-                    <strong style="color: #ffd180; font-size: 13.5px; display: block;">Daily Love Cookie</strong>
-                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Har subah 12:00 AM par ek naya secret love message & smile aayegi.</span>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(0,210,255,0.3);">
-                <div style="font-size: 22px;">💫</div>
-                <div>
-                    <strong style="color: #00d2ff; font-size: 13.5px; display: block;">Live Mood Ring & Status Sync</strong>
-                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Bina text kiye ek tap me ek dusre ka current vibe / mood pata chal jayega!</span>
+                    <strong style="color: #ff99ac; font-size: 13.5px; display: block;">Baunii AI Chatbot</strong>
+                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Talk to Aru's feisty AI persona powered by Gemini — "Muh tod dungi!"</span>
                 </div>
             </div>
 
             <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,75,145,0.3);">
-                <div style="font-size: 22px;">📡</div>
+                <div style="font-size: 22px;">🤝</div>
                 <div>
-                    <strong style="color: #ff99ac; font-size: 13.5px; display: block;">Live Updates (Dil Ka Radio)</strong>
-                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Harsh jab bhi kuch share karega, turant phone pe notification aayega.</span>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(127,0,255,0.3);">
-                <div style="font-size: 22px;">🎙️</div>
-                <div>
-                    <strong style="color: #c77dff; font-size: 13.5px; display: block;">Voice Notes Vault</strong>
-                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Vintage Cassette Player me dil ki awaz me audio letters suniye.</span>
+                    <strong style="color: #ff99ac; font-size: 13.5px; display: block;">Hold My Hand (Digital Touch)</strong>
+                    <span style="font-size: 12px; color: rgba(255,255,255,0.8);">Biometric thumb touch with 70 BPM heartbeat vibration & hugs.</span>
                 </div>
             </div>
         </div>
 
-        <button onclick="closeWhatsNewModal()" style="width: 100%; padding: 12px 28px; border-radius: 50px; background: linear-gradient(135deg, #ff4b91, #7f00ff); color: #fff; border: none; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 0 25px rgba(255,75,145,0.5); transition: all 0.3s ease;">
-            Got It! Shuru Karein 💖
+        <button onclick="closeWhatsNewModal()" style="width: 100%; padding: 12px 28px; border-radius: 50px; background: linear-gradient(135deg, #ff4b91, #7f00ff); color: #fff; border: none; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 0 25px rgba(255,75,145,0.5);">
+            Got It! Explore App 💖
         </button>
     </div>
 </div>
@@ -426,7 +581,49 @@ Hamesha.
     </div>
 </div>
 
+<!-- FLOATING BOTTOM MUSIC BAR -->
+<div class="floating-bottom-bar" id="floatingMusicBar">
+    <div class="float-song-meta">
+        <span class="float-disc">📻</span>
+        <span class="float-song-title" id="floatingSongTitle">Agar Tum Saath Ho • Playing</span>
+    </div>
+    <div class="float-actions">
+        <button class="float-btn" id="floatingPlayBtn" onclick="toggleGlobalMusic()" title="Play / Pause">⏸️</button>
+        <button class="float-btn" onclick="nextGlobalSong()" title="Next Song">⏭️</button>
+    </div>
+</div>
+
 </div> <!-- END mainAppContainer -->
+
+<!-- APP LOGIC SCRIPTS -->
+<script>
+// Category Filter Tabs
+function filterCategory(cat, btn) {
+    document.querySelectorAll('.cat-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const sections = document.querySelectorAll('.hub-section');
+    sections.forEach(sec => {
+        if (cat === 'all') {
+            sec.style.display = 'block';
+        } else {
+            sec.style.display = (sec.dataset.category === cat) ? 'block' : 'none';
+        }
+    });
+}
+
+// Dynamic Time Greeting
+document.addEventListener('DOMContentLoaded', () => {
+    const greetingEl = document.getElementById('heroGreeting');
+    if (greetingEl) {
+        const hour = new Date().getHours();
+        if (hour >= 5 && hour < 12) greetingEl.textContent = "Good Morning, Aru 🌸";
+        else if (hour >= 12 && hour < 17) greetingEl.textContent = "Shubh Dopahar, Aru ☀️";
+        else if (hour >= 17 && hour < 22) greetingEl.textContent = "Evening Whispers, Aru 🌇";
+        else greetingEl.textContent = "Midnight Starlight, Aru 🌙";
+    }
+});
+</script>
 
 <script src="js/nav.js"></script>
 <script src="js/petals.js"></script>
@@ -436,5 +633,6 @@ Hamesha.
 <script src="js/touch-heart.js"></script>
 <script src="js/mood-sync.js"></script>
 <script src="js/script.js"></script>
+
 </body>
 </html>
