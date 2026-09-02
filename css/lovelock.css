@@ -1,0 +1,204 @@
+/* ==========================================
+   PARIS LOVE LOCK BRIDGE STYLES
+   ========================================== */
+
+.lovelock-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 90px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.lovelock-hero {
+    margin-bottom: 24px;
+}
+
+.lovelock-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.lovelock-hero p {
+    font-size: 13.5px;
+    color: #ff99ac;
+    max-width: 550px;
+    margin: 0 auto 18px;
+}
+
+/* The Bridge Stage */
+.bridge-sanctuary {
+    background: radial-gradient(circle at 50% 15%, rgba(65, 25, 95, 0.9), rgba(10, 3, 20, 0.98));
+    border: 1px solid rgba(255, 127, 165, 0.35);
+    border-radius: 32px;
+    padding: 36px 20px;
+    box-shadow: 0 0 50px rgba(255,75,145,0.25);
+    backdrop-filter: blur(25px);
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Paris Twilight Skyline Silhouette */
+.paris-skyline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(180deg, rgba(255,100,150,0.12) 0%, transparent 100%);
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 15px;
+    font-size: 36px;
+    opacity: 0.6;
+}
+
+/* Metallic Railing Wire Mesh */
+.bridge-railing {
+    position: relative;
+    z-index: 2;
+    min-height: 240px;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 2px, transparent 2px, transparent 18px),
+                repeating-linear-gradient(-45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 2px, transparent 2px, transparent 18px);
+    border: 3px solid rgba(255, 215, 0, 0.4);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+/* Padlock Item */
+.padlock-item {
+    width: 100px;
+    height: 125px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.padlock-item:hover {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+.shackle {
+    width: 48px;
+    height: 48px;
+    border: 6px solid #ffd180;
+    border-bottom: none;
+    border-radius: 24px 24px 0 0;
+    margin-bottom: -4px;
+    transition: transform 0.4s ease;
+}
+
+.shackle.locked {
+    transform: translateY(6px);
+}
+
+.lock-body {
+    width: 90px;
+    height: 80px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ffd180, #c8963e);
+    border: 2px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    color: #2a1500;
+    font-weight: 700;
+    text-align: center;
+    user-select: none;
+}
+
+.lock-body.rosegold {
+    background: linear-gradient(135deg, #ff99ac, #c24068);
+    color: #fff;
+}
+
+.lock-body.crimson {
+    background: linear-gradient(135deg, #ff0054, #7a0026);
+    color: #fff;
+}
+
+.lock-body.violet {
+    background: linear-gradient(135deg, #c77dff, #5a189a);
+    color: #fff;
+}
+
+.lock-names {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+}
+
+.lock-date {
+    font-size: 9px;
+    opacity: 0.85;
+    margin-top: 3px;
+}
+
+.lock-keyhole {
+    width: 8px;
+    height: 12px;
+    background: #111;
+    border-radius: 4px 4px 50% 50%;
+    margin-top: 5px;
+}
+
+/* Key Dropping Animation */
+.falling-key {
+    position: absolute;
+    font-size: 28px;
+    pointer-events: none;
+    z-index: 50;
+    animation: dropIntoRiver 1.6s ease-in forwards;
+}
+
+@keyframes dropIntoRiver {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1) rotate(0deg);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, 200px) scale(0.9) rotate(220deg);
+    }
+    90% {
+        opacity: 0.8;
+        transform: translate(-50%, 260px) scale(0.6) rotate(360deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 290px) scale(0.2) rotate(420deg);
+    }
+}
+
+/* River Water at Bottom */
+.river-water {
+    margin-top: 20px;
+    height: 35px;
+    background: linear-gradient(180deg, rgba(0, 150, 255, 0.2), rgba(0, 50, 150, 0.6));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #88ddff;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Paris Love Lock Bridge 🌉 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Engrave and snap your eternal love padlock onto the Pont des Arts bridge.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/lovelock.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="lovelock-page">
+
+    <!-- HERO -->
+    <div class="lovelock-hero">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🌉 PONT DES ARTS PARIS
+        </span>
+        <h1>Paris Love Lock Bridge 💕</h1>
+        <p>"Engrave our names on a golden lock, snap it onto the railing, and throw the key into the River Seine forever."</p>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="add-polaroid-btn" onclick="openLockModal()">
+                <span>🔒 Lock A Padlock</span>
+            </button>
+            <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+        </div>
+    </div>
+
+    <!-- THE BRIDGE SANCTUARY -->
+    <div class="bridge-sanctuary">
+        <div class="paris-skyline">🗼 ✨ 🌌 🌙</div>
+
+        <!-- RAILING -->
+        <div class="bridge-railing" id="bridgeRailing"></div>
+
+        <!-- RIVER SEINE -->
+        <div class="river-water">
+            <span>🌊 River Seine (The keys rest here forever in deep peace) 🌊</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- LOCK MODAL -->
+<div class="modal-backdrop" id="lockModal">
+    <div class="modal-content">
+        <h3 class="modal-title"><span>🔒</span> Engrave Your Sacred Padlock</h3>
+        
+        <input type="text" id="lockNames" class="modal-input" placeholder="Names (e.g. Harsh ❤️ Aru)">
+        <input type="text" id="lockDate" class="modal-input" placeholder="Date / Code (e.g. 04.11 FOREVER)">
+        
+        <select id="lockMetal" class="modal-input" style="background: #190a28;">
+            <option value="gold">Antique Gold 🌟</option>
+            <option value="rosegold">Rose Gold 🌸</option>
+            <option value="crimson">Ruby Crimson ❤️</option>
+            <option value="violet">Cyber Violet 💜</option>
+        </select>
+
+        <textarea id="lockNote" class="modal-input modal-textarea" placeholder="Secret inscription on the padlock..."></textarea>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px;">
+            <button onclick="closeLockModal()" class="tool-btn" style="background: rgba(255,255,255,0.1);">Cancel</button>
+            <button onclick="lockNewPadlock()" class="add-polaroid-btn">Lock It Forever 🗝️</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/lovelock.js"></script>
+
+</body>
+</html>

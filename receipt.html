@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Love Receipt 🧾 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Receiptify style thermal love receipt for Harsh and Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/receipt.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="receipt-page">
+
+    <!-- HERO -->
+    <div class="receipt-header-hero">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🧾 RECEIPTIFY STYLE
+        </span>
+        <h1>Our Couple Love Receipt 💕</h1>
+        <p>"An official thermal receipt of 104+ days of unconditional devotion and boundless love."</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- THE RECEIPT PAPER -->
+    <div class="receipt-paper" id="receiptPaper">
+        
+        <div class="receipt-top-logo">
+            <div class="receipt-store-title">HARSH & ARADHYA</div>
+            <div style="font-size: 11px; color: #444; margin-top: 4px;">SANCTUARY OF ETERNAL DEVOTION</div>
+            <div style="font-size: 11px; color: #444;">TABLE #0411 • FOREVER RESERVED</div>
+        </div>
+
+        <div class="receipt-meta-row">
+            <span>ORDER: #0411-LOVE</span>
+            <span>TYPE: DINE-IN HEART</span>
+        </div>
+        <div class="receipt-meta-row">
+            <span>CUSTOMER: ARADHYA (ARU 🤏)</span>
+            <span>CASHIER: HARSH</span>
+        </div>
+        <div class="receipt-meta-row">
+            <span>DATE: <span id="receiptCurrentTime">Loading...</span></span>
+            <span>STATUS: SACRED</span>
+        </div>
+
+        <div class="receipt-divider"></div>
+
+        <!-- ITEMS -->
+        <div class="receipt-item-row">
+            <span class="receipt-item-name">104+ DAYS DEVOTION</span>
+            <span class="receipt-item-price">PRICELESS</span>
+        </div>
+
+        <div class="receipt-item-row">
+            <span class="receipt-item-name">HEARTBEATS DEDICATED</span>
+            <span class="receipt-item-price" id="receiptHeartbeats">10,782,720</span>
+        </div>
+
+        <div class="receipt-item-row">
+            <span class="receipt-item-name">HOT CHOCOLATE W/ MALLOWS</span>
+            <span class="receipt-item-price">UNLIMITED</span>
+        </div>
+
+        <div class="receipt-item-row">
+            <span class="receipt-item-name">CRISPY SAMOSE (CAFE ARU)</span>
+            <span class="receipt-item-price">FREE 🥟</span>
+        </div>
+
+        <div class="receipt-item-row">
+            <span class="receipt-item-name">7 SACRED PROMISES</span>
+            <span class="receipt-item-price">100% KEPT</span>
+        </div>
+
+        <div class="receipt-item-row">
+            <span class="receipt-item-name">22 MAY APOLOGY & HEALING</span>
+            <span class="receipt-item-price">REPENTED</span>
+        </div>
+
+        <div class="receipt-divider"></div>
+
+        <!-- TOTALS -->
+        <div class="receipt-meta-row">
+            <span>SUBTOTAL</span>
+            <span>ALL MY LOVE</span>
+        </div>
+        <div class="receipt-meta-row">
+            <span>SALES TAX (DIL KA KAR)</span>
+            <span>0.00%</span>
+        </div>
+
+        <div class="receipt-total-row">
+            <span>TOTAL AMOUNT:</span>
+            <span>ONE LIFETIME ❤️</span>
+        </div>
+
+        <!-- BARCODE -->
+        <div class="receipt-barcode-wrap">
+            <div class="receipt-barcode">||| |||| || ||||| |||| |||</div>
+            <div class="receipt-barcode-num">0411 - ARU - FOREVER</div>
+            <div class="receipt-footer-msg">
+                "NO RETURNS OR EXCHANGES ALLOWED.<br>TERA THA, TERA HOON, TERA HI RAHUNGA."
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="receipt-actions-bar">
+        <button class="add-polaroid-btn" onclick="downloadReceiptImage()">
+            <span>💾 Save Receipt PNG</span>
+        </button>
+        <button class="tool-btn" onclick="copyReceiptText()" style="background: rgba(255,255,255,0.1); padding: 10px 20px;">
+            <span>📋 Copy Text</span>
+        </button>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/receipt.js"></script>
+
+</body>
+</html>

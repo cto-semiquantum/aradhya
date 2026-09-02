@@ -23,6 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             title: "✨ Interactive & New",
             items: [
+                { path: "doodle.html", label: "🎨 Live Doodle" },
+                { path: "together.html", label: "🎧 Together Listening" },
+                { path: "wheel.html", label: "🎡 Spin The Wheel" },
+                { path: "garden.html", label: "🌸 Our Love Garden" },
+                { path: "lovelock.html", label: "🌉 Paris Love Lock" },
+                { path: "polaroids.html", label: "📸 Polaroid Wall" },
+                { path: "futuremap.html", label: "🗺️ Future Map" },
                 { path: "cafe.html", label: "☕ Cafe Aru" },
                 { path: "bauni.html", label: "🎀 Baunii AI" },
                 { path: "holdhands.html", label: "🤝 Hold My Hand" },
@@ -37,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             title: "💌 Memories & Daily Moments",
             items: [
+                { path: "deeptalk.html", label: "🃏 Deep Talk Cards" },
                 { path: "cookie.html", label: "🥠 Daily Cookie" },
                 { path: "voicenotes.html", label: "🎙️ Voice Notes" },
                 { path: "openwhen.html", label: "💌 Open When" },
@@ -65,6 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             title: "🌌 Special & Secrets",
             items: [
+                { path: "tarot.html", label: "🔮 Celestial Tarot" },
+                { path: "lovelanguage.html", label: "💖 Love Language Quiz" },
+                { path: "wordle.html", label: "🟩 Love Wordle" },
+                { path: "receipt.html", label: "🧾 Love Receipt" },
+                { path: "crossword.html", label: "🧩 Love Crossword" },
+                { path: "compliments.html", label: "🏺 Love Jar & Ambience" },
                 { path: "sky.html", label: "🌌 Constellation" },
                 { path: "future.html", label: "✨ Silent Dreams" },
                 { path: "videos.html", label: "🎥 Videos" },

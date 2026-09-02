@@ -30,7 +30,17 @@
                     'new_mood',
                     'new_harsh_diary',
                     'new_her_diary',
-                    'new_voicenote'
+                    'new_voicenote',
+                    'love_doodle_stroke',
+                    'love_doodle_clear',
+                    'love_doodle_heart',
+                    'sync_music_action',
+                    'receive_pulse',
+                    'new_bucket_item',
+                    'update_bucket_item',
+                    'new_polaroid',
+                    'wheel_spin',
+                    'garden_action'
                 ];
 
                 eventNames.forEach(evt => {
@@ -98,6 +108,12 @@
 
     // Global Realtime Interface
     window.RealtimeClient = {
+        emit: function (event, data) {
+            if (socket) socket.emit(event, data);
+        },
+        getSocket: function () {
+            return socket;
+        },
         on: function (event, callback) {
             if (!listeners[event]) listeners[event] = [];
             listeners[event].push(callback);

@@ -1,0 +1,168 @@
+/* ==========================================
+   LOVE LANGUAGE QUIZ & CERTIFICATE STYLES
+   ========================================== */
+
+.quiz-page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px 90px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.quiz-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.quiz-hero p {
+    font-size: 13.5px;
+    color: #ff99ac;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+/* Quiz Card Container */
+.quiz-card {
+    background: radial-gradient(circle at 50% 20%, rgba(45, 15, 65, 0.9), rgba(15, 5, 25, 0.95));
+    border: 1px solid rgba(255, 127, 165, 0.35);
+    border-radius: 28px;
+    padding: 36px 24px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 0 50px rgba(255,75,145,0.25);
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.q-step-badge {
+    font-size: 11px;
+    color: #ffd180;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.q-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.35;
+}
+
+.q-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.q-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+}
+
+.q-option-btn:hover {
+    background: rgba(255, 75, 145, 0.2);
+    border-color: #ff4b91;
+    transform: translateX(5px);
+}
+
+.opt-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    color: #ffd180;
+}
+
+/* CERTIFICATE OF CHEMISTRY (RESULT) */
+.certificate-wrap {
+    display: none;
+    background: #fffdf8;
+    color: #2a1500;
+    border: 8px double #c8963e;
+    border-radius: 12px;
+    padding: 36px 24px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 30px rgba(255,215,0,0.4);
+    position: relative;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.cert-royal-crest {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.cert-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    color: #8b1e4f;
+    margin-bottom: 4px;
+}
+
+.cert-subtitle {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.cert-couple-names {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    border-bottom: 1px solid #c8963e;
+    display: inline-block;
+    padding: 0 20px 4px;
+    margin-bottom: 14px;
+}
+
+.cert-badge-pill {
+    display: inline-block;
+    background: rgba(255, 75, 145, 0.15);
+    border: 1px solid #ff4b91;
+    color: #ff4b91;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+
+.cert-body-text {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.5;
+    max-width: 440px;
+    margin: 0 auto 20px;
+}
+
+.cert-signature-row {
+    display: flex;
+    justify-content: space-around;
+    font-size: 11px;
+    color: #666;
+    border-top: 1px dashed #c8963e;
+    padding-top: 14px;
+}

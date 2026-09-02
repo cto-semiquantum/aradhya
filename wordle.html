@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aru's Love Wordle 🟩 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Daily 5-letter romantic word guessing game for Aradhya & Harsh.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/wordle.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="wordle-page">
+
+    <!-- HEADER -->
+    <div class="wordle-header">
+        <span class="badge-pill" style="border-color: #00b862; color: #00b862; background: rgba(0,184,98,0.15);">
+            🟩 5-LETTER WORDLE
+        </span>
+        <h1>Aru's Love Wordle 💕</h1>
+        <p>"Guess the secret 5-letter love word in 6 tries. Green means correct, yellow means close!"</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- 6x5 BOARD -->
+    <div class="wordle-board" id="wordleBoard"></div>
+
+    <!-- VIRTUAL KEYBOARD -->
+    <div class="wordle-keyboard">
+        <div class="keyboard-row">
+            <button class="key-btn" data-key="Q">Q</button>
+            <button class="key-btn" data-key="W">W</button>
+            <button class="key-btn" data-key="E">E</button>
+            <button class="key-btn" data-key="R">R</button>
+            <button class="key-btn" data-key="T">T</button>
+            <button class="key-btn" data-key="Y">Y</button>
+            <button class="key-btn" data-key="U">U</button>
+            <button class="key-btn" data-key="I">I</button>
+            <button class="key-btn" data-key="O">O</button>
+            <button class="key-btn" data-key="P">P</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key-btn" data-key="A">A</button>
+            <button class="key-btn" data-key="S">S</button>
+            <button class="key-btn" data-key="D">D</button>
+            <button class="key-btn" data-key="F">F</button>
+            <button class="key-btn" data-key="G">G</button>
+            <button class="key-btn" data-key="H">H</button>
+            <button class="key-btn" data-key="J">J</button>
+            <button class="key-btn" data-key="K">K</button>
+            <button class="key-btn" data-key="L">L</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key-btn wide" data-key="ENTER">ENTER</button>
+            <button class="key-btn" data-key="Z">Z</button>
+            <button class="key-btn" data-key="X">X</button>
+            <button class="key-btn" data-key="C">C</button>
+            <button class="key-btn" data-key="V">V</button>
+            <button class="key-btn" data-key="B">B</button>
+            <button class="key-btn" data-key="N">N</button>
+            <button class="key-btn" data-key="M">M</button>
+            <button class="key-btn wide" data-key="BACK">⌫</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- WIN/LOSS MODAL -->
+<div class="win-modal" id="wordleWinModal" style="display: none;">
+    <div class="win-card">
+        <div style="font-size: 54px; margin-bottom: 10px;">🟩✨💖</div>
+        <h2 id="wordleWinWord" style="letter-spacing: 4px; font-size: 32px; color: #00b862;">BAUNI</h2>
+        <p id="wordleWinMsg" style="color: #ff99ac; font-size: 14px; margin-bottom: 24px;">
+            "Brilliant! You guessed our secret love word!"
+        </p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button class="tool-btn" onclick="closeWordleModal()">Close</button>
+            <button class="add-polaroid-btn" onclick="playNextWord()">Play Next Word ↺</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/wordle.js"></script>
+
+</body>
+</html>

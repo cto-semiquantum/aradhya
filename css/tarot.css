@@ -1,0 +1,154 @@
+/* ==========================================
+   CELESTIAL LOVE TAROT STYLES
+   ========================================== */
+
+.tarot-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 90px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.tarot-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.tarot-hero p {
+    font-size: 13.5px;
+    color: #ff99ac;
+    max-width: 550px;
+    margin: 0 auto 24px;
+}
+
+/* 3-Card Reading Grid */
+.tarot-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .tarot-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin: 0 auto 30px;
+    }
+}
+
+.tarot-card-wrap {
+    perspective: 1000px;
+    height: 420px;
+}
+
+.tarot-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    cursor: pointer;
+}
+
+.tarot-card.is-revealed {
+    transform: rotateY(180deg);
+}
+
+.tarot-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    border: 2px solid #ffd180;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 20px rgba(255,215,0,0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 18px;
+}
+
+/* Front Face (Hidden Card Back) */
+.tarot-front {
+    background: radial-gradient(circle at 50% 30%, #200835, #080112);
+    transform: rotateY(0deg);
+    align-items: center;
+    justify-content: center;
+}
+
+.tarot-emblem {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px dashed #ffd180;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 0 20px rgba(255,209,128,0.3);
+    margin-bottom: 16px;
+}
+
+.tarot-pos-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffd180;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.tarot-tap-hint {
+    font-size: 11px;
+    color: #ff99ac;
+}
+
+/* Back Face (Revealed Card) */
+.tarot-back {
+    background: radial-gradient(circle at 50% 20%, #2b0b42, #10031a);
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.card-archetype-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 15px rgba(255,215,0,0.6));
+}
+
+.card-archetype-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffd180;
+    margin-bottom: 4px;
+}
+
+.card-archetype-sub {
+    font-size: 11px;
+    color: #ff99ac;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.card-archetype-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-sacred-key {
+    font-size: 11px;
+    color: #ffd180;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 10px;
+    font-weight: 600;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Virtual Love Garden 🌸 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Care for our growing Sakura Love Tree together across the miles.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/garden.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realtime-client.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="garden-page">
+
+    <!-- HERO -->
+    <div class="garden-hero">
+        <span class="badge-pill" style="border-color: #ff7fa5; color: #ff7fa5; background: rgba(255,127,165,0.15);">
+            🌸 LIVING SAKURA TREE
+        </span>
+        <h1>Our Virtual Love Garden 💕</h1>
+        <p>"A tree planted on the soil of loyalty. Care for it daily with water, warmth and love."</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- GARDEN STAGE -->
+    <div class="garden-stage">
+        <canvas id="sakuraCanvas"></canvas>
+
+        <div style="position: relative; z-index: 2; margin-bottom: 12px;">
+            <span class="badge-pill" style="border-color: #00ff88; color: #00ff88; background: rgba(0,255,136,0.15);" id="gardenStreak">
+                105 Days Blooming Together
+            </span>
+        </div>
+
+        <!-- TREE VISUAL -->
+        <div class="tree-visual-wrap">
+            <div class="tree-glow-ring"></div>
+            <div class="tree-emoji" id="treeEmoji">🌸</div>
+        </div>
+
+        <h2 style="color: #ffd180; font-size: 22px; font-weight: 700; margin-bottom: 18px; position: relative; z-index: 2;" id="gardenStageTitle">
+            Stage 3: Full Cherry Blossom 🌸
+        </h2>
+
+        <!-- PROGRESS BAR -->
+        <div class="growth-progress-wrap">
+            <div class="growth-label-row">
+                <span>Tree Health & Bloom</span>
+                <span id="growthPoints">85 / 150 Points</span>
+            </div>
+            <div class="growth-track">
+                <div class="growth-fill" id="growthFill"></div>
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="garden-actions-row">
+            <button class="garden-action-btn" onclick="gardenAction('water')">
+                <span>💧</span>
+                <span>Water Tree</span>
+            </button>
+            <button class="garden-action-btn" onclick="gardenAction('sun')">
+                <span>☀️</span>
+                <span>Give Warmth</span>
+            </button>
+            <button class="garden-action-btn" onclick="gardenAction('love')">
+                <span>💖</span>
+                <span>Send Love</span>
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/garden.js"></script>
+
+</body>
+</html>

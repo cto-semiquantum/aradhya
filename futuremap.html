@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Future Dream Map 🗺️ | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bucket list of dreams and sacred places to visit together for Harsh and Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/futuremap.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realtime-client.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="futuremap-page">
+
+    <!-- HERO -->
+    <div class="map-hero">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🗺️ SACRED BUCKET LIST
+        </span>
+        <h1>Our Future Dream Map ✨</h1>
+        <p>"Har woh jagah jahan hume hath pakad kar chalna hai. Ye sirf sapne nahi, meri zindagi ke pakke iraade hain."</p>
+
+        <!-- COUNTERS -->
+        <div class="progress-counter-wrap">
+            <div class="counter-stat">
+                <strong id="totalCount">6</strong>
+                <span>Total Dreams</span>
+            </div>
+            <div class="counter-stat">
+                <strong id="completedCount" style="color: #00ff88;">1</strong>
+                <span>Fulfilled</span>
+            </div>
+            <div class="counter-stat">
+                <strong id="dreamsCount" style="color: #c77dff;">5</strong>
+                <span>Awaiting Us</span>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <button class="add-polaroid-btn" onclick="openAddDreamModal()">
+                <span>➕ Add a Dream Wish</span>
+            </button>
+            <a href="index.html" class="back-link" style="padding: 10px 20px; font-size: 13px;">← Home</a>
+        </div>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterDreams('all', this)">✨ All Wishes</button>
+        <button class="filter-btn" onclick="filterDreams('dream', this)">🔮 Dreams</button>
+        <button class="filter-btn" onclick="filterDreams('in-progress', this)">⏳ In Progress</button>
+        <button class="filter-btn" onclick="filterDreams('completed', this)">❤️ Fulfilled</button>
+        <button class="filter-btn" onclick="filterDreams('Cozy Dates', this)">☕ Cozy Dates</button>
+        <button class="filter-btn" onclick="filterDreams('Road Trips', this)">🚗 Road Trips</button>
+    </div>
+
+    <!-- GRID -->
+    <div class="bucket-grid" id="bucketGrid"></div>
+
+</div>
+
+<!-- ADD DREAM MODAL -->
+<div class="modal-backdrop" id="addDreamModal">
+    <div class="modal-content">
+        <h3 class="modal-title"><span>🗺️</span> Add a Sacred Wish to Our Map</h3>
+        
+        <input type="text" id="dreamTitle" class="modal-input" placeholder="Dream Name (e.g. Star gazing from a wooden cabin)">
+        <select id="dreamTag" class="modal-input" style="background: #190a28;">
+            <option value="Cozy Dates">Cozy Dates ☕</option>
+            <option value="Road Trips">Road Trips 🚗</option>
+            <option value="Travel Dreams">Travel Dreams ✈️</option>
+            <option value="Cute Firsts">Cute Firsts 🎀</option>
+        </select>
+        <input type="text" id="dreamDate" class="modal-input" placeholder="Target Date / Season (e.g. Winters / Someday Soon)">
+        <textarea id="dreamNote" class="modal-input modal-textarea" placeholder="Why this matters to us..."></textarea>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px;">
+            <button onclick="closeAddDreamModal()" class="tool-btn" style="background: rgba(255,255,255,0.1);">Cancel</button>
+            <button onclick="saveNewDream()" class="add-polaroid-btn">Add to Wishlist ✨</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/futuremap.js"></script>
+
+</body>
+</html>

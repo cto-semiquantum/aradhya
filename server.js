@@ -445,6 +445,81 @@ Always stay in character, speak natural Hinglish with these exact habits, keep i
     }
 });
 
+// 7. Bucket List API
+app.get('/api/bucketlist', (req, res) => {
+    const defaultList = [
+        { id: 1, title: "Late Night Drive to Murthal", tag: "Cozy Dates", status: "completed", date: "Forever in mind", note: "Hot parathe, chai, cold air and your hand in mine." },
+        { id: 2, title: "Cafe Aru Date - Table #0411", tag: "Cozy Dates", status: "in-progress", date: "Always reserved", note: "Hot chocolate with extra marshmallows and samose." },
+        { id: 3, title: "Stargazing at Mountain Hills", tag: "Road Trips", status: "dream", date: "Upcoming", note: "Watching constellations and listening to our playlist under the Milky Way." },
+        { id: 4, title: "Cook Pasta & Maggie Together", tag: "Cute Firsts", status: "dream", date: "Upcoming", note: "Messy kitchen, cute banter, and Baunii eating all the cheese." },
+        { id: 5, title: "Walk in the Rain with One Umbrella", tag: "Cozy Dates", status: "dream", date: "Upcoming", note: "Getting wet together while holding hands tight." },
+        { id: 6, title: "Watch Sunrise From a Cliff", tag: "Travel Dreams", status: "dream", date: "Upcoming", note: "First light hitting your eyes while you lean on my shoulder." }
+    ];
+    const list = readJson('bucketlist.json', defaultList);
+    res.json(list);
+});
+
+app.post('/api/bucketlist', (req, res) => {
+    const item = req.body;
+    if (!item || !item.title) return res.status(400).json({ error: "Title required" });
+    const list = readJson('bucketlist.json', []);
+    const newItem = {
+        id: Date.now(),
+        title: item.title,
+        tag: item.tag || "Cozy Dates",
+        status: item.status || "dream",
+        date: item.date || "Someday soon",
+        note: item.note || ""
+    };
+    list.unshift(newItem);
+    writeJson('bucketlist.json', list);
+    io.emit('new_bucket_item', newItem);
+    res.status(201).json(newItem);
+});
+
+app.patch('/api/bucketlist/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const list = readJson('bucketlist.json', []);
+    const index = list.findIndex(i => i.id === id);
+    if (index !== -1) {
+        list[index] = { ...list[index], ...req.body };
+        writeJson('bucketlist.json', list);
+        io.emit('update_bucket_item', list[index]);
+        return res.json(list[index]);
+    }
+    res.status(404).json({ error: "Not found" });
+});
+
+// 8. Polaroids API
+app.get('/api/polaroids', (req, res) => {
+    const defaultPolaroids = [
+        { id: 1, image: "assets/images/her1.jpeg", caption: "The Most Beautiful Girl in My Universe", date: "04.11 Forever", note: "Teri ek muskaan mere saare din ka stress bhula deti hai. Meri pyari Bauniii 🤏🌸", location: "In My Heart" },
+        { id: 2, image: "assets/images/her2.jpeg", caption: "Simplicity & Grace", date: "Pure Devotion", note: "Kitni masoomiyat se hasti hai tu... is hasi ko mehfooz rakhna meri zindagi ka maksad hai.", location: "Soul Connection" },
+        { id: 3, image: "assets/images/anime_hero.png", caption: "My Knight & Princess Dream", date: "Love Beyond Limits", note: "Har kahani ka ant sundar hota hai jab tak tum sath ho.", location: "Our Fairytale" },
+        { id: 4, image: "assets/images/anime_forever.png", caption: "Under the Infinite Sky", date: "Sacred Vow", note: "Duniya ke fasle chahe jo ho, mera har lamha sirf tera hai.", location: "Eternal Sanctuary" }
+    ];
+    const polaroids = readJson('polaroids.json', defaultPolaroids);
+    res.json(polaroids);
+});
+
+app.post('/api/polaroids', (req, res) => {
+    const item = req.body;
+    if (!item || !item.caption) return res.status(400).json({ error: "Caption required" });
+    const list = readJson('polaroids.json', []);
+    const newPolaroid = {
+        id: Date.now(),
+        image: item.image || "assets/images/her1.jpeg",
+        caption: item.caption,
+        date: item.date || new Date().toLocaleDateString('en-GB'),
+        note: item.note || "",
+        location: item.location || "In Harsh's Heart"
+    };
+    list.unshift(newPolaroid);
+    writeJson('polaroids.json', list);
+    io.emit('new_polaroid', newPolaroid);
+    res.status(201).json(newPolaroid);
+});
+
 // Serve Static Frontend
 app.use(express.static(path.join(__dirname), {
     maxAge: '1h',
@@ -463,6 +538,60 @@ app.get('*', (req, res) => {
 // WebSocket Connection
 io.on('connection', (socket) => {
     console.log(`[Socket] Device connected: ${socket.id}`);
+
+    // Real-time Shared Doodle
+    socket.on('love_doodle_stroke', (data) => {
+        socket.broadcast.emit('love_doodle_stroke', data);
+    });
+
+    socket.on('love_doodle_clear', () => {
+        socket.broadcast.emit('love_doodle_clear');
+    });
+
+    socket.on('love_doodle_heart', (data) => {
+        socket.broadcast.emit('love_doodle_heart', data);
+    });
+
+    // Synchronized Music Player
+    socket.on('sync_music_action', (data) => {
+        socket.broadcast.emit('sync_music_action', data);
+    });
+
+    // Instant "Thinking of You" Pulse
+    socket.on('send_pulse', async (data) => {
+        socket.broadcast.emit('receive_pulse', data);
+        const sender = data && data.sender === 'aradhya' ? 'Aradhya' : 'Harsh';
+        try {
+            await broadcastPushNotification({
+                title: `💓 ${sender} is thinking of you!`,
+                body: (data && data.message) || "A gentle heart pulse was just sent straight to you... 💖",
+                icon: data && data.sender === 'aradhya' ? './assets/images/her1.jpeg' : './assets/images/icon-192.png',
+                url: './index.html'
+            });
+        } catch(e) {
+            console.error('Pulse push failed:', e.message);
+        }
+    });
+
+    // Spin The Love Wheel
+    socket.on('wheel_spin', async (data) => {
+        socket.broadcast.emit('wheel_spin', data);
+        const person = (data && data.person === 'aradhya') ? 'Aradhya' : 'Harsh';
+        try {
+            await broadcastPushNotification({
+                title: `🎡 ${person} just spun the Love Wheel!`,
+                body: `Won: "${data.item}" 💖 Tap to see!`,
+                icon: (data && data.person === 'aradhya') ? './assets/images/her1.jpeg' : './assets/images/icon-192.png',
+                url: './wheel.html'
+            });
+        } catch(e) {}
+    });
+
+    // Virtual Love Garden Care
+    socket.on('garden_action', (data) => {
+        socket.broadcast.emit('garden_action', data);
+    });
+
     socket.on('disconnect', () => {
         console.log(`[Socket] Device disconnected: ${socket.id}`);
     });

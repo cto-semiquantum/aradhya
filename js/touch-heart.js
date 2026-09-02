@@ -65,7 +65,44 @@
         }
     };
 
-    // Realtime Listener
+    // Instant "Thinking of You" Pulse
+    window.sendThinkingOfYouPulse = function () {
+        const name = sessionStorage.getItem('aradhya_user_identity') || 'Harsh';
+        window.receiveHeartbeatEffect('You');
+
+        if (window.RealtimeClient) {
+            window.RealtimeClient.emit('send_pulse', {
+                sender: name.toLowerCase(),
+                message: `${name} is thinking of you right now... 🌸`
+            });
+        }
+        showToastNotification(`✨ "Thinking of You" pulse beamed to ${name === 'Aradhya' ? 'Harsh' : 'Aradhya'}! 💖`);
+    };
+
+    function showToastNotification(text) {
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+            background: rgba(22, 10, 36, 0.95); border: 1px solid rgba(255, 75, 145, 0.5);
+            color: #fff; padding: 12px 24px; border-radius: 50px; font-size: 13.5px;
+            font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 99999;
+            backdrop-filter: blur(15px); animation: fadeIn 0.3s ease;
+        `;
+        toast.textContent = text;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2800);
+    }
+
+    // Socket.io Realtime Listener
+    if (window.RealtimeClient) {
+        window.RealtimeClient.on('receive_pulse', (data) => {
+            const sender = (data && data.sender === 'aradhya') ? 'Aradhya' : 'Harsh';
+            window.receiveHeartbeatEffect(sender);
+            showToastNotification(`💓 ${sender} is thinking of you right now... ✨`);
+        });
+    }
+
+    // NTFY SSE Fallback Listener
     try {
         const es = new EventSource(NTFY_URL + '/sse');
         es.onmessage = function (event) {

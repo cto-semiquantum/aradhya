@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spin The Love Wheel 🎡 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Spin the romantic love wheel for sweet treats, hugs and date surprises.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/wheel.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realtime-client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="wheel-page">
+
+    <!-- HEADER -->
+    <div class="wheel-header">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🎡 ROMANTIC TREAT SPINNER
+        </span>
+        <h1>Spin The Love Wheel 💕</h1>
+        <p>"Can't decide what Baunii wants right now? Spin the wheel and let love choose!"</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- RESULT BANNER -->
+    <div class="spin-result-banner">
+        <div class="result-title">LATEST TREAT UNLOCKED</div>
+        <div class="result-text" id="resultText">Tap "SPIN" To Start ✨</div>
+    </div>
+
+    <!-- WHEEL STAGE -->
+    <div class="wheel-stage-wrap">
+        <!-- GOLDEN POINTER -->
+        <div class="wheel-pointer">
+            <svg viewBox="0 0 24 32">
+                <path d="M12 32 L0 8 Q0 0 12 0 Q24 0 24 8 Z" />
+            </svg>
+        </div>
+
+        <canvas id="wheelCanvas" width="380" height="380"></canvas>
+
+        <!-- CENTER SPIN BUTTON -->
+        <div class="center-spin-btn" id="spinBtn" onclick="spinWheel()">
+            <span>SPIN</span>
+            <span style="font-size: 11px;">💖</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- WIN MODAL -->
+<div class="win-modal" id="wheelWinModal" style="display: none;">
+    <div class="win-card">
+        <div style="font-size: 54px; margin-bottom: 10px;">🎉💖✨</div>
+        <h2 id="winPrizeTitle">Hot Chocolate Date ☕</h2>
+        <p style="color: #ff99ac; font-size: 14px; margin-bottom: 20px;">
+            "Harsh has been officially notified! Table #0411 is ready to serve this treat with unconditional love."
+        </p>
+        <button class="add-polaroid-btn" onclick="closeWheelModal()" style="width: 100%;">
+            Yay! Claim Treat 💌
+        </button>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/wheel.js"></script>
+
+</body>
+</html>

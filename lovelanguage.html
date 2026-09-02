@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Language Chemistry 💖 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover Baunii's primary love language and unlock your official couple chemistry certificate.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/lovelanguage.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="quiz-page">
+
+    <!-- HERO -->
+    <div class="quiz-hero">
+        <span class="badge-pill" style="border-color: #ff7fa5; color: #ff7fa5; background: rgba(255,127,165,0.15);">
+            💖 CHEMISTRY & LOVE LANGUAGE
+        </span>
+        <h1>Love Language Chemistry 💕</h1>
+        <p>"5 sweet questions to discover how Baunii loves to be pampered and cared for."</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- QUIZ CARD -->
+    <div class="quiz-card" id="quizBox">
+        <div class="q-step-badge" id="qStepBadge">QUESTION 1 OF 5</div>
+        <div class="q-title" id="qTitle">Loading question...</div>
+        <div class="q-options-list" id="qOptionsList"></div>
+    </div>
+
+    <!-- CERTIFICATE BOX -->
+    <div class="certificate-wrap" id="certBox">
+        <div class="cert-royal-crest">👑 💖 ✨</div>
+        <div class="cert-title">Certificate of Sacred Chemistry</div>
+        <div class="cert-subtitle">OFFICIALLY RECORDED IN HARSH'S HEART</div>
+
+        <div class="cert-couple-names">Harsh ❤️ Aradhya (Baunii)</div>
+        <br>
+        <div class="cert-badge-pill" id="certBadge">PRIMARY LANGUAGE: Words of Devotion 💌</div>
+
+        <p class="cert-body-text">
+            "This certifies a 100% Soulmate Compatibility Match. No matter the miles, tests, or silence, this bond remains unbreakable, cherished and protected under the sacred code of 04.11 Forever."
+        </p>
+
+        <div class="cert-signature-row">
+            <div>
+                <strong>Harsh</strong><br>
+                <span>Devoted Soul</span>
+            </div>
+            <div>
+                <strong>Table #0411</strong><br>
+                <span>Cafe Aru Seal</span>
+            </div>
+            <div>
+                <strong>Aradhya (Aru)</strong><br>
+                <span>Queen of the Sanctuary</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 25px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button class="add-polaroid-btn" onclick="downloadCertificateImage()">
+                <span>💾 Save Certificate PNG</span>
+            </button>
+            <button class="tool-btn" onclick="restartQuiz()" style="background: rgba(0,0,0,0.1); color: #333; border-color: #c8963e;">
+                <span>↺ Retake Quiz</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/lovelanguage.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aru & Harsh Love Crossword 🧩</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Custom romantic crossword puzzle designed for Aradhya & Harsh.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/crossword.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="crossword-page">
+
+    <!-- HEADER -->
+    <div class="puzzle-header">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🧩 SPECIAL COUPLE PUZZLE
+        </span>
+        <h1>Aru & Harsh Crossword 💖</h1>
+        <p>"Har lafz me humari yaadein chhipi hain. Fill in the letters to solve our love puzzle!"</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- MAIN CROSSWORD LAYOUT -->
+    <div class="crossword-layout">
+        
+        <!-- LEFT: GRID BOARD -->
+        <div class="grid-board-wrap">
+            <div class="cw-grid" id="cwGrid"></div>
+
+            <div class="cw-actions-row">
+                <button class="tab-btn" onclick="revealHint()" style="background: rgba(255,215,0,0.15); border-color: rgba(255,215,0,0.4); color: #ffd180;">
+                    💡 Need a Hint?
+                </button>
+                <button class="tab-btn" onclick="clearPuzzle()" style="background: rgba(255,255,255,0.06);">
+                    🔄 Reset Grid
+                </button>
+            </div>
+        </div>
+
+        <!-- RIGHT: CLUES -->
+        <div class="clues-column">
+            <div class="clue-group">
+                <h3>➡️ ACROSS (Sidhe)</h3>
+                <div id="acrossClues"></div>
+            </div>
+
+            <div class="clue-group">
+                <h3>⬇️ DOWN (Neeche)</h3>
+                <div id="downClues"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- WIN MODAL -->
+<div class="win-modal" id="winModal">
+    <div class="win-card">
+        <div style="font-size: 54px; margin-bottom: 12px;">🏆💖✨</div>
+        <h2>You Solved Our Love Puzzle!</h2>
+        <p style="color: #ff99ac; font-size: 14px; margin-bottom: 20px;">
+            "Baunii has unlocked 1 Unlimited Warm Hug Coupon + Extra Marshmallows at Cafe Aru! Table #0411 always remembers."
+        </p>
+        <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 14px; border: 1px dashed #ffd180; margin-bottom: 24px;">
+            <span style="font-size: 12px; color: #ffd180; font-weight: 600; text-transform: uppercase;">SPECIAL REWARD CODE</span>
+            <div style="font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 4px; margin-top: 4px;">ARU-0411-FOREVER</div>
+        </div>
+        <button class="add-polaroid-btn" onclick="closeWinModal()" style="width: 100%;">
+            Claim My Love Reward 💌
+        </button>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/crossword.js"></script>
+
+</body>
+</html>

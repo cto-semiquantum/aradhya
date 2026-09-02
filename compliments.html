@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Affirmations & Ambient Soundscapes 🏺 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daily love affirmations jar and soothing ambient soundscapes for Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/compliments.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="compliments-page">
+
+    <!-- HERO -->
+    <div class="jar-hero">
+        <span class="badge-pill" style="border-color: #ffd180; color: #ffd180; background: rgba(255,200,100,0.15);">
+            🏺 SACRED JAR & LO-FI SOUNDS
+        </span>
+        <h1>Daily Affirmations & Ambience ✨</h1>
+        <p>"Jab bhi akela mehsoos ho, is jar ko tap karna. Har lafz Harsh ke dil ki sachai hai."</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- MAIN TWO-COLUMN GRID -->
+    <div class="ambient-jar-grid">
+        
+        <!-- LEFT: LOVE JAR -->
+        <div class="card-sanctuary">
+            <h2 class="soundscape-title"><span>🏺</span> Crystal Love Jar</h2>
+            <p style="font-size: 13px; color: #ff99ac; margin-bottom: 10px;">
+                Tap the jar to draw a fresh love note from Harsh 💖
+            </p>
+
+            <div class="crystal-jar-wrap" id="crystalJar" onclick="drawLoveNote()">
+                <div class="jar-lid"></div>
+                <div class="jar-body">
+                    <div class="jar-sparkles">✨💌💖</div>
+                </div>
+            </div>
+
+            <div class="scroll-note-box" id="scrollBox">
+                <div class="scroll-note-text" id="noteText">
+                    "Loading your daily affirmation..."
+                </div>
+                <button class="add-polaroid-btn" onclick="drawLoveNote()" style="padding: 6px 16px; font-size: 12px; margin-top: 8px;">
+                    Draw Another Note ↺
+                </button>
+            </div>
+        </div>
+
+        <!-- RIGHT: AMBIENT LO-FI SOUNDSCAPES -->
+        <div class="card-sanctuary">
+            <h2 class="soundscape-title"><span>🌧️</span> Ambient Soundscapes</h2>
+            <p style="font-size: 13px; color: #ff99ac; margin-bottom: 20px;">
+                Relaxing rain, warm fireplace and midnight wind synthesized for you.
+            </p>
+
+            <div class="sound-row">
+                <div class="sound-info">
+                    <span>🌧️</span>
+                    <span>Rain on Window</span>
+                </div>
+                <input type="range" id="rainSlider" class="sound-slider" min="0" max="1" step="0.05" value="0.4">
+            </div>
+
+            <div class="sound-row">
+                <div class="sound-info">
+                    <span>🔥</span>
+                    <span>Fireplace Crackle</span>
+                </div>
+                <input type="range" id="fireSlider" class="sound-slider" min="0" max="1" step="0.05" value="0.3">
+            </div>
+
+            <div class="sound-row">
+                <div class="sound-info">
+                    <span>🍃</span>
+                    <span>Midnight Hill Breeze</span>
+                </div>
+                <input type="range" id="windSlider" class="sound-slider" min="0" max="1" step="0.05" value="0.25">
+            </div>
+
+            <button class="add-polaroid-btn" id="masterAudioBtn" onclick="toggleSoundscapes()" style="width: 100%; margin-top: 15px;">
+                ▶ Start Ambient Ambience
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/compliments.js"></script>
+
+</body>
+</html>

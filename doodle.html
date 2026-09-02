@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Live Love Doodle 🎨 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Realtime synchronized love doodle canvas for Harsh and Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/doodle.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realtime-client.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="doodle-page">
+
+    <!-- HEADER -->
+    <div class="doodle-header">
+        <div class="doodle-title-group">
+            <h1><span>🎨</span> Live Shared Doodle</h1>
+            <p>"Draw together across the miles. Every stroke reflects live." ✨</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="doodle-status-badge">
+                <span class="doodle-status-dot"></span>
+                <span id="syncStatusText">Connected with Aru 💖</span>
+            </div>
+            <a href="index.html" class="back-link" style="padding: 6px 14px; font-size: 13px;">← Home</a>
+        </div>
+    </div>
+
+    <!-- CANVAS WRAPPER -->
+    <div class="canvas-wrapper">
+        <canvas id="doodleCanvas"></canvas>
+        <div class="remote-cursor" id="partnerCursor"><span>🌸</span></div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="doodle-toolbar">
+        <!-- ROW 1: Colors & Brush Size -->
+        <div class="toolbar-row">
+            <div class="color-swatches">
+                <div class="color-swatch active" data-color="#ff4b91" style="background: #ff4b91; --swatch-color: #ff4b91;" title="Hot Pink"></div>
+                <div class="color-swatch" data-color="#c77dff" style="background: #c77dff; --swatch-color: #c77dff;" title="Lavender Bloom"></div>
+                <div class="color-swatch" data-color="#00f5d4" style="background: #00f5d4; --swatch-color: #00f5d4;" title="Starlight Cyan"></div>
+                <div class="color-swatch" data-color="#ffd166" style="background: #ffd166; --swatch-color: #ffd166;" title="Golden Honey"></div>
+                <div class="color-swatch" data-color="#ff0054" style="background: #ff0054; --swatch-color: #ff0054;" title="Ruby Red"></div>
+                <div class="color-swatch" data-color="#ffffff" style="background: #ffffff; --swatch-color: #ffffff;" title="Moonlight White"></div>
+            </div>
+
+            <div class="brush-size-wrap">
+                <span>Size:</span>
+                <input type="range" id="brushSlider" class="brush-slider" min="2" max="25" value="6">
+                <span id="brushSizeLabel" style="min-width: 32px; font-weight: 600; color: #ff99ac;">6px</span>
+            </div>
+        </div>
+
+        <!-- ROW 2: Action Buttons -->
+        <div class="toolbar-row">
+            <div class="tool-btn-group">
+                <button class="tool-btn active" id="glowBtn" onclick="toggleGlow()" title="Toggle Neon Glow">
+                    <span>✨ Glow Brush</span>
+                </button>
+                <button class="tool-btn" id="eraserBtn" onclick="toggleEraser()" title="Eraser">
+                    <span>🧹 Eraser</span>
+                </button>
+                <button class="tool-btn" onclick="sendDoodleHeart()" title="Send Heart Burst">
+                    <span>💖 Heart Burst</span>
+                </button>
+            </div>
+
+            <div class="tool-btn-group">
+                <button class="tool-btn" onclick="clearCanvas()" style="border-color: rgba(255,100,100,0.4);" title="Clear Canvas">
+                    <span>🗑️ Clear</span>
+                </button>
+                <button class="tool-btn" onclick="saveDoodle()" style="background: linear-gradient(135deg, #ff4b91, #7f00ff); border-color: transparent;" title="Download PNG">
+                    <span>💾 Save Art</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/doodle.js"></script>
+
+</body>
+</html>

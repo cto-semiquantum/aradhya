@@ -1,0 +1,211 @@
+/* ==========================================
+   OUR FUTURE DREAM MAP & BUCKET LIST
+   ========================================== */
+
+.futuremap-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 16px 90px;
+    position: relative;
+    z-index: 2;
+}
+
+.map-hero {
+    text-align: center;
+    margin-bottom: 28px;
+    background: radial-gradient(circle at 50% 20%, rgba(60, 20, 90, 0.7), rgba(15, 5, 25, 0.9));
+    border: 1px solid rgba(255, 127, 165, 0.35);
+    border-radius: 28px;
+    padding: 36px 20px;
+    box-shadow: 0 0 50px rgba(255,75,145,0.2);
+    backdrop-filter: blur(25px);
+}
+
+.map-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.map-hero p {
+    font-size: 14px;
+    color: #ff99ac;
+    max-width: 580px;
+    margin: 0 auto 20px;
+}
+
+.progress-counter-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.counter-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.counter-stat strong {
+    font-size: 22px;
+    color: #fff;
+    display: block;
+}
+
+.counter-stat span {
+    font-size: 11px;
+    color: #ff99ac;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Category Filter Tabs */
+.filter-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #ff4b91, #7f00ff);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(255,75,145,0.4);
+}
+
+/* Bucket Items Grid */
+.bucket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.bucket-card {
+    background: rgba(20, 8, 35, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+}
+
+.bucket-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,75,145,0.4);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 20px rgba(255,75,145,0.2);
+}
+
+.bucket-card.completed {
+    border-color: rgba(0,255,136,0.35);
+    background: rgba(10, 30, 20, 0.85);
+}
+
+.card-tag-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.item-category-tag {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.08);
+    color: #ffd180;
+}
+
+.item-status-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+}
+
+.item-status-tag.dream {
+    background: rgba(127,0,255,0.2);
+    color: #c77dff;
+    border: 1px solid rgba(127,0,255,0.4);
+}
+
+.item-status-tag.in-progress {
+    background: rgba(255,75,145,0.2);
+    color: #ff99ac;
+    border: 1px solid rgba(255,75,145,0.4);
+}
+
+.item-status-tag.completed {
+    background: rgba(0,255,136,0.2);
+    color: #00ff88;
+    border: 1px solid rgba(0,255,136,0.4);
+}
+
+.bucket-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.bucket-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.bucket-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+}
+
+.toggle-status-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-status-btn:hover {
+    background: rgba(255,75,145,0.3);
+    border-color: #ff4b91;
+}

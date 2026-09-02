@@ -103,11 +103,15 @@
             </div>
         </div>
 
-        <!-- DIGITAL TOUCH BUTTON -->
-        <div class="touch-bar">
+        <!-- DIGITAL TOUCH BUTTONS -->
+        <div class="touch-bar" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
             <button onclick="sendHeartbeatTouch()" class="touch-btn">
                 <span style="font-size: 18px; animation: livePulse 1.2s infinite alternate;">💓</span>
-                <span>Send Digital Touch (Feel My Heart)</span>
+                <span>Send Digital Touch</span>
+            </button>
+            <button onclick="sendThinkingOfYouPulse()" class="touch-btn" style="background: linear-gradient(135deg, rgba(255,75,145,0.4), rgba(127,0,255,0.4)); border-color: #ff4b91;">
+                <span style="font-size: 18px; animation: livePulse 1.2s infinite alternate;">📡</span>
+                <span>"Thinking of You" Pulse</span>
             </button>
         </div>
 
@@ -147,6 +151,50 @@
         </div>
 
         <div class="cards-grid">
+            <a href="doodle.html" class="app-card" style="border-color: rgba(255,75,145,0.6); box-shadow: 0 0 20px rgba(255,75,145,0.2);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎨</div>
+                    <span class="card-tag live">LIVE SYNC 🎨</span>
+                </div>
+                <div>
+                    <div class="card-title">Live Love Doodle</div>
+                    <div class="card-desc">Real-time shared canvas — draw hearts and doodles together across the miles!</div>
+                </div>
+            </a>
+
+            <a href="together.html" class="app-card" style="border-color: rgba(127,0,255,0.6); box-shadow: 0 0 20px rgba(127,0,255,0.2);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎧</div>
+                    <span class="card-tag live">SYNCED 🎵</span>
+                </div>
+                <div>
+                    <div class="card-title">Together Listening</div>
+                    <div class="card-desc">Virtual romantic music room with synchronized vinyl playback & reactions.</div>
+                </div>
+            </a>
+
+            <a href="wheel.html" class="app-card" style="border-color: rgba(255,209,102,0.5); box-shadow: 0 0 20px rgba(255,209,102,0.2);">
+                <div class="card-top">
+                    <div class="card-icon-box">🎡</div>
+                    <span class="card-tag new">SPIN 🎡</span>
+                </div>
+                <div>
+                    <div class="card-title">Spin The Wheel</div>
+                    <div class="card-desc">Treat & surprise spinner — hot chocolate dates, hugs, and song voice notes!</div>
+                </div>
+            </a>
+
+            <a href="garden.html" class="app-card" style="border-color: rgba(255,127,165,0.5); box-shadow: 0 0 20px rgba(255,127,165,0.2);">
+                <div class="card-top">
+                    <div class="card-icon-box">🌸</div>
+                    <span class="card-tag live">BLOOM 🌸</span>
+                </div>
+                <div>
+                    <div class="card-title">Our Love Garden</div>
+                    <div class="card-desc">Water and bloom our living Sakura Bonsai tree together with falling petals.</div>
+                </div>
+            </a>
+
             <a href="cafe.html" class="app-card" style="border-color: rgba(255,180,100,0.4);">
                 <div class="card-top">
                     <div class="card-icon-box">☕</div>
@@ -155,6 +203,17 @@
                 <div>
                     <div class="card-title">Cafe Aru</div>
                     <div class="card-desc">Table #0411 permanently reserved. Hot chocolate, samose & garm paani!</div>
+                </div>
+            </a>
+
+            <a href="lovelock.html" class="app-card" style="border-color: rgba(255,209,102,0.5);">
+                <div class="card-top">
+                    <div class="card-icon-box">🌉</div>
+                    <span class="card-tag new">PARIS LOCK</span>
+                </div>
+                <div>
+                    <div class="card-title">Love Lock Bridge</div>
+                    <div class="card-desc">Snap an engraved golden padlock onto the Pont des Arts and toss the key!</div>
                 </div>
             </a>
 
@@ -266,6 +325,39 @@
                 <div>
                     <div class="card-title">Aradhya's Diary</div>
                     <div class="card-desc">A safe private canvas where Aru can write her thoughts anytime.</div>
+                </div>
+            </a>
+
+            <a href="polaroids.html" class="app-card" style="border-color: rgba(255,180,100,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">📸</div>
+                    <span class="card-tag new">3D FLIP 📸</span>
+                </div>
+                <div>
+                    <div class="card-title">Polaroid Wall</div>
+                    <div class="card-desc">Vintage 3D flip cards — tap any photo to reveal hidden handwritten notes.</div>
+                </div>
+            </a>
+
+            <a href="futuremap.html" class="app-card" style="border-color: rgba(255,209,102,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🗺️</div>
+                    <span class="card-tag new">BUCKET LIST</span>
+                </div>
+                <div>
+                    <div class="card-title">Future Dream Map</div>
+                    <div class="card-desc">Our sacred roadmap of places to visit and sweet dreams to fulfill together.</div>
+                </div>
+            </a>
+
+            <a href="deeptalk.html" class="app-card" style="border-color: rgba(199,125,255,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🃏</div>
+                    <span class="card-tag new">SOUL DECK</span>
+                </div>
+                <div>
+                    <div class="card-title">Midnight Deep Talk</div>
+                    <div class="card-desc">40+ intimate conversation cards for late-night bonding and vulnerable moments.</div>
                 </div>
             </a>
 
@@ -422,6 +514,72 @@
                 <div>
                     <div class="card-title">Daily Cookie</div>
                     <div class="card-desc">Crack open a sweet fortune cookie every morning at 12:00 AM.</div>
+                </div>
+            </a>
+
+            <a href="crossword.html" class="app-card" style="border-color: rgba(255,75,145,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🧩</div>
+                    <span class="card-tag new">GAME 🧩</span>
+                </div>
+                <div>
+                    <div class="card-title">Love Crossword</div>
+                    <div class="card-desc">Custom romantic crossword with clues about Baunii, 0411, Cafe Aru & us!</div>
+                </div>
+            </a>
+
+            <a href="compliments.html" class="app-card" style="border-color: rgba(255,209,102,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🏺</div>
+                    <span class="card-tag new">LO-FI & JAR</span>
+                </div>
+                <div>
+                    <div class="card-title">Love Jar & Ambience</div>
+                    <div class="card-desc">Crystal affirmation jar and relaxing rain, fireplace & night wind soundscapes.</div>
+                </div>
+            </a>
+
+            <a href="wordle.html" class="app-card" style="border-color: rgba(0,184,98,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🟩</div>
+                    <span class="card-tag new">WORDLE 🟩</span>
+                </div>
+                <div>
+                    <div class="card-title">Aru's Love Wordle</div>
+                    <div class="card-desc">Daily 5-letter romantic word guessing game with green tile flip animations!</div>
+                </div>
+            </a>
+
+            <a href="receipt.html" class="app-card" style="border-color: rgba(255,255,255,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🧾</div>
+                    <span class="card-tag new">RECEIPT 🧾</span>
+                </div>
+                <div>
+                    <div class="card-title">Couple Love Receipt</div>
+                    <div class="card-desc">Receiptify-style thermal receipt with 10.7M heartbeats ticker & PNG download!</div>
+                </div>
+            </a>
+
+            <a href="tarot.html" class="app-card" style="border-color: rgba(255,209,102,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">🔮</div>
+                    <span class="card-tag new">TAROT 🔮</span>
+                </div>
+                <div>
+                    <div class="card-title">Celestial Love Tarot</div>
+                    <div class="card-desc">3-card mystical reading: Past Healing, Present Devotion, and Eternal Destiny.</div>
+                </div>
+            </a>
+
+            <a href="lovelanguage.html" class="app-card" style="border-color: rgba(255,75,145,0.45);">
+                <div class="card-top">
+                    <div class="card-icon-box">💖</div>
+                    <span class="card-tag new">CHEMISTRY 💖</span>
+                </div>
+                <div>
+                    <div class="card-title">Love Language Test</div>
+                    <div class="card-desc">Discover Baunii's primary love pampering style and unlock your certificate!</div>
                 </div>
             </a>
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Polaroid Memory Wall 📸 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="3D Flip Polaroid Memory Wall for Harsh and Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/polaroids.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realtime-client.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="polaroids-page">
+
+    <!-- HEADER -->
+    <div class="polaroid-header">
+        <span class="badge-pill" style="border-color: #ff7fa5; color: #ff7fa5; background: rgba(255,127,165,0.15);">
+            📸 RETRO 3D POLAROIDS
+        </span>
+        <h1>Our Polaroid Memory Wall 💕</h1>
+        <p>"Every picture captures a silent breath of devotion. Tap any polaroid to read the secret note hidden behind it."</p>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <button class="add-polaroid-btn" onclick="openAddModal()">
+                <span>✨ Pin New Polaroid</span>
+            </button>
+            <a href="index.html" class="back-link" style="padding: 10px 20px; font-size: 13px;">← Home</a>
+        </div>
+    </div>
+
+    <!-- 3D GRID -->
+    <div class="polaroid-grid" id="polaroidGrid"></div>
+
+</div>
+
+<!-- ADD POLAROID MODAL -->
+<div class="modal-backdrop" id="addModal">
+    <div class="modal-content">
+        <h3 class="modal-title"><span>📸</span> Pin a Memory to the Wall</h3>
+        
+        <input type="text" id="polCaption" class="modal-input" placeholder="Front Caption (e.g. Baunii's Sunshine Smile)">
+        <input type="text" id="polLocation" class="modal-input" placeholder="Location / Moment (e.g. Midnight Call / Cafe Aru)">
+        <select id="polImage" class="modal-input" style="background: #190a28;">
+            <option value="assets/images/her1.jpeg">Aradhya Portrait 1 (Beautiful Eyes)</option>
+            <option value="assets/images/her2.jpeg">Aradhya Portrait 2 (Sweet Smile)</option>
+            <option value="assets/images/anime_hero.png">Anime Knight & Maiden</option>
+            <option value="assets/images/anime_forever.png">Starry Sky Together</option>
+        </select>
+        <textarea id="polNote" class="modal-input modal-textarea" placeholder="The secret note written on the back..."></textarea>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px;">
+            <button onclick="closeAddModal()" class="tool-btn" style="background: rgba(255,255,255,0.1);">Cancel</button>
+            <button onclick="saveNewPolaroid()" class="add-polaroid-btn">Pin It 📌</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/polaroids.js"></script>
+
+</body>
+</html>

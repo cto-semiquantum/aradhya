@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Together Listening 🎧 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Synchronized romantic music room for Harsh and Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/together.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realtime-client.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="together-page">
+
+    <!-- HEADER -->
+    <div class="together-header">
+        <div>
+            <h1><span>🎧</span> Together Listening Room</h1>
+            <p>"No matter how far we are, we listen under the exact same rhythm." 💖</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="doodle-status-badge" style="background: rgba(127,0,255,0.15); border-color: rgba(127,0,255,0.4); color: #c77dff;">
+                <span class="doodle-status-dot" style="background: #c77dff; box-shadow: 0 0 10px #c77dff;"></span>
+                <span>Realtime Synced 🎵</span>
+            </span>
+            <a href="index.html" class="back-link" style="padding: 6px 14px; font-size: 13px;">← Home</a>
+        </div>
+    </div>
+
+    <!-- VINYL STAGE CARD -->
+    <div class="vinyl-stage-card">
+        
+        <!-- ROTATING VINYL DISC -->
+        <div class="vinyl-outer-wrap">
+            <div class="vinyl-disc" id="vinylDisc">
+                <div class="vinyl-center-label" id="vinylLabel">
+                    <div class="vinyl-center-hole"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SONG META -->
+        <h2 class="song-title-active" id="songTitle">Agar Tum Saath Ho</h2>
+        <p class="song-artist-active" id="songArtist">Arijit Singh & Alka Yagnik</p>
+
+        <!-- PROGRESS BAR -->
+        <div class="track-progress-wrap">
+            <span class="time-label" id="currentTime">00:00</span>
+            <input type="range" class="progress-bar-slider" id="progressBar" min="0" max="100" value="0">
+            <span class="time-label" id="totalDuration">00:00</span>
+        </div>
+
+        <!-- PLAYBACK CONTROLS -->
+        <div class="playback-controls">
+            <button class="ctrl-btn" onclick="prevTrack()" title="Previous Song">⏮</button>
+            <button class="ctrl-btn play-main" id="playBtn" onclick="togglePlay()" title="Play / Pause">▶</button>
+            <button class="ctrl-btn" onclick="nextTrack()" title="Next Song">⏭</button>
+        </div>
+
+        <!-- QUICK REACTIONS -->
+        <div class="quick-reactions-bar">
+            <button class="reaction-pill" onclick="sendReaction('💖', 'Loving this song')">💖 Loving This</button>
+            <button class="reaction-pill" onclick="sendReaction('🥺', 'Missing you so much')">🥺 Miss You</button>
+            <button class="reaction-pill" onclick="sendReaction('💃', 'Virtual Dance')">💃 Dance With Me</button>
+            <button class="reaction-pill" onclick="sendReaction('✨', 'Melting inside')">✨ Melting</button>
+            <button class="reaction-pill" onclick="sendReaction('☕', 'Virtual Coffee')">☕ Table #0411</button>
+        </div>
+
+    </div>
+
+    <!-- PLAYLIST SECTION -->
+    <div class="playlist-section">
+        <h2><span>🎼</span> Romantic Couple Playlist</h2>
+        <div id="playlistContainer"></div>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/together.js"></script>
+
+</body>
+</html>

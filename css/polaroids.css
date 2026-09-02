@@ -1,0 +1,261 @@
+/* ==========================================
+   3D FLIP POLAROID MEMORY WALL
+   ========================================== */
+
+.polaroids-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 90px;
+    position: relative;
+    z-index: 2;
+}
+
+.polaroid-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.polaroid-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+}
+
+.polaroid-header p {
+    font-size: 14px;
+    color: var(--pink-soft, #ff99ac);
+    max-width: 550px;
+    margin: 0 auto 18px;
+}
+
+.add-polaroid-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff4b91, #7f00ff);
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255,75,145,0.4);
+    transition: all 0.25s ease;
+}
+
+.add-polaroid-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255,75,145,0.65);
+}
+
+/* Grid of 3D Cards */
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 10px;
+}
+
+/* 3D Flip Card Container */
+.polaroid-item-wrap {
+    perspective: 1200px;
+    height: 400px;
+}
+
+.polaroid-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    cursor: pointer;
+}
+
+.polaroid-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.polaroid-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 16px 16px 22px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(255,75,145,0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+/* FRONT FACE (Classic Polaroid) */
+.polaroid-front {
+    background: #fdfaf6;
+    color: #222;
+    transform: rotateY(0deg);
+}
+
+.polaroid-card:hover .polaroid-face {
+    box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 30px rgba(255,75,145,0.35);
+}
+
+/* Tape / Pin decoration */
+.polaroid-pin {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: 16px;
+    background: rgba(255, 215, 0, 0.55);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.polaroid-img-box {
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #111;
+    position: relative;
+}
+
+.polaroid-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.polaroid-card:hover .polaroid-img-box img {
+    transform: scale(1.04);
+}
+
+.polaroid-meta {
+    margin-top: 14px;
+    text-align: center;
+}
+
+.polaroid-caption {
+    font-family: var(--font-accent), 'Dancing Script', cursive;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.polaroid-date-badge {
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+    font-family: var(--font-body);
+}
+
+.polaroid-flip-hint {
+    font-size: 11px;
+    color: #ff4b91;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* BACK FACE (Handwritten Letter / Secret Note) */
+.polaroid-back {
+    background: #1a0b29;
+    color: #fff;
+    transform: rotateY(180deg);
+    border: 1px solid rgba(255,127,165,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.back-stamp {
+    font-size: 32px;
+    margin-bottom: 10px;
+    animation: livePulse 2s infinite alternate;
+}
+
+.back-note-text {
+    font-family: var(--font-accent), 'Dancing Script', cursive;
+    font-size: 22px;
+    color: #ffc4d6;
+    line-height: 1.5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.back-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 12px;
+}
+
+/* Add Polaroid Modal */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 2, 16, 0.85);
+    backdrop-filter: blur(20px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-content {
+    background: rgba(25, 10, 40, 0.95);
+    border: 1px solid rgba(255, 75, 145, 0.4);
+    border-radius: 24px;
+    max-width: 460px;
+    width: 100%;
+    padding: 28px 24px;
+    box-shadow: 0 0 50px rgba(255, 75, 145, 0.3);
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 14px;
+    outline: none;
+    font-family: inherit;
+}
+
+.modal-input:focus {
+    border-color: #ff4b91;
+    box-shadow: 0 0 10px rgba(255,75,145,0.3);
+}
+
+.modal-textarea {
+    resize: none;
+    height: 90px;
+}

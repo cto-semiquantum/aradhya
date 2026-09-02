@@ -1,0 +1,232 @@
+/* ==========================================
+   LOVE DOODLE — REALTIME SHARED CANVAS
+   ========================================== */
+
+.doodle-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 16px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+.doodle-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: rgba(20, 8, 35, 0.85);
+    border: 1px solid rgba(255, 75, 145, 0.3);
+    border-radius: 20px;
+    padding: 14px 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.doodle-title-group h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.doodle-title-group p {
+    font-size: 13px;
+    color: var(--pink-soft, #ff99ac);
+}
+
+.doodle-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(0, 255, 136, 0.12);
+    border: 1px solid rgba(0, 255, 136, 0.35);
+    color: #00ff88;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.doodle-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+    animation: livePulse 1.4s infinite alternate;
+}
+
+/* Canvas Box */
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: 65vh;
+    background: #090314;
+    border: 2px solid rgba(255, 75, 145, 0.4);
+    border-radius: 24px;
+    box-shadow: 0 0 40px rgba(255, 75, 145, 0.2), inset 0 0 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+    touch-action: none;
+}
+
+#doodleCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+}
+
+/* Floating Partner Cursor / Indicator */
+.remote-cursor {
+    position: absolute;
+    pointer-events: none;
+    transition: transform 0.05s linear;
+    z-index: 10;
+    display: none;
+}
+
+.remote-cursor span {
+    font-size: 18px;
+    filter: drop-shadow(0 0 8px #ff4b91);
+}
+
+/* Floating Heart Animation */
+.burst-heart {
+    position: absolute;
+    pointer-events: none;
+    font-size: 28px;
+    animation: burstFloat 1.8s ease-out forwards;
+    z-index: 15;
+}
+
+@keyframes burstFloat {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translate(-50%, -120px) scale(1.4) rotate(15deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -220px) scale(1.8) rotate(-20deg);
+    }
+}
+
+/* Toolbar & Controls */
+.doodle-toolbar {
+    background: rgba(20, 8, 35, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 22px;
+    padding: 16px 20px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.toolbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.color-swatches {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.color-swatch.active {
+    border-color: #fff;
+    transform: scale(1.22);
+    box-shadow: 0 0 16px var(--swatch-color, #ff4b91);
+}
+
+/* Tool Buttons */
+.tool-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 75, 145, 0.25);
+    border-color: #ff4b91;
+    transform: translateY(-2px);
+}
+
+.tool-btn.active {
+    background: linear-gradient(135deg, #ff4b91, #7f00ff);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(255, 75, 145, 0.5);
+}
+
+.brush-size-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+}
+
+.brush-slider {
+    accent-color: #ff4b91;
+    cursor: pointer;
+    width: 110px;
+}
+
+@media (max-width: 600px) {
+    .canvas-wrapper {
+        aspect-ratio: 1 / 1;
+        max-height: 52vh;
+    }
+    .color-swatch {
+        width: 28px;
+        height: 28px;
+    }
+}

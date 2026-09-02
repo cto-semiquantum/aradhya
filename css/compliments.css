@@ -1,0 +1,187 @@
+/* ==========================================
+   DAILY COMPLIMENT JAR & AMBIENT SOUNDSCAPES
+   ========================================== */
+
+.compliments-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 90px;
+    position: relative;
+    z-index: 2;
+}
+
+.jar-hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.jar-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.jar-hero p {
+    font-size: 14px;
+    color: #ff99ac;
+    max-width: 550px;
+    margin: 0 auto 18px;
+}
+
+/* Two-Column Grid: Jar on Left, Soundscape on Right */
+.ambient-jar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .ambient-jar-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-sanctuary {
+    background: radial-gradient(circle at 50% 20%, rgba(50, 15, 75, 0.85), rgba(15, 5, 25, 0.95));
+    border: 1px solid rgba(255, 127, 165, 0.35);
+    border-radius: 28px;
+    padding: 36px 24px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 0 50px rgba(255,75,145,0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* THE CRYSTAL JAR VISUAL */
+.crystal-jar-wrap {
+    position: relative;
+    width: 170px;
+    height: 230px;
+    margin: 20px auto 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.crystal-jar-wrap:hover {
+    transform: scale(1.05);
+}
+
+.jar-body {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 3px solid rgba(255, 215, 0, 0.6);
+    border-radius: 40px 40px 60px 60px;
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.3), inset 0 0 25px rgba(255, 75, 145, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jar-lid {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 20px;
+    background: #ffd180;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 209, 128, 0.6);
+    border: 2px solid #fff;
+    z-index: 5;
+    transition: transform 0.4s ease;
+}
+
+.crystal-jar-wrap.open .jar-lid {
+    transform: translateX(-50%) translateY(-25px) rotate(-15deg);
+}
+
+.jar-sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    animation: livePulse 2s infinite alternate;
+}
+
+/* Scroll Card Modal / Pop */
+.scroll-note-box {
+    background: #fffbf0;
+    color: #2b1704;
+    border: 2px solid #ffd180;
+    border-radius: 18px;
+    padding: 22px 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    margin-top: 15px;
+    width: 100%;
+    animation: fadeIn 0.4s ease;
+    display: none;
+}
+
+.scroll-note-box.visible {
+    display: block;
+}
+
+.scroll-note-text {
+    font-family: var(--font-accent), 'Dancing Script', cursive;
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #4a2800;
+    margin-bottom: 12px;
+}
+
+/* AMBIENT SOUNDSCAPES SECTION */
+.soundscape-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sound-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 14px 18px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    transition: background 0.2s ease;
+}
+
+.sound-row:hover {
+    background: rgba(255,75,145,0.12);
+}
+
+.sound-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.sound-slider {
+    accent-color: #ff4b91;
+    cursor: pointer;
+    width: 110px;
+}

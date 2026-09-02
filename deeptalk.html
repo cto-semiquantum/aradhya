@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Midnight Deep Talk Cards 🃏 | Harsh & Aradhya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Intimate conversation and soul connection cards for late-night talks.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/deeptalk.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080012">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<canvas id="heartCanvas"></canvas>
+
+<div class="deeptalk-page">
+
+    <!-- HERO -->
+    <div class="deeptalk-hero">
+        <span class="badge-pill" style="border-color: #c77dff; color: #c77dff; background: rgba(199,125,255,0.15);">
+            🃏 SOUL CONNECTION DECK
+        </span>
+        <h1>Midnight Deep Talk Cards 💕</h1>
+        <p>"Late night conversations, unfiltered hearts. Tap the card to flip and discover our next topic."</p>
+
+        <a href="index.html" class="back-link" style="padding: 8px 18px; font-size: 13px;">← Home</a>
+    </div>
+
+    <!-- FILTER BUTTONS -->
+    <div class="filter-tabs" style="margin-bottom: 24px;">
+        <button class="filter-btn active" onclick="filterDeck('all', this)">✨ All Cards</button>
+        <button class="filter-btn" onclick="filterDeck('Vulnerability', this)">🕊️ Vulnerability</button>
+        <button class="filter-btn" onclick="filterDeck('Sweet Memories', this)">🎞️ Memories</button>
+        <button class="filter-btn" onclick="filterDeck('Future Dreams', this)">🔮 Future</button>
+        <button class="filter-btn" onclick="filterDeck('Cute Banter', this)">🎀 Cute Banter</button>
+    </div>
+
+    <!-- 3D CARD WRAP -->
+    <div class="deck-stage-wrap">
+        <div class="soul-card is-flipped" id="soulCard" onclick="flipActiveCard()">
+            <!-- DECK FRONT -->
+            <div class="card-side front">
+                <div class="card-pattern-ring">🃏</div>
+                <div style="font-family: var(--font-accent); font-size: 26px; color: #ffd180;">Harsh & Aradhya</div>
+                <div style="font-size: 11px; color: #ff99ac; letter-spacing: 2px;">TABLE #0411 DECK</div>
+            </div>
+
+            <!-- CARD QUESTION -->
+            <div class="card-side back">
+                <div class="card-category-badge" id="cardCategory">Vulnerability 🕊️</div>
+                <div class="card-question-text" id="cardQuestion">"Loading question..."</div>
+                <div class="card-footer-hint">Tap to flip ↺</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button class="add-polaroid-btn" onclick="nextSoulCard()">
+            <span>Draw Next Card 🔀</span>
+        </button>
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/deeptalk.js"></script>
+
+</body>
+</html>
