@@ -14,5 +14,9 @@ desktop.ini
 # Build
 dist/
 
+# Scratch & Private
+scratch/
+chats_screenshots/
+
 # Old subfolder
 valentine/

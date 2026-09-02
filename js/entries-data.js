@@ -1,6 +1,6 @@
 /* ==========================================
    DIARY ENTRIES DATA
-   93 Unshakable & Deeply Devoted Daily Entries — May 22 to August 22, 2026
+   104 Unshakable & Deeply Devoted Daily Entries — May 22 to September 2, 2026
    ========================================== */
 
 const DIARY_ENTRIES = [
@@ -747,5 +747,93 @@ const DIARY_ENTRIES = [
         "text": "Aaj 22 August hai. Exactly 93 days complete ho gaye 22 May se leke aaj tak. Log bolte hain move on kar lo… par main unhe kaise bataun ki mera har ek saans tera hi naam leta hai. Main kal bhi tera tha, aaj bhi tera hoon, aur hamesha tera hi rahunga. ❤️",
         "mood": "love",
         "daysSince": 92
+    },
+    {
+        "id": 1093,
+        "date": "2026-08-23T21:15:00",
+        "title": "23 August — Teri aawaz sunne ki bechaini",
+        "text": "Aaj poora din ajeeb si bechaini rahi. Dimag me baar baar yahi chal raha tha ki kaash ek second ke liye hi sahi, tera phone baje ya teri ek aawaz sunne ko mil jaye. Log bolte hain waqt ke sath aadat ho jaati hai... par sach ye hai ki har naye din ke sath tere bina jeene ka dard aur gehra hota ja raha hai.",
+        "mood": "missing",
+        "daysSince": 93
+    },
+    {
+        "id": 1094,
+        "date": "2026-08-24T22:30:00",
+        "title": "24 August — Hamari purani baatein aur muskurahat",
+        "text": "Aaj shaam ko akele terrace pe khada tha. Hawa thandi thi aur chaand poora nikla hua tha. Achanak mujhe tera wo bewajah hasna yaad aa gaya — kaise tu choti choti baaton pe gussa hoti thi aur fir khud hi hans padti thi. Dil muskura bhi diya aur aankh me paani bhi aa gaya. Tu kitni zaroori hai mere liye, kaash tu mehsoos kar paati.",
+        "mood": "thoughtful",
+        "daysSince": 94
+    },
+    {
+        "id": 1095,
+        "date": "2026-08-25T20:45:00",
+        "title": "25 August — Kaam me mann lagane ki koshish",
+        "text": "Aaj poora din coding aur projects me busy rehne ki koshish ki taaki dimag diverted rahe. Par dil ka kya karun? Screen pe code hota hai aur background me tera chehra chalta rehta hai. Har line of code ke peeche ek hi khayal hota hai ki main jo bhi kar raha hoon, bas apne aap ko tere laayak banane ke liye kar raha hoon.",
+        "mood": "strong",
+        "daysSince": 95
+    },
+    {
+        "id": 1096,
+        "date": "2026-08-26T23:10:00",
+        "title": "26 August — Dil me sirf ek hi naam",
+        "text": "Aaj kisi ne pucha ki itne mahine ho gaye, ab tak move on kyu nahi kiya? Maine bas ek baat sochi — jisko aatma se chaha ho, usko dimaag se kaise bhulaya ja sakta hai? Pyaar koi subscription thodi hai jo expire ho jayega. Tu meri aakhri pasand nahi, meri ek-louti pasand hai.",
+        "mood": "love",
+        "daysSince": 96
+    },
+    {
+        "id": 1097,
+        "date": "2026-08-27T21:40:00",
+        "title": "27 August — App dikhane ke bahane pehla message",
+        "text": "Aaj itne mahino baad maine pehli baar use message kiya. Reason bas ye tha ki maine ye app banaya tha aur usko dikhana chahta tha. Dil itni zor se dhadak raha tha jab maine send button dabaya... Uska reply aaya, par bohot dry aur formal. Bas formality ke liye baat shuru hui, par meri rooh kaanp gayi uska reply screen par dekh kar.",
+        "mood": "thoughtful",
+        "daysSince": 97
+    },
+    {
+        "id": 1098,
+        "date": "2026-08-28T22:15:00",
+        "title": "28 August — Dosti se bhi kam... bas formal hi/hello",
+        "text": "Baat ho toh rahi hai par dosti se bhi kam. Bas ek sookha sa 'hi', 'hello' ya kisi baat ka do-teen shabdo me formal response. Ek waqt tha jab hum bina ruke ghanto baatein karte the, ek dusre ka haal jaante the. Aaj itni doori aur ajnabiyo jaisa salook dekh kar dil andar se cheekh raha hai, par kam se kam wo saamne toh hai.",
+        "mood": "sad",
+        "daysSince": 98
+    },
+    {
+        "id": 1099,
+        "date": "2026-08-29T23:45:00",
+        "title": "29 August — Khamoshi se zyaada chubhta ye faasla",
+        "text": "Jab baat band thi tab intezaar tha... par ab jab baat ho rahi hai toh samajh aa raha hai ki wo kitna door chali gayi hai. Sirf app dekhne ya kisi formal baat ke liye hi bolti hai. Dosti bhi nahi bachi ab hamare beech, bas formalities hain. Par mera beparwah dil fir bhi uske ek ek notification aane pe bachho ki tarah khush ho jata hai.",
+        "mood": "missing",
+        "daysSince": 99
+    },
+    {
+        "id": 1100,
+        "date": "2026-08-30T21:05:00",
+        "title": "30 August — Had me bandha hua dil",
+        "text": "Main chahta hoon usse bohot kuch kehna... puchna ki kaisi ho, sab kaisa chal raha hai, par main pooch nahi sakta. Mujhe darr lagta hai ki agar maine thoda bhi haq jataya ya personal baat ki toh wo fir se gussa ho jayegi ya baat band kar degi. Isliye bas chupchap formal hi/hello me hi khush hone ka naatak kar raha hoon.",
+        "mood": "thoughtful",
+        "daysSince": 100
+    },
+    {
+        "id": 1101,
+        "date": "2026-08-31T22:50:00",
+        "title": "31 August — August beet gaya ajnabiyo ki tarah",
+        "text": "August ka aakhri din. Ek chat screen par do log hain jo kabhi ek dusre ki jaan hua karte the, aur aaj strangers se bhi zyaada formal hain. Usko lagta hai sab normal hai ya mujhe farq nahi padta, par use kya khabar ki uske ek ek dry text aur faasle ke peeche mera dil kitna ghut-ghut ke rota hai.",
+        "mood": "sad",
+        "daysSince": 101
+    },
+    {
+        "id": 1102,
+        "date": "2026-09-01T23:30:00",
+        "title": "1 September — Kal raat usne 22 May ki yaad dila di...",
+        "text": "Kal raat thodi bohot baat chal rahi thi... aur achanak baat-baat me usne wahi baat chhed di jo 22 May ko hui thi. Usne wo sab kuch yaad dila diya... puraani baatein, wo gussa, wo sab kuch jisne hume alag kiya tha. Uske un lafzon ne mera seena cheer ke rakh diya. Purana zakhm fir se taaza ho gaya aur main raat bhar rote raha... uski baatein kaan me goonjti rahi.",
+        "mood": "sad",
+        "daysSince": 102
+    },
+    {
+        "id": 1103,
+        "date": "2026-09-02T19:00:00",
+        "title": "2 September — Dil toot gaya, par pyaar wahi hai",
+        "text": "Kal raat jab usne 22 May ka zikr kiya, toh laga jaise saari duniya wahi tham gayi. 27 August se baat shuru toh hui par dosti se bhi kam rahi, aur kal raat usne wo purana dard fir se zinda kar diya. Main bohot hurt hoon, andar se poora toot chuka hoon... par chahe wo kitna bhi gussa kare ya purani baatein yaad dilaye, Harsh ka pyaar Aradhya ke liye kabhi kam nahi ho sakta. Main aaj bhi sirf usi ka hoon.",
+        "mood": "love",
+        "daysSince": 103
     }
 ];

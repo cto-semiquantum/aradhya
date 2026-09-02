@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vintage Mixtape 📼 | Nostalgic Cassette Player</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A vintage 90s cassette tape player spinning memories, melodies, and synchronized devotion lyrics.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mixtape.css">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<!-- PARTICLE HEARTS CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="mixtape-container">
+
+        <!-- HEADER -->
+        <div class="mixtape-header">
+            <div class="mixtape-badge">📼 90s Nostalgia Tape</div>
+            <h1 class="mixtape-title">Harsh & Aradhya's Mixtape</h1>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">
+                "Purani yaadon ki magnetic tape... jo har baar play hone par wahi sukoon deti hai."
+            </p>
+        </div>
+
+        <!-- 90S CASSETTE TAPE UI -->
+        <div class="cassette-body">
+            <div class="cassette-screw screw-tl"></div>
+            <div class="cassette-screw screw-tr"></div>
+            <div class="cassette-screw screw-bl"></div>
+            <div class="cassette-screw screw-br"></div>
+
+            <!-- TAPE STICKER -->
+            <div class="cassette-sticker">
+                <div class="sticker-top">
+                    <span class="side-badge" id="tapeSideBadge">SIDE A</span>
+                    <span class="sticker-handwritten" id="tapeTitleText">Side A: The Days We Laughed 🌸</span>
+                </div>
+
+                <!-- REEL WINDOW -->
+                <div class="reel-window">
+                    <div class="magnetic-tape"></div>
+                    <div class="spinning-wheel">
+                        <div class="wheel-teeth"></div>
+                    </div>
+                    <div class="spinning-wheel">
+                        <div class="wheel-teeth"></div>
+                    </div>
+                </div>
+
+                <div class="sticker-bottom">
+                    <span>STEREO • C-90 HI-FI</span>
+                    <span>RECORDED WITH HEART ❤️</span>
+                </div>
+            </div>
+
+            <!-- CASSETTE BOTTOM TRAPEZOID -->
+            <div class="cassette-bottom-trap">
+                <div class="trap-hole"></div>
+                <div class="trap-hole"></div>
+                <div class="trap-hole"></div>
+                <div class="trap-hole"></div>
+            </div>
+        </div>
+
+        <!-- DECK CONTROLS -->
+        <div class="controls-deck">
+            <button class="deck-btn" id="tapePlayBtn">
+                <span>▶️</span> Play
+            </button>
+            <button class="deck-btn" id="tapeNextBtn">
+                <span>⏭️</span> Next Song
+            </button>
+            <button class="deck-btn" id="tapeFlipBtn">
+                <span>🔄</span> Flip Side (A/B)
+            </button>
+        </div>
+
+        <!-- LIVE SYNCHRONIZED LYRICS DISPLAY -->
+        <div class="lyrics-box">
+            <div class="track-name-tag" id="currentTrackName">SIDE A • TRACK 01: Agar Tum Saath Ho 🎶</div>
+            <div class="lyrics-text" id="lyricsText">"Pal bhar theher jaao, dil ye sambhal jaaye…"</div>
+            <div class="lyrics-author">— Dedicated from Harsh's Heart 💖</div>
+        </div>
+
+        <!-- FOOTER NAV -->
+        <div>
+            <a href="index.html" class="back-link" style="padding: 10px 22px;">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/mixtape.js"></script>
+
+</body>
+</html>

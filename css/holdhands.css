@@ -1,0 +1,255 @@
+@import url('base.css');
+
+/* ==========================================
+   HOLD MY HAND & DIGITAL TOUCH STYLING
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.touch-card {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    background: rgba(20, 8, 38, 0.9);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    padding: 45px 35px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 75, 145, 0.35);
+    box-shadow: 0 0 50px rgba(255, 75, 145, 0.2), var(--shadow-card);
+    text-align: center;
+    overflow: hidden;
+}
+
+.touch-header {
+    margin-bottom: 30px;
+}
+
+.touch-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(255, 75, 145, 0.15);
+    border: 1px solid rgba(255, 75, 145, 0.4);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink-light);
+    margin-bottom: 12px;
+}
+
+.touch-title {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff, #ff7fa5, #ffd166);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.touch-subtitle {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Biometric Fingerprint Zone */
+.touch-zone-container {
+    position: relative;
+    margin: 35px auto;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+.touch-rings {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 75, 145, 0.4);
+    animation: rotateRings 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateRings {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.fingerprint-btn {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #2d0b45 0%, #150524 100%);
+    border: 3px solid rgba(255, 75, 145, 0.5);
+    box-shadow: 0 0 35px rgba(255, 75, 145, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.fingerprint-icon {
+    font-size: 58px;
+    filter: drop-shadow(0 0 10px rgba(255, 75, 145, 0.6));
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.touch-instruction {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Active Holding State */
+.fingerprint-btn.holding {
+    transform: scale(0.96);
+    border-color: #ffd166;
+    background: radial-gradient(circle, #480f68 0%, #200538 100%);
+    box-shadow: 0 0 60px rgba(255, 209, 102, 0.6), inset 0 0 30px rgba(255, 75, 145, 0.5);
+}
+
+.fingerprint-btn.holding .fingerprint-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px #ffd166);
+}
+
+/* Ripple effect on touch */
+.touch-ripple {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 75, 145, 0.8);
+    animation: rippleExpand 1.6s infinite ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleExpand {
+    0% { width: 160px; height: 160px; opacity: 1; transform: scale(1); }
+    100% { width: 280px; height: 280px; opacity: 0; transform: scale(1.4); }
+}
+
+/* Live Timer & Changing Thought */
+.hold-timer-box {
+    margin-bottom: 25px;
+    min-height: 80px;
+}
+
+.timer-digits {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffd166;
+    font-family: monospace;
+    text-shadow: 0 0 15px rgba(255, 209, 102, 0.5);
+    margin-bottom: 6px;
+}
+
+.hold-quote {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    min-height: 44px;
+    transition: opacity 0.4s ease;
+}
+
+/* Hug Button */
+.hug-action-bar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.hug-btn {
+    padding: 12px 28px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, #ff4b91, #7f00ff);
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255, 75, 145, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.hug-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 35px rgba(255, 75, 145, 0.6);
+}
+
+/* Fullscreen Hug Overlay Animation */
+.hug-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 75, 145, 0.4) 0%, rgba(8, 0, 18, 0.95) 75%);
+    backdrop-filter: blur(15px);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.hug-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hug-emojis {
+    font-size: 80px;
+    animation: hugFloat 1.2s infinite alternate ease-in-out;
+    margin-bottom: 20px;
+}
+
+@keyframes hugFloat {
+    0% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 20px #ff4b91); }
+    100% { transform: scale(1.15) translateY(-10px); filter: drop-shadow(0 0 40px #ffd166); }
+}
+
+.hug-text {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    max-width: 480px;
+    line-height: 1.5;
+    padding: 0 20px;
+}
+
+.hug-subtext {
+    font-size: 14px;
+    color: #ff99ac;
+    margin-top: 12px;
+    font-style: italic;
+}

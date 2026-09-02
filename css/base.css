@@ -106,6 +106,106 @@ body {
     box-shadow: 0 0 15px rgba(255, 75, 145, 0.4);
 }
 
+/* NAV MORE DROPDOWN MENU */
+.nav-more-btn {
+    background: rgba(255, 75, 145, 0.2);
+    border: 1px solid rgba(255, 75, 145, 0.4);
+    color: #ffd1dc;
+    cursor: pointer;
+}
+
+.nav-more-menu {
+    position: fixed;
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: 92vw;
+    max-width: 580px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: rgba(18, 8, 30, 0.96);
+    border: 1px solid rgba(255, 75, 145, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 75, 145, 0.3);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 1001;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-more-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.nav-menu-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffd166;
+}
+
+.nav-menu-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-menu-category {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ff7fa5;
+    margin: 14px 0 8px;
+}
+
+.nav-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+}
+
+.nav-menu-grid a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12.5px;
+    transition: 0.2s;
+}
+
+.nav-menu-grid a:hover {
+    background: rgba(255, 75, 145, 0.25);
+    border-color: #ff4b91;
+    transform: translateY(-2px);
+}
+
 /* ==========================================
    REAL PHOTO FRAME (HER PHOTO)
    ========================================== */

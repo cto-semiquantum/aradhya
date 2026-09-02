@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Safe Space 🕯️ | Low Pressure Whispers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A quiet, gentle, zero-pressure safe sanctuary with soft sticky notes and 1-click silent emotions.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/safespace.css">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<!-- PARTICLE HEARTS CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="safe-container">
+
+        <!-- HEADER -->
+        <div class="safe-header">
+            <div class="safe-badge">🕯️ Zero Pressure Sanctuary</div>
+            <h1 class="safe-title">Safe Space Whispers</h1>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">
+                "Yahan koi expectations nahi hain, koi WhatsApp seen status nahi hai... bas sukoon hai."
+            </p>
+        </div>
+
+        <!-- 1-CLICK SILENT EMOTIONS BAR -->
+        <div class="reaction-bar-wrap">
+            <div class="reaction-label">🕊️ Send A 1-Click Silent Reaction:</div>
+            <div class="reaction-pills">
+                <button class="reaction-pill-btn" data-emoji="🥺 Thinking of you">
+                    <span>🥺</span> Thinking of you
+                </button>
+                <button class="reaction-pill-btn" data-emoji="🕊️ I forgive you">
+                    <span>🕊️</span> I forgive you
+                </button>
+                <button class="reaction-pill-btn" data-emoji="🌸 Take care of yourself">
+                    <span>🌸</span> Take care
+                </button>
+                <button class="reaction-pill-btn" data-emoji="🤍 I am listening">
+                    <span>🤍</span> I am listening
+                </button>
+                <button class="reaction-pill-btn" data-emoji="💫 You matter to me">
+                    <span>💫</span> You matter
+                </button>
+            </div>
+        </div>
+
+        <!-- POST A NOTE -->
+        <div class="post-note-box">
+            <textarea id="noteInput" class="note-input" placeholder="Yahan bina kisi darr ke koi choti si baat chhod do..."></textarea>
+            <button class="post-note-btn" id="postNoteBtn">
+                <span>Pin Soft Note</span>
+                <span>📌</span>
+            </button>
+        </div>
+
+        <!-- STICKY NOTES BOARD -->
+        <div class="notes-board" id="notesBoard">
+            <!-- Rendered by JS -->
+        </div>
+
+        <!-- BACK HOME -->
+        <div>
+            <a href="index.html" class="back-link" style="padding: 10px 22px;">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/safespace.js"></script>
+
+</body>
+</html>

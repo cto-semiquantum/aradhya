@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cafe Aru ☕ | Our Dream Virtual Cafe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Welcome to Cafe Aru — the cozy neon dream cafe where Table #0411 is permanently reserved for Aradhya.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cafe.css">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<!-- PARTICLE HEARTS CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="cafe-container">
+
+        <!-- CAFE SIGNBOARD -->
+        <div class="cafe-signboard">
+            <h1>☕ Cafe Aru</h1>
+            <div class="cafe-tagline">"Ab cafe kholne ki chul kyu machi hai? — Aru 👏"</div>
+        </div>
+
+        <br>
+
+        <!-- VIP RESERVED TABLE BADGE -->
+        <div class="reserved-badge">
+            <span>✨ Table #0411: Permanently Reserved for Aradhya 💜</span>
+        </div>
+
+        <!-- AMBIENCE ACTIONS -->
+        <div class="cafe-actions">
+            <button class="cafe-action-btn" id="ringBellBtn">
+                <span>🛎️ Ring Service Bell</span>
+            </button>
+            <div class="cafe-action-btn" style="cursor: default;">
+                <span>🌧️ Ambience: Soft Rain & Lofi</span>
+            </div>
+        </div>
+
+        <!-- ORDER STATUS BOX (APPEARS ON ORDER) -->
+        <div class="order-status-box" id="orderStatusBox">
+            <div class="status-cup" id="statusCup">☕</div>
+            <div class="order-message" id="orderMessage">Preparing your order...</div>
+            <div class="order-subtext" id="orderSubtext">Barista Harsh is making it special for you!</div>
+        </div>
+
+        <!-- MENU TITLE -->
+        <div class="menu-title">
+            <span>📜 Special Menu for Aru:</span>
+        </div>
+
+        <!-- MENU ITEMS GRID -->
+        <div class="menu-grid">
+
+            <!-- ITEM 1 -->
+            <div class="menu-card">
+                <div>
+                    <div class="menu-icon">☕</div>
+                    <div class="menu-item-name">Baunii's Hot Chocolate</div>
+                    <div class="menu-item-desc">Extra sweet, extra chocolate, topped with whipped cream and tiny marshmallows. Banayi gayi hai specially cute gussa shant karne ke liye!</div>
+                </div>
+                <div class="menu-card-bottom">
+                    <span class="menu-price">Free (Priceless)</span>
+                    <button class="order-btn" data-item="Baunii's Hot Chocolate" data-icon="☕" data-remark="Gussa shant karne wala extra sweet chocolate!">Order Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div class="menu-card">
+                <div>
+                    <div class="menu-icon">🍵</div>
+                    <div class="menu-item-name">Doctor Aru's Garm Paani</div>
+                    <div class="menu-item-desc">"Koi na garm paani peelo 🤩" — Chat me Aru ki di hui famous medicine. Pure boiled warm water with herbal mint.</div>
+                </div>
+                <div class="menu-card-bottom">
+                    <span class="menu-price">Doctor's Choice</span>
+                    <button class="order-btn" data-item="Doctor Aru's Garm Paani" data-icon="🍵" data-remark="Aru ne bola tha garm paani peene ko!">Order Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM 3 -->
+            <div class="menu-card">
+                <div>
+                    <div class="menu-icon">🥟</div>
+                    <div class="menu-item-name">Meloni Bhabhi Ke Samose</div>
+                    <div class="menu-item-desc">"Pgl log... samose lelo 😂" — Crunchy spicy Indian samosas served with sweet imli & spicy green chutney.</div>
+                </div>
+                <div class="menu-card-bottom">
+                    <span class="menu-price">Crispy & Hot</span>
+                    <button class="order-btn" data-item="Meloni Bhabhi Ke Samose" data-icon="🥟" data-remark="Aapke liye spicy samose with chutney!">Order Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM 4 -->
+            <div class="menu-card">
+                <div>
+                    <div class="menu-icon">🥐</div>
+                    <div class="menu-item-name">Midnight 'Neend Nhi Aa Rhi' Coffee</div>
+                    <div class="menu-item-desc">"Subah jldi nhi uthna? 🥱" — Smooth roasted hazelnut latte for late night coding & thinking about someone special.</div>
+                </div>
+                <div class="menu-card-bottom">
+                    <span class="menu-price">Late Night Brew</span>
+                    <button class="order-btn" data-item="Midnight Hazelnut Coffee" data-icon="☕" data-remark="Late night coffee... par time pe sona bhi hai!">Order Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM 5 -->
+            <div class="menu-card">
+                <div>
+                    <div class="menu-icon">🧇</div>
+                    <div class="menu-item-name">Golden Honey Waffles</div>
+                    <div class="menu-item-desc">"Mn ni tha khane ka... par ye kha lo!" Crispy Belgian waffle with vanilla ice cream and maple honey syrup.</div>
+                </div>
+                <div class="menu-card-bottom">
+                    <span class="menu-price">Warm & Sweet</span>
+                    <button class="order-btn" data-item="Golden Honey Waffles" data-icon="🧇" data-remark="Ek bite me mood fresh ho jayega!">Order Now</button>
+                </div>
+            </div>
+
+            <!-- ITEM 6 -->
+            <div class="menu-card">
+                <div>
+                    <div class="menu-icon">💐</div>
+                    <div class="menu-item-name">Table Complimentary Roses</div>
+                    <div class="menu-item-desc">A bunch of fresh velvet red roses placed on Table #0411 everyday, silently whispering: "You are the most precious person here."</div>
+                </div>
+                <div class="menu-card-bottom">
+                    <span class="menu-price">Infinite Love</span>
+                    <button class="order-btn" data-item="Complimentary Fresh Roses" data-icon="💐" data-remark="Har roz Table #0411 par taaza gulaab!">Order Now</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BACK HOME -->
+        <div>
+            <a href="index.html" class="back-link" style="padding: 10px 22px;">← Back Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/cafe.js"></script>
+
+</body>
+</html>

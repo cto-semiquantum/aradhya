@@ -1,0 +1,560 @@
+@import url('base.css');
+
+/* ==========================================
+   UNSAID WORDS PAGE STYLING
+   Glassmorphism, Sealed Letters & Lanterns
+   ========================================== */
+
+body {
+    display: block !important;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.unsaid-container {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* Back Link */
+.back-bar {
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transition-smooth);
+}
+
+.back-btn:hover {
+    background: rgba(255, 75, 145, 0.2);
+    border-color: var(--pink-primary);
+    transform: translateX(-3px);
+}
+
+/* Header */
+.unsaid-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.unsaid-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 75, 145, 0.15);
+    border: 1px solid rgba(255, 75, 145, 0.35);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink-light);
+    margin-bottom: 12px;
+    box-shadow: 0 0 15px rgba(255, 75, 145, 0.2);
+}
+
+.unsaid-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #ffffff, var(--pink-light), #ffd1dc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.unsaid-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Quote Card */
+.truth-banner {
+    background: linear-gradient(135deg, rgba(255, 75, 145, 0.12), rgba(127, 0, 255, 0.15));
+    border: 1px solid rgba(255, 75, 145, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    margin-bottom: 45px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.truth-icon {
+    font-size: 38px;
+    filter: drop-shadow(0 0 12px rgba(255, 75, 145, 0.6));
+    animation: gentlePulse 2.5s infinite ease-in-out;
+}
+
+.truth-text {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+.truth-text strong {
+    color: #ff99ac;
+}
+
+/* Sections */
+.section-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+.section-icon {
+    font-size: 22px;
+}
+
+.section-h2 {
+    font-size: 20px;
+    color: var(--pink-light);
+    font-weight: 600;
+}
+
+/* Sealed Letters Grid */
+.letters-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 55px;
+}
+
+.sealed-card {
+    background: var(--glass-card);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-card);
+    position: relative;
+}
+
+.sealed-card:hover {
+    border-color: rgba(255, 75, 145, 0.4);
+    box-shadow: 0 15px 40px rgba(255, 75, 145, 0.15);
+}
+
+.sealed-card.unsealed {
+    border-color: rgba(255, 75, 145, 0.6);
+    background: rgba(28, 10, 48, 0.95);
+    box-shadow: 0 15px 45px rgba(255, 75, 145, 0.25);
+}
+
+/* Card Header / Wax Seal trigger */
+.card-preview {
+    padding: 22px 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    user-select: none;
+}
+
+.preview-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.wax-seal {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #e62368, #8a0c35);
+    border: 2px solid #ff7fa5;
+    box-shadow: 0 0 15px rgba(230, 35, 104, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    transition: transform 0.4s ease;
+}
+
+.sealed-card:hover .wax-seal {
+    transform: rotate(15deg) scale(1.05);
+}
+
+.sealed-card.unsealed .wax-seal {
+    background: radial-gradient(circle, #7f00ff, #380277);
+    border-color: #b975ff;
+    box-shadow: 0 0 15px rgba(127, 0, 255, 0.5);
+}
+
+.preview-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.letter-category {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--pink-light);
+    opacity: 0.8;
+}
+
+.letter-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.preview-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.unread-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255, 75, 145, 0.2);
+    color: var(--pink-light);
+    border: 1px solid rgba(255, 75, 145, 0.3);
+}
+
+.toggle-arrow {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.35s ease;
+}
+
+.sealed-card.unsealed .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+/* Card Content / Revealed Letter */
+.letter-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    background: rgba(0, 0, 0, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sealed-card.unsealed .letter-content {
+    max-height: 1200px;
+    transition: max-height 0.8s ease-in-out;
+}
+
+.letter-body {
+    padding: 26px 30px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-body);
+    white-space: pre-line;
+}
+
+.letter-body strong {
+    color: var(--pink-light);
+}
+
+.letter-footer {
+    padding: 16px 30px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.letter-sign {
+    font-family: var(--font-accent);
+    font-size: 20px;
+    color: var(--pink-light);
+}
+
+/* ==========================================
+   SKY LANTERN RELEASE SECTION
+   ========================================== */
+
+.lantern-section {
+    background: radial-gradient(circle at 50% 0%, rgba(127, 0, 255, 0.15) 0%, rgba(20, 8, 35, 0.8) 100%);
+    border: 1px solid rgba(127, 0, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 35px 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.lantern-sky-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-radius: var(--radius-md);
+    background: radial-gradient(ellipse at bottom, #190a36 0%, #060012 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sky-instructions {
+    position: absolute;
+    bottom: 12px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.floating-lantern {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.floating-lantern:hover {
+    transform: scale(1.25) !important;
+    filter: drop-shadow(0 0 15px #ffd166);
+    z-index: 10;
+}
+
+/* Lantern Input Box */
+.lantern-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.lantern-textarea {
+    width: 100%;
+    height: 90px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lantern-textarea:focus {
+    border-color: var(--pink-primary);
+    box-shadow: 0 0 20px rgba(255, 75, 145, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.quick-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.quick-chip:hover {
+    background: rgba(255, 75, 145, 0.2);
+    border-color: var(--pink-primary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.release-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #ff4b91, #7f00ff);
+    border: none;
+    border-radius: var(--radius-pill);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255, 75, 145, 0.4);
+    transition: all 0.3s ease;
+}
+
+.release-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 35px rgba(255, 75, 145, 0.6);
+}
+
+/* Whisper Modal / Pop-over for Lantern */
+.whisper-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.whisper-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.whisper-card {
+    background: linear-gradient(135deg, #1c0936, #2d0a44);
+    border: 1px solid rgba(255, 180, 100, 0.4);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 0 50px rgba(255, 180, 100, 0.35);
+    text-align: center;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.whisper-modal.active .whisper-card {
+    transform: translateY(0);
+}
+
+.whisper-icon {
+    font-size: 44px;
+    margin-bottom: 12px;
+}
+
+.whisper-quote {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #fff;
+    font-family: var(--font-body);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.whisper-time {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.whisper-close-btn {
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-pill);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.whisper-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Toast */
+.unsaid-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50px);
+    background: rgba(20, 8, 35, 0.95);
+    border: 1px solid var(--pink-primary);
+    padding: 12px 24px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(255, 75, 145, 0.4);
+    opacity: 0;
+    transition: all 0.35s ease;
+    z-index: 99999;
+}
+
+.unsaid-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes gentlePulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.12); opacity: 1; filter: drop-shadow(0 0 18px rgba(255, 75, 145, 0.9)); }
+}
+
+@media (max-width: 600px) {
+    .unsaid-container {
+        padding: 25px 15px 60px;
+    }
+    
+    .truth-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 18px;
+    }
+    
+    .card-preview {
+        padding: 18px 18px;
+    }
+    
+    .wax-seal {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+    
+    .letter-title {
+        font-size: 15px;
+    }
+    
+    .letter-body {
+        padding: 20px 18px;
+        font-size: 14px;
+    }
+    
+    .lantern-section {
+        padding: 25px 18px;
+    }
+}

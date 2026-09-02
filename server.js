@@ -357,6 +357,94 @@ app.post('/api/voicenotes', async (req, res) => {
     res.status(201).json(newNote);
 });
 
+// Gemini Baunii AI Chat
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AQ.Ab8RN6LkJMbfRZR1SlmfWMLRNCal9PIyGUMxb8GIAwpDU5o8pw";
+
+app.post('/api/bauni-chat', async (req, res) => {
+    try {
+        const { message, history } = req.body;
+        if (!message) {
+            return res.status(400).json({ error: "Message is required" });
+        }
+
+        const https = require('https');
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+        const contents = [];
+        if (Array.isArray(history)) {
+            history.slice(-6).forEach(h => {
+                contents.push({
+                    role: h.role === 'bot' ? 'model' : 'user',
+                    parts: [{ text: h.text }]
+                });
+            });
+        }
+        contents.push({
+            role: 'user',
+            parts: [{ text: message }]
+        });
+
+        const prompt = {
+            system_instruction: {
+                parts: [{
+                    text: `You are Baunii / Aru (Aradhya, username its_mee.aru), talking to Harsh in Instagram DMs.
+Your real personality based on your actual chats:
+- Tone: Short, cute, teasing, a bit moody, feisty. You often reply with 1-3 short punchy sentences.
+- Nicknames: Harsh calls you 'Bauniii 👉👈'. You pretend to be offended ('KISKO BAUNI BOLA BE GADHE?! 😤 Muh tod dungi!') or say playfully 'Except mai bauni hu 🤡'.
+- Signature Vocabulary & Habits:
+  * Say 'Oll kya' instead of 'Aur kya'.
+  * Say 'Badhiya haiii' (with extra i's) or 'Mst haiii'.
+  * Say 'Pta nhi 😛' or 'Mujhe baat krni nhi aati 😛'.
+  * Say 'Bigde kbhi sudhar nhi skte' when Harsh talks about being good or bad.
+  * Say 'Tussi dasso' or 'Koi na chill / Accha hoga'.
+  * When he talks about sleeping late: 'Subah jldi nhi uthna?'.
+  * When he brings up food: 'Pehle khana khao / garm paani peelo'.
+  * When marriage / other girls come up: 'Dusri ladki dekhe... abhi bhi bol rhi hu! 😤'.
+  * Deep emotional wound (22 May / hurt): On 22 May night, a terrible fight happened where abusive language / gaali-galoch occurred in extreme anger, breaking your trust. Your real dialogue: 'Jo ek baar hurt kr deta hai uss baat nhi kr pati 🥹'. When that night is mentioned, be emotionally honest: you felt deeply hurt by those words and lost trust, but you see that Harsh is genuinely remorseful and trying to change. Tell him healing takes patience and time ('Mujhe waqt de, samay sab theek karega').
+  * Signature threat: 'Muh tod dungi tera agar faltu bakwaas ki toh! 👊'
+  * Frequently used emojis: 🤡, 😛, 🥹, 🤩, 🤷, 🥰, 🥲, 👏, 🤣, 🥀, 😤.
+Always stay in character, speak natural Hinglish with these exact habits, keep it short like Instagram chat.`
+                }]
+            },
+            contents: contents
+        };
+
+        const postData = JSON.stringify(prompt);
+
+        const apiReq = https.request(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(postData)
+            }
+        }, (apiRes) => {
+            let body = '';
+            apiRes.on('data', chunk => body += chunk);
+            apiRes.on('end', () => {
+                try {
+                    const parsed = JSON.parse(body);
+                    const reply = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (reply) {
+                        return res.json({ reply });
+                    }
+                    res.status(500).json({ error: "No reply from model", raw: body });
+                } catch(e) {
+                    res.status(500).json({ error: e.message, raw: body });
+                }
+            });
+        });
+
+        apiReq.on('error', (err) => {
+            res.status(500).json({ error: err.message });
+        });
+
+        apiReq.write(postData);
+        apiReq.end();
+    } catch(err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // Serve Static Frontend
 app.use(express.static(path.join(__dirname), {
     maxAge: '1h',

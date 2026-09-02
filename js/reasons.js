@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const reasons = [
         "Because moving on from you is something my heart will never agree to 💕",
-        "Because even after 93 days of silence, my heart beats only for your name 🎶",
+        "Because even after 104 days of silence, my heart beats only for your name 🎶",
         "Because your smile is still the only thing that fixes my worst days 🌸",
         "Because no matter how much distance comes between us, you remain my home 🥺",
         "Because I am hopelessly, unconditionally, & endlessly in love with you ✨",

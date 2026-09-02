@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baunii 🎀 | Aradhya AI Chatbot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Talk to Baunii — the cute, feisty Aradhya AI who threatens to break your face with love!">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bauni.css">
+<script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<!-- PARTICLE HEARTS CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="page-wrapper">
+
+    <div class="chat-container">
+
+        <!-- CHAT HEADER -->
+        <div class="chat-header">
+            <div class="header-profile">
+                <div class="avatar-wrap">
+                    <img src="assets/images/her1.jpeg" alt="Baunii" class="avatar-img">
+                    <span class="avatar-badge">🎀</span>
+                </div>
+                <div class="profile-info">
+                    <h3>Baunii 🤏</h3>
+                    <div class="profile-status">
+                        <span class="status-dot"></span>
+                        <span>Mood: Cute Gussa 😤</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-action">
+                <button class="sound-toggle-btn" id="soundToggleBtn" title="Toggle Sound Effect">🔔</button>
+                <a href="index.html" class="sound-toggle-btn" title="Back Home" style="text-decoration: none;">🏠</a>
+            </div>
+        </div>
+
+        <!-- MESSAGES FEED -->
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg-row bot">
+                <div class="msg-avatar">🎀</div>
+                <div class="msg-bubble">
+                    Oye gadhe Harsh! 😤 Aaya bada website bana ke mujhe impress karne wala! <br><br>
+                    Bol kya kaam hai? Aur faltu baat ki na toh pehle hi bata rahi hoon — <strong>muh tod dungi tera!</strong> 👊
+                    <div class="msg-time">Just now</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TYPING INDICATOR -->
+        <div class="typing-indicator" id="typingIndicator">
+            <span style="font-size: 11px; color: #ff7fa5;">Baunii is typing...</span>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+
+        <!-- QUICK PROMPT CHIPS -->
+        <div class="quick-chips-bar">
+            <span class="prompt-chip">Bauniii 👉👈</span>
+            <span class="prompt-chip">Oll kya? 🤡</span>
+            <span class="prompt-chip">Muh tod degi? 👊</span>
+            <span class="prompt-chip">Bigde kbhi sudhar nhi skte 😛</span>
+            <span class="prompt-chip">Khana khaya ap? 🍲</span>
+            <span class="prompt-chip">Subah jldi nhi uthna? 🥱</span>
+            <span class="prompt-chip">Jo ek baar hurt kr deta hai... 🥹</span>
+        </div>
+
+        <!-- INPUT FIELD -->
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Baunii ko kuch bolo..." autocomplete="off">
+            <button class="send-btn" id="sendBtn" title="Send message">💬</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/music.js"></script>
+<script src="js/bauni.js"></script>
+
+</body>
+</html>

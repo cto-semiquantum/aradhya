@@ -1,0 +1,281 @@
+@import url('base.css');
+
+/* ==========================================
+   RETRO CASSETTE MIXTAPE STYLING
+   Vintage 90s Player & Spinning Reels
+   ========================================== */
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.mixtape-container {
+    width: 100%;
+    max-width: 740px;
+    background: rgba(18, 7, 34, 0.92);
+    border: 1px solid rgba(255, 180, 100, 0.35);
+    box-shadow: 0 0 50px rgba(255, 180, 100, 0.2), var(--shadow-card);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(30px);
+}
+
+.mixtape-header {
+    margin-bottom: 25px;
+}
+
+.mixtape-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    background: rgba(255, 180, 100, 0.15);
+    border: 1px solid rgba(255, 180, 100, 0.4);
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffb464;
+    margin-bottom: 10px;
+}
+
+.mixtape-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #ffd166, #ff7fa5, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* THE 90S CASSETTE BODY */
+.cassette-body {
+    width: 100%;
+    max-width: 480px;
+    height: 280px;
+    margin: 0 auto 30px auto;
+    background: linear-gradient(135deg, #2b170e 0%, #150904 100%);
+    border: 3px solid #ffd166;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 0, 0, 0.9);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Screws in four corners */
+.cassette-screw {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #666;
+    border: 1px solid #333;
+}
+.screw-tl { top: 8px; left: 8px; }
+.screw-tr { top: 8px; right: 8px; }
+.screw-bl { bottom: 8px; left: 8px; }
+.screw-br { bottom: 8px; right: 8px; }
+
+/* Cassette Label / Sticker */
+.cassette-sticker {
+    background: linear-gradient(135deg, #fcedc7 0%, #e6cf9c 100%);
+    border-radius: 8px;
+    padding: 12px;
+    height: 175px;
+    position: relative;
+    border: 2px solid #8d6e3c;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sticker-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #c29d5b;
+    padding-bottom: 4px;
+}
+
+.side-badge {
+    background: #b22222;
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.sticker-handwritten {
+    font-family: var(--font-accent);
+    font-size: 21px;
+    font-weight: 700;
+    color: #2b170e;
+}
+
+/* Reel Window in Sticker Center */
+.reel-window {
+    width: 220px;
+    height: 70px;
+    background: rgba(20, 10, 5, 0.95);
+    border: 2px solid #6b4d24;
+    border-radius: 12px;
+    margin: 6px auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 18px;
+    overflow: hidden;
+}
+
+.magnetic-tape {
+    position: absolute;
+    height: 12px;
+    background: #4a2810;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.spinning-wheel {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    border: 4px solid #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.spinning-wheel.spinning {
+    animation: spinReel 1.8s linear infinite;
+}
+
+@keyframes spinReel {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.wheel-teeth {
+    width: 16px;
+    height: 16px;
+    background: #333;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.sticker-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    color: #5c3a1d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Cassette Bottom Trapezoid */
+.cassette-bottom-trap {
+    height: 38px;
+    background: #1e0f07;
+    border: 1px solid #4a2b15;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.trap-hole {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #0d0603;
+    border: 1px solid #333;
+}
+
+/* CONTROLS DECK */
+.controls-deck {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.deck-btn {
+    padding: 10px 22px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #3a1e54 0%, #1c0a2e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.deck-btn:active, .deck-btn.active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    border-color: #ffd166;
+    background: #ffd166;
+    color: #080012;
+}
+
+/* LYRICS CAROUSEL */
+.lyrics-box {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    min-height: 110px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.track-name-tag {
+    font-size: 12px;
+    color: #ffd166;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.lyrics-text {
+    font-size: 17px;
+    color: #fff;
+    font-style: italic;
+    line-height: 1.6;
+    transition: opacity 0.3s ease;
+}
+
+.lyrics-author {
+    font-size: 12px;
+    color: var(--pink-light);
+    margin-top: 8px;
+}
